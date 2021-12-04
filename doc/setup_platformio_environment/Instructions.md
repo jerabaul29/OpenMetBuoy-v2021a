@@ -113,3 +113,6 @@ platform_packages = framework-arduinoapollo3@1.2.3
 ```
 
 Now, going to the ```src/main.cpp``` file, you should be able to use the "compile" button at the bottom of VSC to compile the (default empty) sketch, and get a SUCCESS message. If this is the case, congratulations, you are ready to code! If not, check if / what you did wrong, or ask for help in the issues tracker.
+
+![Screenshot from 2021-12-04 17-05-52](https://user-images.githubusercontent.com/8382834/144716591-99f63e82-9a03-425d-aa40-13d4d7ed9620.png)
+
