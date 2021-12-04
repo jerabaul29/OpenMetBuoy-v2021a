@@ -35,7 +35,7 @@ To have a good coding environment, I recommend using a few VSC extensions:
 
 ## Installing the Sparkfun Ambiq Apollo3 core v1 platformio core
 
-The Sparkfun core is made available to PlatformIO through a community-contributed core, available at: https://github.com/nigelb/platform-apollo3blue . In particular, we will follow the instructions at https://github.com/nigelb/platform-apollo3blue/blob/master/docs/platform-apollo3blue/UsingMultipleVersionsOfArduino\_Apollo3.md , section Install framework-arduinoapollo3@1.2.3 .
+The Sparkfun core is made available to PlatformIO through a community-contributed core, available at: https://github.com/nigelb/platform-apollo3blue . In particular, we will follow the instructions at https://github.com/nigelb/platform-apollo3blue/blob/master/docs/platform-apollo3blue/UsingMultipleVersionsOfArduino_Apollo3.md , section Install framework-arduinoapollo3@1.2.3 .
 
 To install in the right version, assuming a "standard" Ubuntu setup, home, paths etc (some of the following commands will take quite some time, the toolchains to download are quite large!):
 
