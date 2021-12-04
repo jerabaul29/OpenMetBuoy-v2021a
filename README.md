@@ -21,5 +21,3 @@ The coding environment here is based on:
 C++ has some pros and cons, and it is possible to use other languages for low level programming. You can find a project that i) targets similar MCUs and development boards, ii) uses Rust-Lang, at: https://github.com/gauteh/sfy .
 
 For installation instructions and setup of the coding environment, see: **/doc/setup\_platformio\_environment/Instructions.md** .
-
-
