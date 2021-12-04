@@ -28,6 +28,7 @@ To have a good coding environment, I recommend using a few VSC extensions:
 - Vim, from vscodevim,
 - C/C++, from Microsoft,
 - C/C++ Extension Pack, from Microsoft,
+- Bracket Pair Colorizer 2, from CoenraadS,
 - Code Spell Checker, from Street Side Software,
 - Blockman - Highlight Nested Code Blocks, from leodevbro,
 - Highlight Matching TAg, from vincaslt,
