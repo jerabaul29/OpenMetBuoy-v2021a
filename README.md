@@ -6,7 +6,7 @@ We will populate this repository and publish all our materials as open source up
 
 ## Coding environment
 
-I am using only Linux in the forms of Ubuntu LTS distributions. Though the instructions here can likely be adapted to other distributions / OSes, if you want to use something else than Ubuntu 20.04, you are on your own!
+I am using only Linux in the form of Ubuntu LTS distributions. Though the instructions here can likely be adapted to other distributions / OSes (possibly with the Windows Linux Subsystem or similar), if you want to use something else than Ubuntu 20.04, you are on your own!
 
 The coding environment here is based on:
 
@@ -14,4 +14,8 @@ The coding environment here is based on:
 - platformio
 - the SparkFun Ambiq Apollo3 Arduino Core, in "bare metal", i.e. no RTOS, flavor.
 
-For installation instructions, see: **/doc/setup\_platformio\_environment/Instructions.md**
+C++ has some pros and cons, and it is possible to use other languages for low level programming. You can find a project that i) targets similar MCUs and development boards, ii) uses Rust-Lang, at: https://github.com/gauteh/sfy .
+
+For installation instructions and setup of the coding environment, see: **/doc/setup\_platformio\_environment/Instructions.md** .
+
+
