@@ -1,3 +1,6 @@
 [submodule "tracker/lib/etl-arduino"]
 	path = tracker/lib/etl-arduino
 	url = git@github.com:ETLCPP/etl-arduino.git
+[submodule "tracker/lib/Time"]
+	path = tracker/lib/Time
+	url = git@github.com:PaulStoffregen/Time.git
