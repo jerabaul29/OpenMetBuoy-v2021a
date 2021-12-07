@@ -1,0 +1,7 @@
+#ifndef FIRMWARE_CONFIGURATION
+#define FIRMWARE_CONFIGURATION
+
+#define SERIAL_USB (Serial)
+#define BAUD_RATE_USB (1000000)
+
+#endif

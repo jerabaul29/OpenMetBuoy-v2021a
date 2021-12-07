@@ -1,0 +1,3 @@
+- add tests time_manager
+- add tests print_utils
+- add formatted print of firmware configuration
