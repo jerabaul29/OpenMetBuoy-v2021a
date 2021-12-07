@@ -3,6 +3,10 @@
 void print_uint64(uint64_t to_print){
     clear_utils_char_buffer();
 
+    // I have tried with snprintf and associates, seem to not work with uint64_t
+    // even using the special macros etc. Write my simple implementation by hand
+    // then!
+
     size_t crrt_index {0};
 
     while (crrt_index < utils_char_buffer_size){
