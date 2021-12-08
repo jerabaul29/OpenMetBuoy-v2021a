@@ -26,6 +26,8 @@ void test_time_manager(void) {
 
     // TODO: would like to test the print_status, but not clear how to test
     // that the computer receives the right stuff yet...
+    // for now, just run it to check that "no dragons appear", but testing would be best
+    board_time_manager.print_status();
 
 }
 

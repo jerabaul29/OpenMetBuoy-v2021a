@@ -48,9 +48,6 @@ class TimeManager{
 // isr for the rtc, used to do interrupt based seconds counting
 extern "C" void arm_rtc_isr(void);
 
-// we need an isr modifiable posix_timestamp to count seconds
-extern volatile kiss_time_t posix_timestamp;
-
 // we use one single TimeManager instance for the board
 extern TimeManager board_time_manager;
 
