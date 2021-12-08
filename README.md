@@ -2,10 +2,12 @@
 
 An easy to build, affordable, customizable, open source instrument for oceanographic measurements.
 
+XX:TODO:"manifesto", why, main objectives, how to use.
+
 **We will populate this repository and publish all our materials as open source upon acceptance of our paper in the peer reviewed literature.**
 
-TODOs:
-- add pointer to preprint
+XX:TODOs:
+- add pointer to preprint, if useful please refer to our work
 - populate with full legacy code when paper published
 
 ## Overview of the content and organisation of the repository
