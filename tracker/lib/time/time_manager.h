@@ -7,7 +7,7 @@
 #include "kiss_posix_time_extras.hpp"
 
 #include "firmware_configuration.h"
-#include "utils/print_utils.h"
+#include "print_utils.h"
 
 // a class for managing time
 // this is some wrappers around kiss_posix_time and the RTC HAL that allow to use the RTC
