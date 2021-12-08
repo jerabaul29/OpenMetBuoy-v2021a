@@ -1,0 +1,1 @@
+This contains the "legacy" code, i.e. the first firmware version, developed on Arduino IDE-1.8, before we did the major rewrite and change to PlatformIO. This is working fine though, and all the instruments reported in the paper used this code - but, as time goes, the newer code based on PlatformIO will get much better :) .
