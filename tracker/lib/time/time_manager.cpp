@@ -53,33 +53,6 @@ void TimeManager::print_status(void) const {
   SERIAL_USB.println(F("---------------"));
 }
 
-/*
-void TimeManager::print_status(void) const {
-  Serial.print(F("posix is set: "));
-  if (posix_is_set){
-    Serial.print(F("true"));
-  }
-  else{
-    Serial.print(F("false"));
-  }
-
-  Serial.print(F(" | value = "));
-  Serial.println((long)posix_timestamp);
-  Serial.print(F("i.e.: "));
-  common_working_struct_YMDHMS = YMDHMS_from_posix_timestamp(posix_timestamp);
-  serialPrintf(
-    "%04d-%02d-%02d %02d:%02d:%02d",
-    common_working_struct_YMDHMS.year,
-    common_working_struct_YMDHMS.month,
-    common_working_struct_YMDHMS.day,
-    common_working_struct_YMDHMS.hour,
-    common_working_struct_YMDHMS.minute,
-    common_working_struct_YMDHMS.second
-  );
-  Serial.println();
-}
-*/
-
 //--------------------------------------------------------------------------------
 // low level control: RTC setup and 1 second interrupt
 
