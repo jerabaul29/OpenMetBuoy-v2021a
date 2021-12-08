@@ -2,9 +2,7 @@
 
 #include "firmware_configuration.h"
 
-#include "utils/print_utils.h"
-
-#include "time/time_manager.h"
+#include "time_manager.h"
 
 void setup() {
   SERIAL_USB.begin(BAUD_RATE_USB);
