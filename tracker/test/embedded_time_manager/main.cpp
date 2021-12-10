@@ -63,11 +63,35 @@ void test_time_manager_re_set(void) {
 
 }
 
+void test_time_manager_in_the_future(void) {
+
+    board_time_manager.set_posix_timestamp(3532609615);
+    TEST_ASSERT_TRUE( board_time_manager.posix_timestamp_is_valid() );
+    // it is possible that one second has elapsed in the meantime...
+    TEST_ASSERT_TRUE(
+        (board_time_manager.get_posix_timestamp() == 3532609615) ||
+        (board_time_manager.get_posix_timestamp() == 3532609616)
+    );
+
+    delay(2050);
+
+    TEST_ASSERT_TRUE( board_time_manager.posix_timestamp_is_valid() );
+    // it is possible that one second has elapsed in the meantime...
+    TEST_ASSERT_TRUE(
+        (board_time_manager.get_posix_timestamp() == 3532609617) ||
+        (board_time_manager.get_posix_timestamp() == 3532609618)
+    );
+
+    board_time_manager.print_status();
+
+}
+
 void setup() {
     UNITY_BEGIN();
 
     RUN_TEST(test_time_manager);
     RUN_TEST(test_time_manager_re_set);
+    RUN_TEST(test_time_manager_in_the_future);
 
     UNITY_END();
 }
