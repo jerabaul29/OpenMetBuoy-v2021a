@@ -11,7 +11,7 @@ TimeManager board_time_manager {};
 // the TimeManager class
 
 // Actually there may be a catch here...
-// kiss_time_t is uint64_t, so this may not be atomic to read / write, but it is
+// kiss_time_t is uint32_t or uint64_t, so this may not be atomic to read / write, but it is
 // also volatile and interrupt modified... So to be on the safe side, may need to
 // make SURE that the read and write happen correctly! Otherwise we may have a
 // read or write that is not a single operation and gets "intermixed" with an IRC
@@ -92,7 +92,7 @@ bool TimeManager::posix_timestamp_is_valid(void) const {
 void TimeManager::print_status(void) const {
   SERIAL_USB.println(F("- TimeManager -"));
   PRINTLN_VAR(posix_is_set)
-  Serial.print(F("posix_timestamp: ")); print_uint64(get_posix_timestamp()); Serial.println();
+  Serial.print(F("posix_timestamp: ")); Serial.print(get_posix_timestamp()); Serial.println();
   constexpr size_t utils_char_buffer_size {24};
   char utils_char_buffer[utils_char_buffer_size] {'\0'};
   print_iso(get_posix_timestamp(), utils_char_buffer, utils_char_buffer_size);
