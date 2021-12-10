@@ -24,10 +24,21 @@ void test_time_manager(void) {
         (board_time_manager.get_posix_timestamp() == 123456792)
     );
 
+    delay(4050);  // make sure that we increment at least 4 times since setting, so that the test values are disjoint
+
+    TEST_ASSERT_TRUE( board_time_manager.posix_timestamp_is_valid() );
+    // it is possible that one second has elapsed in the meantime...
+    TEST_ASSERT_TRUE(
+        (board_time_manager.get_posix_timestamp() == 123456795) ||
+        (board_time_manager.get_posix_timestamp() == 123456797)
+    );
+
     // TODO: would like to test the print_status, but not clear how to test
     // that the computer receives the right stuff yet...
     // for now, just run it to check that "no dragons appear", but testing would be best
+    Serial.println();
     board_time_manager.print_status();
+    Serial.println();
 
 }
 
@@ -49,9 +60,6 @@ void test_time_manager_re_set(void) {
         (board_time_manager.get_posix_timestamp() == 12345678) ||
         (board_time_manager.get_posix_timestamp() == 12345679)
     );
-
-    // TODO: would like to test the print_status, but not clear how to test
-    // that the computer receives the right stuff yet...
 
 }
 

@@ -51,8 +51,4 @@ extern "C" void arm_rtc_isr(void);
 // we use one single TimeManager instance for the board
 extern TimeManager board_time_manager;
 
-// we pre allocate all what we need to do timestamp conversions
-extern kiss_time_t common_working_kiss_time;
-extern kiss_calendar_time common_working_kiss_calendar;
-
 #endif

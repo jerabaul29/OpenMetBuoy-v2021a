@@ -7,9 +7,6 @@ volatile kiss_time_t posix_timestamp {0};
 
 TimeManager board_time_manager {};
 
-kiss_time_t common_working_kiss_time;
-kiss_calendar_time common_working_kiss_calendar;
-
 //--------------------------------------------------------------------------------
 // the TimeManager class
 
@@ -18,44 +15,74 @@ kiss_calendar_time common_working_kiss_calendar;
 // also volatile and interrupt modified... So to be on the safe side, may need to
 // make SURE that the read and write happen correctly! Otherwise we may have a
 // read or write that is not a single operation and gets "intermixed" with an IRC
-// update. To make sure, always do a read / write a check. We know that it will be
+// update.
+// To make sure, one method is to always do a read / write check. We know that it will be
 // updated by the ISR only once per minute, so we will not fail often nor several
-// times in a row.
+// times in a row. Another method is to simply wrap in a context with no interrupts.
+// You can choose which method you want to use by choosing which #if branch to take.
+// choose which method to use, NO_INTERRUPT, or READ_WRITE_CHECK
+#define TIME_MANAGER_NO_INTERRUPT     (1)
+#define TIME_MANAGER_READ_WRITE_CHECK (0)
+
+static_assert(
+  TIME_MANAGER_NO_INTERRUPT + TIME_MANAGER_READ_WRITE_CHECK == 1,
+  "need to choose one and only one of the two race condition preventing methods"
+);
 
 TimeManager::TimeManager(): posix_is_set{false}{
   this->setup_RTC();
 };
 
 void TimeManager::set_posix_timestamp(kiss_time_t const crrt_posix_timestamp){
-  // write and read until we get a match, see comment about uint64_t and atomicity
-  while (true){
-    posix_timestamp = crrt_posix_timestamp;
-    delayMicroseconds(4);
-    if(posix_timestamp == crrt_posix_timestamp){
-      break;
+  #if TIME_MANAGER_READ_WRITE_CHECK
+    // write and read until we get a match, see comment about uint64_t and atomicity
+    while (true){
+      posix_timestamp = crrt_posix_timestamp;
+      delayMicroseconds(4);
+      if(posix_timestamp == crrt_posix_timestamp){
+        break;
+      }
     }
-  }
+  #endif
+
+  #if TIME_MANAGER_NO_INTERRUPT
+    // no interrupt to make sure we can read / write the volatile value without race condition
+    noInterrupts();
+    posix_timestamp = crrt_posix_timestamp;
+    interrupts();
+  #endif
+
   posix_is_set = true;
 }
 
 kiss_time_t TimeManager::get_posix_timestamp(void) const {
-  // read until we get 2 consecutive identical values, see comment about uint64_t
-  // and atomicity
+  kiss_time_t value_read;
 
-  kiss_time_t value_read_1 = posix_timestamp;
-  delayMicroseconds(4);
-
-  while (true){
-    if (posix_timestamp == value_read_1){
-      break;
-    }
-    else {
-      value_read_1 = posix_timestamp;
-    }
+  #if TIME_MANAGER_READ_WRITE_CHECK
+    // read until we get 2 consecutive identical values, see comment about uint64_t
+    // and atomicity
     delayMicroseconds(4);
-  }
+    value_read = posix_timestamp;
 
-  return value_read_1;
+    while (true){
+      if (posix_timestamp == value_read){
+        break;
+      }
+      else {
+        value_read = posix_timestamp;
+      }
+      delayMicroseconds(4);
+    }
+  #endif
+
+  #if TIME_MANAGER_NO_INTERRUPT
+    // no interrupt to make sure we can read / write the volatile value without race condition
+    noInterrupts();
+    value_read = posix_timestamp;
+    interrupts();
+  #endif
+
+  return value_read;
 }
 
 bool TimeManager::posix_timestamp_is_valid(void) const {
@@ -66,7 +93,6 @@ void TimeManager::print_status(void) const {
   SERIAL_USB.println(F("- TimeManager -"));
   PRINTLN_VAR(posix_is_set)
   Serial.print(F("posix_timestamp: ")); print_uint64(get_posix_timestamp()); Serial.println();
-  // Serial.print(F("posix_timestamp: ")); SERIAL_USB.print(static_cast<long int>(get_posix_timestamp())); Serial.println();
   print_iso(get_posix_timestamp(), utils_char_buffer, utils_char_buffer_size);
   Serial.print(F("gregorian: ")); Serial.print(utils_char_buffer); Serial.println();
   clear_utils_char_buffer();
@@ -112,6 +138,5 @@ extern "C" void am_rtc_isr(void)
   // Clear the RTC alarm interrupt.
   am_hal_rtc_int_clear(AM_HAL_RTC_INT_ALM);
 
-  // Increment seconds_count
   posix_timestamp += 1;
 }
