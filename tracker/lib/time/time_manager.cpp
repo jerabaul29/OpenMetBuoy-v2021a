@@ -93,9 +93,10 @@ void TimeManager::print_status(void) const {
   SERIAL_USB.println(F("- TimeManager -"));
   PRINTLN_VAR(posix_is_set)
   Serial.print(F("posix_timestamp: ")); print_uint64(get_posix_timestamp()); Serial.println();
+  constexpr size_t utils_char_buffer_size {24};
+  char utils_char_buffer[utils_char_buffer_size] {'\0'};
   print_iso(get_posix_timestamp(), utils_char_buffer, utils_char_buffer_size);
   Serial.print(F("gregorian: ")); Serial.print(utils_char_buffer); Serial.println();
-  clear_utils_char_buffer();
   SERIAL_USB.println(F("---------------"));
 }
 

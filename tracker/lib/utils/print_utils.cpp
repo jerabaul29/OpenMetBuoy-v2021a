@@ -1,11 +1,12 @@
 #include "print_utils.h"
 
 void print_uint64(uint64_t to_print){
-    clear_utils_char_buffer();
-
     // I have tried with snprintf and associates, seem to not work with uint64_t
     // even using the special macros etc. Write my simple implementation by hand
     // then!
+
+    static constexpr size_t utils_char_buffer_size {24};
+    char utils_char_buffer[utils_char_buffer_size] {'\0'};
 
     size_t crrt_index {0};
 
@@ -30,16 +31,4 @@ void print_uint64(uint64_t to_print){
         }
     }
 
-    clear_utils_char_buffer();
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////
-// utils char buffer
-
-void clear_utils_char_buffer(void){
-    for (size_t i=0; i<utils_char_buffer_size; i++){
-        utils_char_buffer[i] = '\0';
-    }
-}
-
-char utils_char_buffer[utils_char_buffer_size];
