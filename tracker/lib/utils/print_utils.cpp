@@ -22,7 +22,7 @@ void print_uint64(uint64_t to_print){
     }
 
     while (true){
-        SERIAL_USB.print(utils_char_buffer[crrt_index]);
+        SERIAL_USB->print(utils_char_buffer[crrt_index]);
         if (crrt_index == 0){
             break;
         }

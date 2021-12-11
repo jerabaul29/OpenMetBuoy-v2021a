@@ -21,8 +21,9 @@ TimeManager board_time_manager {};
 // times in a row. Another method is to simply wrap in a context with no interrupts.
 // You can choose which method you want to use by choosing which #if branch to take.
 // choose which method to use, NO_INTERRUPT, or READ_WRITE_CHECK
-#define TIME_MANAGER_NO_INTERRUPT     (1)
-#define TIME_MANAGER_READ_WRITE_CHECK (0)
+
+static constexpr int TIME_MANAGER_NO_INTERRUPT     {1};
+static constexpr int TIME_MANAGER_READ_WRITE_CHECK {0};
 
 static_assert(
   TIME_MANAGER_NO_INTERRUPT + TIME_MANAGER_READ_WRITE_CHECK == 1,
@@ -34,7 +35,7 @@ TimeManager::TimeManager(): posix_is_set{false}{
 };
 
 void TimeManager::set_posix_timestamp(kiss_time_t const crrt_posix_timestamp){
-  #if TIME_MANAGER_READ_WRITE_CHECK
+  if constexpr (TIME_MANAGER_READ_WRITE_CHECK){
     // write and read until we get a match, see comment about uint64_t and atomicity
     while (true){
       posix_timestamp = crrt_posix_timestamp;
@@ -43,14 +44,14 @@ void TimeManager::set_posix_timestamp(kiss_time_t const crrt_posix_timestamp){
         break;
       }
     }
-  #endif
+  }
 
-  #if TIME_MANAGER_NO_INTERRUPT
+  if constexpr (TIME_MANAGER_NO_INTERRUPT){
     // no interrupt to make sure we can read / write the volatile value without race condition
     noInterrupts();
     posix_timestamp = crrt_posix_timestamp;
     interrupts();
-  #endif
+  }
 
   posix_is_set = true;
 }
@@ -58,7 +59,7 @@ void TimeManager::set_posix_timestamp(kiss_time_t const crrt_posix_timestamp){
 kiss_time_t TimeManager::get_posix_timestamp(void) const {
   kiss_time_t value_read;
 
-  #if TIME_MANAGER_READ_WRITE_CHECK
+  if constexpr (TIME_MANAGER_READ_WRITE_CHECK){
     // read until we get 2 consecutive identical values, see comment about uint64_t
     // and atomicity
     delayMicroseconds(4);
@@ -73,14 +74,14 @@ kiss_time_t TimeManager::get_posix_timestamp(void) const {
       }
       delayMicroseconds(4);
     }
-  #endif
+  }
 
-  #if TIME_MANAGER_NO_INTERRUPT
+  if constexpr (TIME_MANAGER_NO_INTERRUPT){
     // no interrupt to make sure we can read / write the volatile value without race condition
     noInterrupts();
     value_read = posix_timestamp;
     interrupts();
-  #endif
+  }
 
   return value_read;
 }
@@ -90,14 +91,14 @@ bool TimeManager::posix_timestamp_is_valid(void) const {
 }
 
 void TimeManager::print_status(void) const {
-  SERIAL_USB.println(F("- TimeManager -"));
+  SERIAL_USB->println(F("- TimeManager -"));
   PRINTLN_VAR(posix_is_set)
-  Serial.print(F("posix_timestamp: ")); Serial.print(get_posix_timestamp()); Serial.println();
+  SERIAL_USB->print(F("posix_timestamp: ")); SERIAL_USB->print(get_posix_timestamp()); SERIAL_USB->println();
   constexpr size_t utils_char_buffer_size {24};
   char utils_char_buffer[utils_char_buffer_size] {'\0'};
   print_iso(get_posix_timestamp(), utils_char_buffer, utils_char_buffer_size);
-  Serial.print(F("gregorian: ")); Serial.print(utils_char_buffer); Serial.println();
-  SERIAL_USB.println(F("---------------"));
+  SERIAL_USB->print(F("gregorian: ")); SERIAL_USB->print(utils_char_buffer); SERIAL_USB->println();
+  SERIAL_USB->println(F("---------------"));
 }
 
 //--------------------------------------------------------------------------------

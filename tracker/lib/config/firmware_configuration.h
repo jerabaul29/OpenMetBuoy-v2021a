@@ -1,7 +1,23 @@
 #ifndef FIRMWARE_CONFIGURATION
 #define FIRMWARE_CONFIGURATION
 
-#define SERIAL_USB (Serial)
-#define BAUD_RATE_USB (1000000)
+#include "Arduino.h"
+#include "macro_utils.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// serial related 
+
+extern Uart * SERIAL_USB;
+static constexpr int BAUD_RATE_USB {1000000};
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// misc
+
+static constexpr char commit_id[] {STRINGIFY_CONTENT(REPO_COMMIT_ID)};
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// functions
+
+void print_firmware_config(void);
 
 #endif

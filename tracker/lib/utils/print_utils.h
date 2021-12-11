@@ -8,8 +8,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 // convenience macros
 
-#define PRINTLN_VAR(v) SERIAL_USB.print(F(#v": ")); SERIAL_USB.println(v);
-#define PRINT_VAR(v) SERIAL_USB.print(F(#v": ")); SERIAL_USB.print(v);
+#define PRINTLN_VAR(v) SERIAL_USB->print(F(#v": ")); SERIAL_USB->println(v);
+#define PRINT_VAR(v) SERIAL_USB->print(F(#v": ")); SERIAL_USB->print(v);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // various print functions

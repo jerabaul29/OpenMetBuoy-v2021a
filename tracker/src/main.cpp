@@ -5,13 +5,9 @@
 #include "time_manager.h"
 
 void setup() {
-  SERIAL_USB.begin(BAUD_RATE_USB);
+  SERIAL_USB->begin(BAUD_RATE_USB);
 
-  board_time_manager.print_status();
-  board_time_manager.set_posix_timestamp(12345678901);
-  board_time_manager.print_status();
-  delay(5050);
-  board_time_manager.print_status();
+  print_firmware_config();
 }
 
 void loop() {
