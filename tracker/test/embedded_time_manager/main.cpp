@@ -30,7 +30,7 @@ void test_time_manager(void) {
     // it is possible that one second has elapsed in the meantime...
     TEST_ASSERT_TRUE(
         (board_time_manager.get_posix_timestamp() == 123456795) ||
-        (board_time_manager.get_posix_timestamp() == 123456797)
+        (board_time_manager.get_posix_timestamp() == 123456796)
     );
 
     // TODO: would like to test the print_status, but not clear how to test
