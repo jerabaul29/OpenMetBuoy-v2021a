@@ -6,8 +6,7 @@
 //--------------------------------------------------------------------------------
 // a few low level functions
 
-// use the HAL to put in low power mode
-
+// use the hal to put in low power mode
 void hal_prepare_to_sleep(void){
   digitalWrite(busVoltageMonEN, LOW);
   digitalWrite(LED, LOW);
@@ -34,6 +33,7 @@ void hal_prepare_to_sleep(void){
   am_hal_stimer_config(AM_HAL_STIMER_XTAL_32KHZ);
 }
 
+// use the hal to wakeup
 void hal_wake_up(void){
   //Power up SRAM, turn on entire Flash
   am_hal_pwrctrl_memory_deepsleep_powerdown(AM_HAL_PWRCTRL_MEM_MAX);
@@ -57,13 +57,68 @@ void hal_wake_up(void){
 //--------------------------------------------------------------------------------
 // some user-specific functions: remember to turn stuff off
 
+// TODO: board periphs and devices wakeup and sleep
+
 //--------------------------------------------------------------------------------
 // a few high level ways to control sleep
 
-void sleep_for_seconds(unsigned long number_of_seconds){
+void sleep_for_seconds(unsigned long const number_of_seconds){
+  SERIAL_USB->print(F("sleep for ")); SERIAL_USB->print(number_of_seconds); SERIAL_USB->println(F(" seconds"));
 
+  hal_prepare_to_sleep();
+  // TODO: user prepare to sleep
+
+  unsigned long int millis_lost {0};
+  unsigned long int millis_start_blink {0};
+
+  for (unsigned long i=0; i<number_of_seconds; i++){
+    am_hal_sysctrl_sleep(AM_HAL_SYSCTRL_SLEEP_DEEP);
+    wdt.restart();
+
+    // making sure to blink
+    if constexpr (blink_during_sleep){
+      millis_start_blink = millis();
+      if (i % seconds_between_sleep_blink == 0){
+        pinMode(LED, OUTPUT);
+        digitalWrite(LED, HIGH);
+        delay(millis_duration_sleep_blink);
+        digitalWrite(LED, LOW);
+        pinMode(LED, INPUT);
+      }
+      millis_lost += millis() - millis_start_blink;
+      if (millis_lost > 1000UL){
+        i++;
+        millis_lost -= 1000UL;
+      }
+    }
+  }
+
+  hal_wake_up();
+  // TODO: user wakeup
+  SERIAL_USB->print(F("wakeup"));
 }
 
-void sleep_until_posix(kiss_time_t posix_timestamp){
+unsigned long seconds_to_sleep_until_posix(kiss_time_t const posix_timestamp){
+  unsigned long number_seconds_to_sleep {0};
 
+  if (board_time_manager.posix_timestamp_is_valid()){
+    number_seconds_to_sleep = posix_timestamp - board_time_manager.get_posix_timestamp();
+    if (number_seconds_to_sleep > 6 * 3600){
+      SERIAL_USB->print(F("W suspicious posix sleep duration; sleep for 6 hours"));
+      number_seconds_to_sleep = 3600 * 6;
+    }
+  }
+  else{
+    SERIAL_USB->print(F("W invalid posix; sleep for 1 hour"));
+    number_seconds_to_sleep = 3600;
+  }
+
+  return number_seconds_to_sleep;
+}
+
+void sleep_until_posix(kiss_time_t const posix_timestamp){
+  SERIAL_USB->print(F("Sleep until posix ")); SERIAL_USB->println(posix_timestamp);
+
+  unsigned long number_seconds_to_sleep = seconds_to_sleep_until_posix(posix_timestamp);
+  sleep_for_seconds(number_seconds_to_sleep);
 }

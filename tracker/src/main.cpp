@@ -4,6 +4,8 @@
 
 #include "time_manager.h"
 
+#include "sleep_manager.h"
+
 void setup() {
   SERIAL_USB->begin(BAUD_RATE_USB);
 
