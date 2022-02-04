@@ -8,6 +8,7 @@ void setup() {
   SERIAL_USB->begin(BAUD_RATE_USB);
 
   print_firmware_config();
+
 }
 
 void loop() {
