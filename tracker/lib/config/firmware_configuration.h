@@ -31,6 +31,7 @@ static constexpr int iridiumRI       = 41; // Input for the Iridium 9603N Ring I
 // misc
 
 static constexpr char commit_id[] {STRINGIFY_CONTENT(REPO_COMMIT_ID)};
+static constexpr char git_branch[] {STRINGIFY_CONTENT(REPO_GIT_BRANCH)};
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // functions

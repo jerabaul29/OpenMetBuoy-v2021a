@@ -3,6 +3,18 @@
 // NOTE: the recommended source of sleep code is from the Artemis OpenLog
 // https://github.com/sparkfun/OpenLog_Artemis/blob/69682123ea2ae3ceb3983a7d8260eaef6259a0e2/Firmware/OpenLog_Artemis/lowerPower.ino
 
+// TODO: can improve on the max sleep duration etc by moving it to the .h file, printing it as a setup etc
+// grep for 3600 and 6 * 3600 for finding them
+
+//--------------------------------------------------------------------------------
+// default, weak functions for the user actions
+
+void user_sleep_pre_actions(void)  __attribute__((weak));
+void user_sleep_post_actions(void)  __attribute__((weak));
+
+void user_sleep_pre_actions(void) {};
+void user_sleep_post_actions(void) {};
+
 //--------------------------------------------------------------------------------
 // a few low level functions
 
@@ -55,18 +67,20 @@ void hal_wake_up(void){
 }
 
 //--------------------------------------------------------------------------------
-// some user-specific functions: remember to turn stuff off
-
-// TODO: board periphs and devices wakeup and sleep
-
-//--------------------------------------------------------------------------------
 // a few high level ways to control sleep
 
 void sleep_for_seconds(unsigned long const number_of_seconds){
+  if (number_of_seconds > 6UL * 3600UL){
+    PRINT_VAR(number_of_seconds);
+    SERIAL_USB->print(F(" is suspicious; cut to 6 hours!"));
+    sleep_for_seconds(6UL * 3600UL);
+    return;
+  }
+
   SERIAL_USB->print(F("sleep for ")); SERIAL_USB->print(number_of_seconds); SERIAL_USB->println(F(" seconds"));
 
   hal_prepare_to_sleep();
-  // TODO: user prepare to sleep
+  user_sleep_pre_actions();
 
   unsigned long int millis_lost {0};
   unsigned long int millis_start_blink {0};
@@ -94,7 +108,8 @@ void sleep_for_seconds(unsigned long const number_of_seconds){
   }
 
   hal_wake_up();
-  // TODO: user wakeup
+  user_sleep_post_actions();
+
   SERIAL_USB->print(F("wakeup"));
 }
 
@@ -103,14 +118,14 @@ unsigned long seconds_to_sleep_until_posix(kiss_time_t const posix_timestamp){
 
   if (board_time_manager.posix_timestamp_is_valid()){
     number_seconds_to_sleep = posix_timestamp - board_time_manager.get_posix_timestamp();
-    if (number_seconds_to_sleep > 6 * 3600){
+    if (number_seconds_to_sleep > 6UL * 3600UL){
       SERIAL_USB->print(F("W suspicious posix sleep duration; sleep for 6 hours"));
-      number_seconds_to_sleep = 3600 * 6;
+      number_seconds_to_sleep = 3600UL * 6UL;
     }
   }
   else{
     SERIAL_USB->print(F("W invalid posix; sleep for 1 hour"));
-    number_seconds_to_sleep = 3600;
+    number_seconds_to_sleep = 3600UL;
   }
 
   return number_seconds_to_sleep;

@@ -16,6 +16,12 @@ static_assert(seconds_between_sleep_blink > 10);  // do not blink too often
 static_assert(millis_duration_sleep_blink > 150);  // blink long enough to be visible
 static_assert(millis_duration_sleep_blink < 960);  // blink short enough to be kind to battery
 
-// TODO: print information in .cpp
+void print_sleep_configs(void);
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// print all configs
+
+void print_all_user_configs(void);
+
 
 #endif
