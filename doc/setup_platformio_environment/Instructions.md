@@ -32,7 +32,8 @@ To have a good coding environment, I recommend using a few VSC extensions:
 - Code Spell Checker, from Street Side Software,
 - Blockman - Highlight Nested Code Blocks, from leodevbro,
 - Highlight Matching TAg, from vincaslt,
-- PlatformIO IDE, from PlatformIO.
+- PlatformIO IDE, from PlatformIO,
+- Todo Tree, from Gruntfuggly.
 
 ## Installing the Sparkfun Ambiq Apollo3 core v1 platformio core
 
