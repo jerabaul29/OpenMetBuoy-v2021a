@@ -6,6 +6,8 @@ void print_sleep_configs(void){
     PRINTLN_VAR(blink_during_sleep);
     PRINTLN_VAR(seconds_between_sleep_blink);
     PRINTLN_VAR(millis_duration_sleep_blink);
+    PRINTLN_VAR(max_sleep_seconds);
+    PRINTLN_VAR(default_error_sleep_seconds);
     SERIAL_USB->println(F("-- sleep config end   --"));
     delay(10);
 }

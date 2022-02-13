@@ -16,6 +16,15 @@ static_assert(seconds_between_sleep_blink > 10);  // do not blink too often
 static_assert(millis_duration_sleep_blink > 150);  // blink long enough to be visible
 static_assert(millis_duration_sleep_blink < 960);  // blink short enough to be kind to battery
 
+// default values as "safety guards"; we do not want to make a mistake and start sleeping
+// for thousands of years...
+
+// do not sleep more than 6 hours
+constexpr unsigned long max_sleep_seconds {6UL * 3600UL};
+
+// if anything wrong, sleep for 6 hours instead
+constexpr unsigned long default_error_sleep_seconds {6UL * 3600UL};
+
 void print_sleep_configs(void);
 
 //////////////////////////////////////////////////////////////////////////////////////////

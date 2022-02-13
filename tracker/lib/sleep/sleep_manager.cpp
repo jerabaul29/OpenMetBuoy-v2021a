@@ -3,9 +3,6 @@
 // NOTE: the recommended source of sleep code is from the Artemis OpenLog
 // https://github.com/sparkfun/OpenLog_Artemis/blob/69682123ea2ae3ceb3983a7d8260eaef6259a0e2/Firmware/OpenLog_Artemis/lowerPower.ino
 
-// TODO: can improve on the max sleep duration etc by moving it to the .h file, printing it as a setup etc
-// grep for 3600 and 6 * 3600 for finding them
-
 //--------------------------------------------------------------------------------
 // default, weak functions for the user actions
 
@@ -70,10 +67,10 @@ void hal_wake_up(void){
 // a few high level ways to control sleep
 
 void sleep_for_seconds(unsigned long const number_of_seconds){
-  if (number_of_seconds > 6UL * 3600UL){
+  if (number_of_seconds > max_sleep_seconds){
     PRINT_VAR(number_of_seconds);
-    SERIAL_USB->print(F(" is suspicious; cut to 6 hours!"));
-    sleep_for_seconds(6UL * 3600UL);
+    SERIAL_USB->println(F(" is suspicious; cut!"));
+    sleep_for_seconds(default_error_sleep_seconds);
     return;
   }
 
@@ -118,14 +115,14 @@ unsigned long seconds_to_sleep_until_posix(kiss_time_t const posix_timestamp){
 
   if (board_time_manager.posix_timestamp_is_valid()){
     number_seconds_to_sleep = posix_timestamp - board_time_manager.get_posix_timestamp();
-    if (number_seconds_to_sleep > 6UL * 3600UL){
-      SERIAL_USB->print(F("W suspicious posix sleep duration; sleep for 6 hours"));
-      number_seconds_to_sleep = 3600UL * 6UL;
+    if (number_seconds_to_sleep > max_sleep_seconds){
+      SERIAL_USB->println(F("W suspicious posix sleep duration; cut!"));
+      number_seconds_to_sleep = default_error_sleep_seconds;
     }
   }
   else{
-    SERIAL_USB->print(F("W invalid posix; sleep for 1 hour"));
-    number_seconds_to_sleep = 3600UL;
+    SERIAL_USB->println(F("W invalid posix; sleep default duration"));
+    number_seconds_to_sleep = default_error_sleep_seconds;
   }
 
   return number_seconds_to_sleep;

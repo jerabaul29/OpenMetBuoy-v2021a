@@ -33,7 +33,8 @@ void test_time_manager(void) {
         (board_time_manager.get_posix_timestamp() == 123456796)
     );
 
-    // TODO: would like to test the print_status, but not clear how to test
+    // NOTE: would like to test the print_status, but not clear how to test
+
     // that the computer receives the right stuff yet...
     // for now, just run it to check that "no dragons appear", but testing would be best
     SERIAL_USB->println();

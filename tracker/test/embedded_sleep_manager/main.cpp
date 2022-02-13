@@ -47,20 +47,40 @@ void test_sleep_until_posix(void) {
 }
 
 void test_seconds_to_sleep_until_posix(void){
-    // TODO: write these tests, add to main, check that pass
     unsigned long to_sleep {0};
+    kiss_time_t start_posix {1234567};
+    kiss_time_t end_posix;
 
-    // invalid posix
+
+    // board time manager not set
     to_sleep = seconds_to_sleep_until_posix(45682);
     TEST_ASSERT_TRUE(
-        to_sleep == 
+        to_sleep == default_error_sleep_seconds
     )
 
-    // valid posix
-
-
+    // set a valid posix into time manager
+    board_time_manager.set_posix_timestamp(start_posix);
+    
     // good duration
-    // too long duration
+    end_posix = start_posix + 10;
+    to_sleep = seconds_to_sleep_until_posix(end_posix);
+    TEST_ASSERT_TRUE(
+        to_sleep == 10
+    )
+
+    // wrong duration 1
+    end_posix = start_posix - 1;
+    to_sleep = seconds_to_sleep_until_posix(end_posix);
+    TEST_ASSERT_TRUE(
+        to_sleep == default_error_sleep_seconds
+    )
+
+    // wrong duration 2
+    end_posix = start_posix + 3600UL * 6UL + 10;
+    to_sleep = seconds_to_sleep_until_posix(end_posix);
+    TEST_ASSERT_TRUE(
+        to_sleep == default_error_sleep_seconds
+    )
 }
 
 void setup() {
@@ -68,6 +88,7 @@ void setup() {
 
     RUN_TEST(test_sleep_for_seconds);
     RUN_TEST(test_sleep_until_posix);
+    RUN_TEST(test_seconds_to_sleep_until_posix);
 
     UNITY_END();
 }

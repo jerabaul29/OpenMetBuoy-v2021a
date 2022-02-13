@@ -9,7 +9,7 @@
 #include "watchdog_manager.h"
 
 
-// TODO: could put in an own namespace, but a bit heavier to use
+// NOTE: could put in an own namespace, but a bit heavier to use
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // a few high level ways to control sleep
@@ -23,6 +23,11 @@ void sleep_until_posix(kiss_time_t const posix_timestamp);
 // keep it here, as we want to test it in the unit tests
 
 unsigned long seconds_to_sleep_until_posix(kiss_time_t const posix_timestamp);
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// default values as "safety guards"; we do not want to make a mistake and start sleeping
+// for thousands of years...
+// these are part of the user configuration, see there the section "sleep setup"
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // the user may add own routines to run pre (just before) / post (just after) sleep by
