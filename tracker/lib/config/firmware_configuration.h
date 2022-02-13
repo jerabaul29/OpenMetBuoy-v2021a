@@ -3,6 +3,7 @@
 
 #include "Arduino.h"
 #include "macro_utils.h"
+#include "print_utils.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // serial related 
@@ -37,5 +38,7 @@ static constexpr char git_branch[] {STRINGIFY_CONTENT(REPO_GIT_BRANCH)};
 // functions
 
 void print_firmware_config(void);
+
+uint64_t read_chip_id(void);
 
 #endif
