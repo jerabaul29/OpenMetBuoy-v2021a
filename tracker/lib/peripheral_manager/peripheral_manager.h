@@ -15,6 +15,20 @@
 // peripheral. but we do not want to have the peripheral being on all the time either - that would
 // waste power, and the peripherals need to be off when sleeping anyways.
 
+// this simple manager DOES NOT GUARANTEE SAFE MULTITHREADED USE. Using it in a multithreaded context
+// may result in race conditions and other problems. Remember that multi threaded access is not only
+// having a multi threaded OS; using a peripheral through both interrupts and main program loop
+// is also a form of multi threaded access! So, this class is not sufficient to provide safe
+// peripheral use from, for example, an interrupt routine, in the case other devices on the same bus
+// are active and / or there is also bus activity even with the same device from the main program
+// loop.
+// NOTE: would be possible to make safe by using a mutex, and disabling interrupts when "doing stuff"
+// either in ISR or main loop, but this may break "bad code" that uses ISR-based functions such as
+// delays and similar, which are common in arduino libraries; better to just use a simple event loop,
+// as long as it is fast enough.
+// TODO: should use some mutex to protect before using the I2C bus?
+// TODO: deactivate the interrupts in addition to mutexing, to avoid jumping in an interrupt?
+
 // a device ID is 3 chars (need not be null-terminated), for example "imu", "tmp", "ird", ...
 using DeviceID = etl::array<char, 3>;
 // a peripheral ID is 3 chars (need not be null-terminated), for example "I2C1, SPI2, ..."
