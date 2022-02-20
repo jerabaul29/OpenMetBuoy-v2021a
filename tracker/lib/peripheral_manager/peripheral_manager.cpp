@@ -1,9 +1,13 @@
 #include "peripheral_manager.h"
 
-template<typename T>
-PeripheralManager<T>::PeripheralManager(T *raw_periph_in, PeriphID periph_id){
-    raw_periph = raw_periph_in;
-    periph_name = periph_id;
+// TODO: do we need some extra logics around is_borrowed and switching on / off
+// in the PeripheralManager class
+// TODO: borrowed: go through the logics there
+
+template <typename T>
+PeripheralManager<T>::PeripheralManager(T *raw_periph_in, PeriphID periph_id) :
+    raw_periph(raw_periph_in), periph_name(periph_id), is_borrowed(false)
+{
 }
 
 template<typename T>
@@ -42,13 +46,26 @@ bool PeripheralManager<T>::begin_if_need(DeviceID current_device){
     }
     else{
         bool result = raw_periph->begin();
+        SERIAL_USB->print(F("begin peripheral: "));
+        SERIAL_USB->print(periph_name[0]);
+        SERIAL_USB->print(periph_name[1]);
+        SERIAL_USB->println(periph_name[2]);
         delay(10);
+        // if could not start, the periph is actually not started, empty the active_devices
+        if (!result){
+            SERIAL_USB->print(F("W begin failed!"));
+            active_devices.erase();
+        }
         return result;
     }
 }
 
 template<typename T>
 bool PeripheralManager<T>::end_if_possible(DeviceID current_device){
+    // TODO: not sure if this is the right thing to do; what to do if we are borrowed and we end?
+    // TODO: at least show an error message
+    is_borrowed = false;
+
     // take care of the de registration of the device
 
     // check that the device was actually reported active. if yes, remove it
@@ -71,6 +88,10 @@ bool PeripheralManager<T>::end_if_possible(DeviceID current_device){
     // unused is now equivalent to "no active devices"
     if (!is_active()){
         raw_periph->end();
+        SERIAL_USB->print(F("end peripheral: "));
+        SERIAL_USB->print(periph_name[0]);
+        SERIAL_USB->print(periph_name[1]);
+        SERIAL_USB->println(periph_name[2]);
         delay(10);
     }
 
@@ -79,9 +100,19 @@ bool PeripheralManager<T>::end_if_possible(DeviceID current_device){
 
 template<typename T>
 void PeripheralManager<T>::force_end(void){
+    // TODO: not sure if this is the right thing to do; what to do if we are borrowed and we end?
+    // TODO: at least show an error message
+    is_borrowed = false;
+
     active_devices.clear();
+
     raw_periph->end();
     delay(10);
+    SERIAL_USB->print(F("end peripheral: "));
+    SERIAL_USB->print(periph_name[0]);
+    SERIAL_USB->print(periph_name[1]);
+    SERIAL_USB->println(periph_name[2]);
+
 }
 
 template<typename T>
@@ -115,3 +146,10 @@ template<typename T>
 int PeripheralManager<T>::remaining_slots(void) const {
     return active_devices.available();
 }
+
+template<typename T>
+bool PeripheralManager<T>::is_borrowed(void) const {
+    return borrowed;
+}
+
+// TODO: implement the BorrowedPeripheral logics
