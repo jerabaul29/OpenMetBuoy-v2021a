@@ -5,7 +5,9 @@
 Link to our paper, if you find our work useful and build up on it, please consider citing it:
 
 ```
-Rabault, Jean, et al. "OpenMetBuoy-V2021: an easy-to-build, affordable, customizable, open source instrument for oceanographic measurements of drift and waves in sea ice and the open ocean." Geosciences (2022).
+Rabault, Jean, et al.
+"OpenMetBuoy-V2021: an easy-to-build, affordable, customizable, open source instrument for oceanographic measurements of drift and waves in sea ice and the open ocean."
+Geosciences (2022).
 ```
 
 - As a preprint: https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean .
