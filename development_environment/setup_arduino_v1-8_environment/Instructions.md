@@ -34,7 +34,7 @@ From there, you will need to install by hand the libraries in the correct versio
 
 ## Setting up the extra libraries
 
-- I am using several extra libraries. These can be installed directly from the library manager. In case of missing library, the compiler will indicate which library needs to be installed; to get all the libraries you need: compile, fail, install missing new library, repeat... You can get an overview of the libraries I am using (note: this may get outdated) by looking at the output in the file ```INFO_compilation_output_lib_infos.txt``` in this folder.
+- I am using several extra libraries. These can be installed directly from the library manager. In case of missing library, the compiler will indicate which library needs to be installed; to get all the libraries you need: compile, fail, install missing new library, repeat... You can get an overview of the libraries I am using (note: this may get outdated) by looking at the output in https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/development_environment/setup_arduino_v1-8_environment/INFO_compilation_output_lib_infos.txt .
 
 - The etl / embedded template library requires a bit of user "tuning". On my machine (and most Ubuntu machines), it should be found (after installation) at: ```~/Arduino/libraries/etl```. I was initially using an old version of the library, which requested adding an empty file in the library ```src``` to compile. For the present code to compile, the etl folder should look like:
 
