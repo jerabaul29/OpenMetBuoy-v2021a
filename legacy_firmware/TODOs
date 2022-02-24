@@ -1,3 +1,0 @@
-- release the content of the "old" repo by copying it here
-- provide a few pre-compiled versions: i) pure GNSS drifter, ii) "Lars drifter" ie GNSS 30mins + waves 2hr without protocol, iii) "Malin instrument" i.e. same as "Lars drifter" but with the 6 thermistors, iv) "two ways Lars drifter" i.e. version with 2 ways communication as Tak has been using.
-- put as code the "Lars drifter" with the "2 ways protocol", making sure we use the version without the mixed I2C ports...
