@@ -1,6 +1,6 @@
 # Step Platformio development environment
 
-The aim of this file is to guide you for setting up a development instrument that is similar to the one I used when developing the code. In all the following, I assume Ubuntu 20.04LTS (more recent Ubuntu LTS will likely work in the same way). I strongly recommend you to use an Ubuntu LTS, if not, you are on your own!
+The aim of this file is to guide you for setting up a development instrument that is similar to the one I used when developing the code for the "firmware rewrite", based on PlatformIO. In all the following, I assume Ubuntu 20.04LTS (more recent Ubuntu LTS will likely work in the same way). I strongly recommend you to use an Ubuntu LTS, if not, you are on your own!
 
 ## Installing visual studio code (VSC)
 
