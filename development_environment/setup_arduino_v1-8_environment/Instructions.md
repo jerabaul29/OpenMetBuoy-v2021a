@@ -2,7 +2,7 @@ This will guide you in case you want to upload firmware using the Arduino 1.8 ID
 
 # Use of pre-compiled firmware binaries
 
-I provide a few pre-compiled firware binaries, shttps://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/binaries folder. These come with some default firmware configuration. If you want another firmware configuration, either request so in an issue, or compile it yourself (see instructions under for compiling yourself).
+I provide a few pre-compiled firware binaries, https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/binaries folder. These come with some default firmware configuration. If you want another firmware configuration, either request so in an issue, or compile it yourself (see instructions under for compiling yourself).
 
 To upload the binaries:
 
