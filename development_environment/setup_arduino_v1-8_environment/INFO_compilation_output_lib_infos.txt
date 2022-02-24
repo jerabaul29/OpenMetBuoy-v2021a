@@ -1,0 +1,14 @@
+Using library WDT at version 0.1 in folder: /home/jrmet/.arduino15/packages/SparkFun/hardware/apollo3/1.2.1/libraries/WDT 
+Using library Time at version 1.6 in folder: /home/jrmet/Arduino/libraries/Time 
+Using library etl at version 19.3.9 in folder: /home/jrmet/Arduino/libraries/etl 
+Using library Wire at version 1.0 in folder: /home/jrmet/.arduino15/packages/SparkFun/hardware/apollo3/1.2.1/libraries/Wire 
+Using library SparkFun_Qwiic_Power_Switch_Arduino_Library at version 1.0.0 in folder: /home/jrmet/Arduino/libraries/SparkFun_Qwiic_Power_Switch_Arduino_Library 
+Using library SparkFun_u-blox_GNSS_Arduino_Library at version 2.0.2 in folder: /home/jrmet/Arduino/libraries/SparkFun_u-blox_GNSS_Arduino_Library 
+Using library IridiumSBDi2c at version 3.0.1 in folder: /home/jrmet/Arduino/libraries/IridiumSBDi2c 
+Using library Adafruit_LSM6DS at version 4.3.1 in folder: /home/jrmet/Arduino/libraries/Adafruit_LSM6DS 
+Using library Adafruit_BusIO at version 1.7.2 in folder: /home/jrmet/Arduino/libraries/Adafruit_BusIO 
+Using library SPI at version 1.0 in folder: /home/jrmet/.arduino15/packages/SparkFun/hardware/apollo3/1.2.1/libraries/SPI 
+Using library Adafruit_Sensor at version 1.1.4 in folder: /home/jrmet/Arduino/libraries/Adafruit_Sensor 
+Using library Adafruit_LIS3MDL at version 1.0.7 in folder: /home/jrmet/Arduino/libraries/Adafruit_LIS3MDL 
+Using library Adafruit_AHRS at version 2.2.4 in folder: /home/jrmet/Arduino/libraries/Adafruit_AHRS 
+Using library OneWire at version 2.3.6 in folder: /home/jrmet/Arduino/libraries/OneWire 
