@@ -41,7 +41,7 @@ This describes how to set up a magnetic (also known as reed) switch. If you know
 
 At this point, things should look like on the image (just note that the black wire from the battery is not yet connected to the small black wire from the pololu):
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/pololu_reed_switch.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/pololu_reed_switch.jpg" width="400" />
 
 - wrap the pololu with duct tape to avoid naked metal
 - test that all works well: put a battery in one of the holders, and check that: i) if there is no magnet, 3.3V is obtained between the red and the black wires coming out of the pololu, ii) if there is a magnet, the voltage between the 2 wires is 0V (in practise, due to the capacitors on the regulator, it will be a small, dropping voltage that converges to 0V if you wait enough).
