@@ -8,7 +8,9 @@
 - add 1 red (middle long) and 1 black (long) wire coming out of the 3 batteries assembly
 - fix the battery holders at the bottom of the box with some duct tape
 
-![](illustration_3_holders.jpg)
+At this point, things should look like on the image below:
+
+![](illustration_3_holders.jpg | width=100)
 
 ## Preparation of the electronics boards
 
