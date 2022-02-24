@@ -4,6 +4,7 @@ A few high level rules:
 
 - protect metal with duct tape, to avoid any possibility for short circuit if things move around
 - wait to fix things with strong glue like epoxy until everything is tested; until everything is tested, fix things with duct tape, this is strong enough, and add in addition to the duct tape a bit of epoxy fixation after testing
+- XXTODO: power supply to electronics, never 2 sources at the same time
 
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
 
@@ -48,22 +49,32 @@ At this point, things should look like on the image (just note that the black wi
 
 This confirms that you have working power supply: the 3 batteries in parallel are being regulated to 3.3V and switched on / off by the reed switch
 
-## Preparation of the electronics boards
+## Plastic plate with mounting holes
+
+- prepare plastic plate with mounting holes
+
+## Preparation of the electronics boards, part I: Artemis global tracker main part
 
 - program the Artemis
 - cut 1 LED pad Artemis
+- solder power in
+- connect antenna
+- prepare plastic plate with mounting holes
+
+## Preparing of the electronics, part II: wave measurement hardware
+
 - cut 2 LED pads qwiic switch
 - connect Artemis to qwiic switch
 - connect qwiic switch to 9dof
-- solder the power supply to the Artemis
-- position all the components on the plastic support plate
-- put the antenna in place
+- put in position on the plastic plate
 
 ## Final test and assembly
 
 - register on Rock7
 - perform a full test outside
   - notes about the colors of the LEDs
+- check receive the messages and can decode
+- long enough to check all fine, messages are buffered etc: 1 day
 - glue inside
 - glue outside
 
