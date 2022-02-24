@@ -11,6 +11,7 @@
 At this point, things should look like on the image below:
 
 ![](illustration_3_holders.jpg | width=100)
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/illustration_3_holders.jpg" width="200" />
 
 ## Preparation of the electronics boards
 
