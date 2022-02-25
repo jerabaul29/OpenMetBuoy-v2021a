@@ -13,7 +13,7 @@ A few high level rules:
 
 The general schematic is as follows. The section belows are detailed instructions / tips and tricks to assemble it:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/general_schematic.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/general_schematic.jpg" width="800" />
 
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
 
