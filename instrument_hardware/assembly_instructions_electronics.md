@@ -70,7 +70,17 @@ This confirms that you have working power supply: the 3 batteries in parallel ar
 
 ## Plastic plate with mounting holes
 
-- prepare plastic plate with mounting holes
+I recommend using a thin plastic plate (for example, 2mm thick polycarbonate plate as one can get in Biltema or any similar hardware store). To fix the AGT on the plate (note: do not fix it yet, this will be done after the power supply of the AGT has been soldered; this is just for checking where mounting holes should be, and their diameter), use some nylon snap rivet; for example, rivets with diameter 3mm and length 9mm work perfectly).
+
+- cut the plate so that it fits into the box (a guillotine cutter machine is in my experience what works best for cutting it fast)
+- pre-position the AGT on the plate (and possibly extra components such as qwiic switch and IMU if these are to be used), making sure you have enough space for the qwiic connector at the bottom and the antenna at the top, and mark the position of the mounting holes
+- drill the mounting holes
+- check that the assembly works
+
+Things should typically look like:
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/plast_plate.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/all_in_box.jpg" width="400" />
 
 ## Preparation of the electronics boards, part I: Artemis global tracker main part
 
