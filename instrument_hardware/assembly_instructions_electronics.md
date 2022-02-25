@@ -2,21 +2,24 @@
 
 A few high level rules:
 
-- protect metal with duct tape, to avoid any possibility for short circuit if things move around
-- wait to fix things with strong glue like epoxy until everything is tested; until everything is tested, fix things with duct tape, this is strong enough, and add in addition to the duct tape a bit of epoxy fixation after testing
-- XXTODO: power supply to electronics, never 2 sources at the same time
+- Protect "naked" metal with duct tape, to avoid any possibility for short circuit if things move around in the box.
+- Wait to fix things with strong glue like epoxy until everything is tested; until everything is tested, fix things with duct tape, this is strong enough, and add in addition to the duct tape a bit of epoxy fixation after testing.
+- Never feed power to the main board with 2 sources at the same time (for example, USB and direct power in). This means, if you turn the instrument on, make sure first that the USB is disconnected; if you want to connect the instrument to the USB, make sure first that the instrument is turned off.
+- Electronics are sensitive to static discharges; if possible, work on an ESD-safe workplace. If you do not have access to an ESD-safe workplace, try to avoid static electricity as much as possible (avoid synthetic clothes), and try to "static-electricity-discharge" yourself regularly (touch a large piece of metal connected to the ground, such as a sink or similar).
 
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
 
-XXTODO: add hand written schematic
+The goal is to get a circuit that looks like the following drawing:
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/schematic_3cells.jpg" width="400" />
 
 This describes the case when 3 D-cell batteries are used inside some battery holders. If you use some batteries with soldering tags, you can drop the battery holders and solder the wires directly on the soldering tags.
 
-- tape 3 D-cell battery holders in the same direction (to be used in parallel)
-- some D-cell battery holders have bad contacts; put 1 cell in each battery holder, and check that the voldate is transmitted to the solder pins; if not, fix with some solder; when done, remove the cells (avoid having any form of batteries or power supply connected when building / soldering things)
+- tape 3 D-cell battery holders together in the same direction (to be used in parallel) to form a "pack"
+- some D-cell battery holders may have bad contacts; put 1 cell in each battery holder, and check that the voltage is transmitted to the solder pins; if not, fix with some solder; when done, remove the cells (avoid having any form of batteries or power supply connected when building / soldering things)
 - connect 3 D-cell battery holders in parallel (follow usual conventions: + is red, - / ground is black)
 - add 1 red (middle long) and 1 black (long) wire coming out of the 3 batteries assembly
-- fix the battery holders at the bottom of the box with some duct tape (by making a "duct tape loop")
+- fix the battery holders at the bottom of the box with some duct tape (by making a "duct tape loop" and putting it at the bottom of the box)
 
 At this point, things should look like on the image below:
 
