@@ -114,6 +114,10 @@ This is only to be used if the wave measurement functionality should be part of 
 
 ## Final test and assembly
 
+The instrument should now look something like (this is a version without the wave measurements, so no qwiic switch and 9dof sensor):
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/instrument_ready.jpg" width="400" />
+
 - register the modem on Rock7 and activate it (see https://rockblock.rock7.com and the GUI interface there)
 - perform a full test outside; note that it may take a while for the registration of the modem to be effective, and that iridium messages do not always go through; i.e., do not worry if you do not get a message within a few minutes, and just let the instrument out for a few hours
 - check receive the messages received and can decode them (see the decoder folder of the firmware you use)
