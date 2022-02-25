@@ -104,7 +104,7 @@ The power supply to the AGT is very simple:
 
 ## Preparing of the electronics, part II: wave measurement hardware
 
-This is only to be used if the wave measurement functionality should be part of the instrument (i.e., this is not requested for "pure GPS drifters"). In case you have a ST-eval kit instead of a the 9dof sensor because of chips shortage, see the instructions for connecting the ST-eval kit at: 
+This is only to be used if the wave measurement functionality should be part of the instrument (i.e., this is not requested for "pure GPS drifters"). In case you have a ST-eval kit instead of a the 9dof sensor because of chips shortage, see the instructions for connecting the ST-eval kit at: https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/ST_eval_instructions.md .
 
 - cut the 2 LED pads on the qwiic switch (LED\_IN and LED\_OUT)
 - connect AGT to qwiic switch using a qwiic cable; the AGT should connect to the IN qwiic switch port
