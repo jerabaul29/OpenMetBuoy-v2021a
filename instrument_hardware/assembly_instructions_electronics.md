@@ -13,13 +13,13 @@ A few high level rules:
 
 The general schematic is as follows. The section belows are detailed instructions / tips and tricks to assemble it:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/general_schematic.jpg" width="800" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/general_schematic.jpg" width="800" />
 
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
 
 The goal is to get a circuit that looks like the following drawing:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/schematic_3cells.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/schematic_3cells.jpg" width="400" />
 
 This describes the case when 3 D-cell batteries are used inside some battery holders. If you use some batteries with soldering tags, you can drop the battery holders and solder the wires directly on the soldering tags.
 
@@ -31,22 +31,22 @@ This describes the case when 3 D-cell batteries are used inside some battery hol
 
 At this point, things should look like on the image below:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/illustration_3_holders.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/illustration_3_holders.jpg" width="400" />
 
 ## Preparation of the power supply, part 2: mounting the magnetic switch, checking its good functioning
 
 The goal is to get a circuit that looks like the following drawing:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/reed_schematic.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/reed_schematic.jpg" width="400" />
 
 This describes how to set up a magnetic (also known as reed) switch. If you know that you can put / remove the batteries until the deployment time, this can be skipped and you can just connect the battery wires directly to the 3.3V power regulator. Be **careful**, the reed switches are very easy to break. Make sure to always i) hold a switch leg close to the glass, ii) bend the same leg from further away on the leg, i.e., make sure that all the stress is only on the metal, and never gets applied to the metal package. The reed magnetic switch works in the following way:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/reed_function.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/reed_function.jpg" width="400" />
 
 Make sure to use the right orientation when i) fixing the reed switch on the box wall (so that the reed switch blade moves perpendicular to the box wall), ii) orient the magnet correctly, as shown under:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/reed_orientation.jpg" width="400" />
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/magnet_orientation.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/reed_orientation.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/magnet_orientation.jpg" width="400" />
 
 - carefully separate a bit the 2 legs of the reed switch
 - use a multimeter to determine which legs are connected when there is no magnet
@@ -63,13 +63,13 @@ Make sure to use the right orientation when i) fixing the reed switch on the box
 
 The goal is to get a circuit that looks like:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/pololu_schematic.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/pololu_schematic.jpg" width="400" />
 
 - connect the pololu 3.3V power regulator: the wire coming from the reed switch goes to pololu Vin (unregulated battery power in); connect a small black wire from the pololu GND to the GND wire from the battery, keeping enough metal wire to the open air to be able to solder an additional GND wire that will power the Artemis; connect a red wire from the Vout, that will be used to power the Artemis.
 
 At this point, things should look like on the image (just note that the black wire from the battery is not yet connected to the small black wire from the pololu):
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/pololu_reed_switch.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/pololu_reed_switch.jpg" width="400" />
 
 - wrap the pololu with duct tape to avoid naked metal
 - test that all works well: put a battery in one of the holders, and check that: i) if there is no magnet, 3.3V is obtained between the red and the black wires coming out of the pololu, ii) if there is a magnet, the voltage between the 2 wires is 0V (in practise, due to the capacitors on the regulator, it will be a small, dropping voltage that converges to 0V if you wait enough).
@@ -87,14 +87,14 @@ I recommend using a thin plastic plate (for example, 2mm thick polycarbonate pla
 
 Things should typically look like:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/plast_plate.jpg" width="400" />
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/all_in_box.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/plast_plate.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/all_in_box.jpg" width="400" />
 
 ## Preparation of the electronics boards, part I: Artemis global tracker main part
 
 The power supply to the AGT is very simple:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/AGT_power.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/AGT_power.jpg" width="400" />
 
 - program the Artemis, see: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/development_environment for example for uploading the (currently recommended) legacy firmware: https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/development_environment/setup_arduino_v1-8_environment/Instructions.md . The simplest solution is to upload a pre compiled binary, if one of these fits your needs. Note that, if you use only a 6dof sensor, you need a firmware version without the magnetometer.
 - to save power, the always-on PWR LED on the AGT has to be cut; use a hobby knife to the "PWR\_LED" pad at the rear of the AGT (for explanations about cutting pads, see: https://learn.sparkfun.com/tutorials/how-to-work-with-jumper-pads-and-pcb-traces/cutting-a-trace-between-jumper-pads ).
