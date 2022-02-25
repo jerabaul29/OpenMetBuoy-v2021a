@@ -6,8 +6,14 @@ A few high level rules:
 - Wait to fix things with strong glue like epoxy until everything is tested; until everything is tested, fix things with duct tape, this is strong enough, and add in addition to the duct tape a bit of epoxy fixation after testing.
 - Never feed power to the main board with 2 sources at the same time (for example, USB and direct power in). This means, if you turn the instrument on, make sure first that the USB is disconnected; if you want to connect the instrument to the USB, make sure first that the instrument is turned off.
 - Electronics are sensitive to static discharges; if possible, work on an ESD-safe workplace. If you do not have access to an ESD-safe workplace, try to avoid static electricity as much as possible (avoid synthetic clothes), and try to "static-electricity-discharge" yourself regularly (touch a large piece of metal connected to the ground, such as a sink or similar).
-- condensation
-- temperature cycling
+- condensation and humidity is the ennemy of electronics; make sure to i) work in a room that is as dry as possible, ii) use desiccant bags
+- sudden temperature cycling is not good for electronics as i) it is a factor creating condensation, ii) repeated, sudden temperature changes put strains on solders. Try, if possible, to avoid too many harsh temperature cyclings (for example, if possible, avoid taking the instrument in from a +20 degrees temperature outside to a -20 degrees temperature too many times; ideally, let the instrument cool down and warm up slowly).
+
+## General schematic
+
+The general schematic is as follows. The section belows are detailed instructions / tips and tricks to assemble it:
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/general_schematic.jpg" width="400" />
 
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
 
