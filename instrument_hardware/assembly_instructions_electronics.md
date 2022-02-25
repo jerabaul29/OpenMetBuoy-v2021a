@@ -25,11 +25,20 @@ At this point, things should look like on the image below:
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/illustration_3_holders.jpg" width="400" />
 
-## Preparation of the power supply, part 2: mounting the magnetic switch, checking its good functioning, connecting to the pololy 3.3V power regulator
+## Preparation of the power supply, part 2: mounting the magnetic switch, checking its good functioning
 
-XXTODO: add hand written schematic
+The goal is to get a circuit that looks like the following drawing:
 
-This describes how to set up a magnetic (also known as reed) switch. If you know that you can put / remove the batteries until the deployment time, this can be skipped and you can just connect the battery wires directly to the 3.3V power regulator. Be **careful**, the reed switches are very easy to break. Make sure to always i) hold a switch leg close to the glass, ii) bend the same leg from further away on the leg, i.e., make sure that all the stress is only on the metal, and never gets applied to the metal package.
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/reed_schematic.jpg" width="400" />
+
+This describes how to set up a magnetic (also known as reed) switch. If you know that you can put / remove the batteries until the deployment time, this can be skipped and you can just connect the battery wires directly to the 3.3V power regulator. Be **careful**, the reed switches are very easy to break. Make sure to always i) hold a switch leg close to the glass, ii) bend the same leg from further away on the leg, i.e., make sure that all the stress is only on the metal, and never gets applied to the metal package. The reed magnetic switch works in the following way:
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/reed_function.jpg" width="400" />
+
+Make sure to use the right orientation when i) fixing the reed switch on the box wall (so that the reed switch blade moves perpendicular to the box wall), ii) orient the magnet correctly, as shown under:
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/reed_orientation.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/magnet_orientation.jpg" width="400" />
 
 - carefully separate a bit the 2 legs of the reed switch
 - use a multimeter to determine which legs are connected when there is no magnet
@@ -41,6 +50,13 @@ This describes how to set up a magnetic (also known as reed) switch. If you know
 - mark with a marker the position of the reed switch on the exterior of the box
 - use put 2 magnets together; they will naturally match with one N and one S; mark the outwards facing N and S with some marker; the magnetic field is strongest coming out of these faces; these are the faces that should be face the reed switch to change its state
 - check with a multimeter that, without magnet, the battery pack + is connected with the wire coming out of the reed switch, and than when the magnet is on, the 2 are not connected; notice that when the reed switch state is changed by putting / pulling the magnet, a small noise can be heard.
+
+## Preparation of the power supply, part 3: connecting to the pololy 3.3V power regulator
+
+The goal is to get a circuit that looks like:
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/pololu_schematic.jpg" width="400" />
+
 - connect the pololu 3.3V power regulator: the wire coming from the reed switch goes to pololu Vin (unregulated battery power in); connect a small black wire from the pololu GND to the GND wire from the battery, keeping enough metal wire to the open air to be able to solder an additional GND wire that will power the Artemis; connect a red wire from the Vout, that will be used to power the Artemis.
 
 At this point, things should look like on the image (just note that the black wire from the battery is not yet connected to the small black wire from the pololu):
