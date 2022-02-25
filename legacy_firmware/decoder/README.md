@@ -1,5 +1,7 @@
 The **decoder.py** file contains the binary decoder; can be used either as a python package to import, or as a standalone. Requires python3 and a number of packages (see the import list at the start of the file and ```pip3 install``` as needed). Can be added to your ```${HOME}/bin``` folder, with relevant execution permissions, to be made available system wide.
 
+The decoder expects to be provided with the hex-encoded binary messages as provided by the Rock7 Iridium provider (for example, ```470946069b13627496ba238fb7630646ff9313622396ba2375b6630646f68c13625297ba23b2b4630646ee8513626093ba23c6b5630645``` is such a message).
+
 - Examples of use from console:
 
 ```
