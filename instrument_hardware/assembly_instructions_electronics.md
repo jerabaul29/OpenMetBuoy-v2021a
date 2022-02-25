@@ -6,6 +6,8 @@ A few high level rules:
 - Wait to fix things with strong glue like epoxy until everything is tested; until everything is tested, fix things with duct tape, this is strong enough, and add in addition to the duct tape a bit of epoxy fixation after testing.
 - Never feed power to the main board with 2 sources at the same time (for example, USB and direct power in). This means, if you turn the instrument on, make sure first that the USB is disconnected; if you want to connect the instrument to the USB, make sure first that the instrument is turned off.
 - Electronics are sensitive to static discharges; if possible, work on an ESD-safe workplace. If you do not have access to an ESD-safe workplace, try to avoid static electricity as much as possible (avoid synthetic clothes), and try to "static-electricity-discharge" yourself regularly (touch a large piece of metal connected to the ground, such as a sink or similar).
+- condensation
+- temperature cycling
 
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
 
@@ -84,26 +86,31 @@ Things should typically look like:
 
 ## Preparation of the electronics boards, part I: Artemis global tracker main part
 
-- program the Artemis
-- cut 1 LED pad Artemis
-- solder power in
-- connect antenna
-- prepare plastic plate with mounting holes
+The power supply to the AGT is very simple:
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/AGT_power.jpg" width="400" />
+
+- program the Artemis, see: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/development_environment for example for uploading the (currently recommended) legacy firmware: https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/development_environment/setup_arduino_v1-8_environment/Instructions.md . The simplest solution is to upload a pre compiled binary, if one of these fits your needs. Note that, if you use only a 6dof sensor, you need a firmware version without the magnetometer.
+- to save power, the always-on PWR LED on the AGT has to be cut; use a hobby knife to the "PWR\_LED" pad at the rear of the AGT (for explanations about cutting pads, see: https://learn.sparkfun.com/tutorials/how-to-work-with-jumper-pads-and-pcb-traces/cutting-a-trace-between-jumper-pads ).
+- solder the power in to the AGT: the common GND from pololu and the battery to any GND pin; the 3.3V Vout coming out of the pololu regulator to any 3.3V pin
+- connect the antenna, using the extension cable
+- fix the AGT on the plastic plate using snap rivets
 
 ## Preparing of the electronics, part II: wave measurement hardware
 
-- cut 2 LED pads qwiic switch
-- connect Artemis to qwiic switch
-- connect qwiic switch to 9dof
-- put in position on the plastic plate
+This is only to be used if the wave measurement functionality should be part of the instrument (i.e., this is not requested for "pure GPS drifters").
+
+- cut the 2 LED pads on the qwiic switch (LED\_IN and LED\_OUT)
+- connect AGT to qwiic switch using a qwiic cable; the AGT should connect to the IN qwiic switch port
+- connect the qwiic switch to 9dof (or 6dof if only using a 6dof) using a qwiic cable; the 9dof should connect to the OUT qwiic switch port 
+- put the components in position on the plastic plate and in the box; if possible, try to locate the 9dof sensor on the opposite side to the magnet. The orientation of the 9dof sensor does not play any role (as it will compute its orientation automatically and compensate for it), just make sure that it is stably fixed with some duct tape, snap river, or similar.
+- add a desiccant silica gel bag into the box to make sure that there will be no issues with condensation
 
 ## Final test and assembly
 
-- register on Rock7
-- perform a full test outside
-  - notes about the colors of the LEDs
-- check receive the messages and can decode
-- long enough to check all fine, messages are buffered etc: 1 day
-- glue inside
-- glue outside
+- register the modem on Rock7 and activate it (see https://rockblock.rock7.com and the GUI interface there)
+- perform a full test outside; note that it may take a while for the registration of the modem to be effective, and that iridium messages do not always go through; i.e., do not worry if you do not get a message within a few minutes, and just let the instrument out for a few hours
+- check receive the messages received and can decode them (see the decoder folder of the firmware you use)
+- I would recommend, if possible, to let the instrument out for a day or so, to make sure that you have uploaded the right firmware, that the update rate is correct, etc
+- when the instrument is fully tested, stop it, glue (in addition to the duct tape, no need to remove it) the different parts in place using epoxy, seal the top lid (screw it firmly so that the seal is tight), and add a layer of bathrool silicon (convenient, you can re open the instrument if needed) or epoxy glue (that will be harder to re open the instrument if needed) on the top and bottom holes of the screws and around the lid to make it fully waterproof over time.
 
