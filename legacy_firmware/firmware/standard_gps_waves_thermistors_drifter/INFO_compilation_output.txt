@@ -1,0 +1,70 @@
+Using board 'artemis' from platform in folder: /home/jrmet/.arduino15/packages/SparkFun/hardware/apollo3/1.2.1
+Using core 'arduino' from platform in folder: /home/jrmet/.arduino15/packages/SparkFun/hardware/apollo3/1.2.1
+
+Detecting libraries used...
+Alternatives for WDT.h: [WDT@0.1]
+ResolveLibrary(WDT.h)
+  -> candidates: [WDT@0.1]
+Alternatives for TimeLib.h: [Time@1.6]
+ResolveLibrary(TimeLib.h)
+  -> candidates: [Time@1.6]
+Alternatives for etl.h: [etl@19.3.9]
+ResolveLibrary(etl.h)
+  -> candidates: [etl@19.3.9]
+Alternatives for Wire.h: [Wire@1.0]
+ResolveLibrary(Wire.h)
+  -> candidates: [Wire@1.0]
+Alternatives for SparkFun_Qwiic_Power_Switch_Arduino_Library.h: [SparkFun_Qwiic_Power_Switch_Arduino_Library@1.0.0]
+ResolveLibrary(SparkFun_Qwiic_Power_Switch_Arduino_Library.h)
+  -> candidates: [SparkFun_Qwiic_Power_Switch_Arduino_Library@1.0.0]
+Alternatives for SparkFun_u-blox_GNSS_Arduino_Library.h: [SparkFun_u-blox_GNSS_Arduino_Library@2.0.2]
+ResolveLibrary(SparkFun_u-blox_GNSS_Arduino_Library.h)
+  -> candidates: [SparkFun_u-blox_GNSS_Arduino_Library@2.0.2]
+Alternatives for IridiumSBD.h: [Iridium_SBD@2.0 IridiumSBDi2c@3.0.1]
+ResolveLibrary(IridiumSBD.h)
+  -> candidates: [Iridium_SBD@2.0 IridiumSBDi2c@3.0.1]
+Alternatives for Adafruit_ISM330DHCX.h: [Adafruit_LSM6DS@4.2.0]
+ResolveLibrary(Adafruit_ISM330DHCX.h)
+  -> candidates: [Adafruit_LSM6DS@4.2.0]
+Alternatives for Adafruit_BusIO_Register.h: [Adafruit_BusIO@1.7.2]
+ResolveLibrary(Adafruit_BusIO_Register.h)
+  -> candidates: [Adafruit_BusIO@1.7.2]
+Alternatives for SPI.h: [SPI@1.0]
+ResolveLibrary(SPI.h)
+  -> candidates: [SPI@1.0]
+Alternatives for Adafruit_Sensor.h: [Adafruit_Sensor@1.1.4]
+ResolveLibrary(Adafruit_Sensor.h)
+  -> candidates: [Adafruit_Sensor@1.1.4]
+Alternatives for Adafruit_LIS3MDL.h: [Adafruit_LIS3MDL@1.0.7]
+ResolveLibrary(Adafruit_LIS3MDL.h)
+  -> candidates: [Adafruit_LIS3MDL@1.0.7]
+Alternatives for Adafruit_AHRS.h: [Adafruit_AHRS@2.2.4]
+ResolveLibrary(Adafruit_AHRS.h)
+  -> candidates: [Adafruit_AHRS@2.2.4]
+Alternatives for OneWire.h: [OneWire@2.3.5 OneWireNg@0.8.2]
+ResolveLibrary(OneWire.h)
+  -> candidates: [OneWire@2.3.5 OneWireNg@0.8.2]
+
+Multiple libraries were found for "OneWire.h"
+ Used: /home/jrmet/Arduino/libraries/OneWire
+ Not used: /home/jrmet/Arduino/libraries/OneWireNg
+Multiple libraries were found for "IridiumSBD.h"
+ Used: /home/jrmet/Arduino/libraries/IridiumSBDi2c
+ Not used: /home/jrmet/Arduino/libraries/Iridium_SBD
+Using library WDT at version 0.1 in folder: /home/jrmet/.arduino15/packages/SparkFun/hardware/apollo3/1.2.1/libraries/WDT 
+Using library Time at version 1.6 in folder: /home/jrmet/Arduino/libraries/Time 
+Using library etl at version 19.3.9 in folder: /home/jrmet/Arduino/libraries/etl 
+Using library Wire at version 1.0 in folder: /home/jrmet/.arduino15/packages/SparkFun/hardware/apollo3/1.2.1/libraries/Wire 
+Using library SparkFun_Qwiic_Power_Switch_Arduino_Library at version 1.0.0 in folder: /home/jrmet/Arduino/libraries/SparkFun_Qwiic_Power_Switch_Arduino_Library 
+Using library SparkFun_u-blox_GNSS_Arduino_Library at version 2.0.2 in folder: /home/jrmet/Arduino/libraries/SparkFun_u-blox_GNSS_Arduino_Library 
+Using library IridiumSBDi2c at version 3.0.1 in folder: /home/jrmet/Arduino/libraries/IridiumSBDi2c 
+Using library Adafruit_LSM6DS at version 4.2.0 in folder: /home/jrmet/Arduino/libraries/Adafruit_LSM6DS 
+Using library Adafruit_BusIO at version 1.7.2 in folder: /home/jrmet/Arduino/libraries/Adafruit_BusIO 
+Using library SPI at version 1.0 in folder: /home/jrmet/.arduino15/packages/SparkFun/hardware/apollo3/1.2.1/libraries/SPI 
+Using library Adafruit_Sensor at version 1.1.4 in folder: /home/jrmet/Arduino/libraries/Adafruit_Sensor 
+Using library Adafruit_LIS3MDL at version 1.0.7 in folder: /home/jrmet/Arduino/libraries/Adafruit_LIS3MDL 
+Using library Adafruit_AHRS at version 2.2.4 in folder: /home/jrmet/Arduino/libraries/Adafruit_AHRS 
+Using library OneWire at version 2.3.5 in folder: /home/jrmet/Arduino/libraries/OneWire 
+
+Sketch uses 124968 bytes (13%) of program storage space. Maximum is 960000 bytes.
+Global variables use 158460 bytes of dynamic memory.
