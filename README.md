@@ -11,8 +11,8 @@ Rabault, Jean, et al.
 Geosciences (2022).
 ```
 
-- As a preprint: https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean , and as pdf on this repository (see **latest_preprint_MDPI_2022.pdf**)
-- As a published paper: **XX:TODO**.
+- As a preprint: https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean , and as pdf on this repository (see **latest_preprint_MDPI_2022.pdf**),
+- As a published paper: https://www.mdpi.com/2076-3263/12/3/110 .
 
 ## Overview of the content and organisation of the repository
 
