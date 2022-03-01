@@ -12,7 +12,7 @@ Geosciences (2022).
 ```
 
 - As a preprint: https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean , and as pdf on this repository (see **latest_preprint_MDPI_2022.pdf**),
-- As a published paper: https://www.mdpi.com/2076-3263/12/3/110 .
+- As a published paper (open access, CC-BY license): https://www.mdpi.com/2076-3263/12/3/110 .
 
 This is a typical example of dataset collected by an instrument that drifted in the Caribbeans: the track of the instrument and the wave measurements are indicated by the black curve, while satellite measurements of significant wave height (from the Sentinel satellites in particular) are shown on intersecting transsects with colored lines:
 
