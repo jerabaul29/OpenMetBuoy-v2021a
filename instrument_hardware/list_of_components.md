@@ -81,11 +81,11 @@ You will also need the usual "small extras" when doing electronics and assemblin
 
 - electronics cables, typically some 0.33mm2 cables in a variety of colors do just fine: https://uk.rs-online.com/web/p/hook-up-wire/8724530
 - soldering tools: soldering iron (I recommend the Pinecil https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/ ), soldering wire, soldering brass sponge, ...
-- plastic plate to fix the electronics
+- plastic plate to fix the electronics: something like this works fine, 2mm thickness is enough, up to (included) 4 is fine, but more than 4 is a bit hard to cut: https://www.biltema.no/bygg/platematerialer/plastglass/plastglass-2000030030 plastglass.
 - desiccant bags
 - duct tape
 - epoxy glue
 - bathroom silicon
-- plastic "pop" rivers
+- plastic "pop / snap" rivets: I recommend the ones with diameter 3mm, length 9mm, though may be possible to do with a bit different rivets: https://no.rs-online.com/web/p/rivets/0280824 Richco Nylon Snap Rivet, 3mm diameter, 9mm length
 - various tools (cutter, drill, etc)
 
