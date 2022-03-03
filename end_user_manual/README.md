@@ -80,8 +80,8 @@ At this stage, the instrument knows that it is operating, has got an initial gps
 - 8 the instrument checks the wave measurement pattern to check if it should also perform a wave measurement (typically every 3 hours)
 - 9 the instrument checks the thermistors measurement pattern to check if it should also perform a thermistors measurement (typically every 1 hour)
 
-- 10 the instrument attempts to get a GPS fix (timeout typically 3 minutes
-- 10a if the instrument got a GPS fix, it starts collecting 30 GPS measurements in a buffer
+- 10 the instrument attempts to get a GPS fix (timeout typically 3 minutes)
+- 10a if the instrument got a GPS fix, it starts collecting 30 GPS measurements in a buffer, at 1Hz; i.e., this will take about 30 seconds
 - 10b once the 30 GPS measurements are collected, the instrument applies an outlier rejection + averaging filter, to determine the GPS position to transmit
 - 10c the instrument pushes the averaged GPS position + timestamp to the GPS buffer
 
@@ -103,7 +103,7 @@ At this stage, the instrument knows that it is operating, has got an initial gps
 ## Notes about the implementation
 
 - when transmitting messages that are buffered, newer messages are always attempted to transmit first
-- if any malfunction happens, either hardware fault or software bug, the hardware watchdog reboots the instrument (starting again from step 1)
+- if any malfunction happens, either hardware fault or software bug, the hardware watchdog reboots the instrument (starting again from step 1). This means that buffered measurements are lost, but that otherwise functionality is restored.
 
 ## Receiving the iridium messages
 
