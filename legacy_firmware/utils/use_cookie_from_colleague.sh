@@ -1,3 +1,23 @@
+#!/bin/bash
+
+########################################################################################################################
+# PREAMBLE
+
+# for any of these " set " commands, use " +o " instead of " -o " to unset instead of set
+# exit if a command fails; to circumvent, can add specifically on commands that can fail safely: " || true "
+set -o errexit
+# make sure to show the error code of the first failing command
+set -o pipefail
+# do not overwrite files too easily
+set -o noclobber
+# exit if try to use undefined variable
+set -o nounset
+# on globbing that has no match, return nothing, rather than return the dubious default ie the pattern itself
+# see " help shopt "; use the -u flag to unset (while -s is set)
+shopt -s nullglob
+
+source "${HOME}/Desktop/Git/IceCream-Bash/src/ic.sh"
+
 icp "fetching Rock7 data..."
 curl "https://rockblock.rock7.com/RockBlockAdmin?filterDeviceAssignmentId=&filterDirection=&filterDateFrom=04%2FMar%2F2022+00%3A00%3A00&filterDateTo=31%2FDec%2F2022+23%3A59%3A59&format=csv&page=messages&action=getMessages" \
   -H 'Connection: keep-alive' \
