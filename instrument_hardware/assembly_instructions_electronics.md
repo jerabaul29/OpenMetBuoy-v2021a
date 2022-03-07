@@ -8,6 +8,7 @@ A few high level rules:
 - Electronics are sensitive to static discharges; if possible, work on an ESD-safe workplace. If you do not have access to an ESD-safe workplace, try to avoid static electricity as much as possible (avoid synthetic clothes), and try to "static-electricity-discharge" yourself regularly (touch a large piece of metal connected to the ground, such as a sink or similar).
 - condensation and humidity is the ennemy of electronics; make sure to i) work in a room that is as dry as possible, ii) use desiccant bags
 - sudden temperature cycling is not good for electronics as i) it is a factor creating condensation, ii) repeated, sudden temperature changes put strains on solders. Try, if possible, to avoid too many harsh temperature cyclings (for example, if possible, avoid taking the instrument in from a +20 degrees temperature outside to a -20 degrees temperature too many times; ideally, let the instrument cool down and warm up slowly).
+- never try to use the GPS or the Iridium without antenna, to avoid RF feedback back into the GPS / Iridium chips. This means in practice, never feed power to the AGT without having connected an antenna to it first.
 
 ## General schematic
 
