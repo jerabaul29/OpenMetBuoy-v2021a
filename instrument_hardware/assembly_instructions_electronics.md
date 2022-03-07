@@ -15,6 +15,10 @@ The general schematic is as follows. The section belows are detailed instruction
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/general_schematic.jpg" width="800" />
 
+The finished buoy should in the end look like:
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/from_side.jpg" width="600" />
+
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
 
 The goal is to get a circuit that looks like the following drawing:

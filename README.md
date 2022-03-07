@@ -16,7 +16,7 @@ Geosciences (2022).
 
 The fully assembled instrument gets space into a box 12x12x9 cm, including 3 SAFT LSH20 D-size batteries, all the components, and the 9dof sensor:
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/from_side.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/from_side.jpg" width="600" />
 
 This is a typical example of dataset collected by an instrument that drifted in the Caribbeans: the track of the instrument and the wave measurements are indicated by the black curve, while satellite measurements of significant wave height (from the Sentinel satellites in particular) are shown on intersecting transsects with colored lines:
 
