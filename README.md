@@ -14,7 +14,7 @@ Geosciences (2022).
 - As a preprint: https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean , and as pdf on this repository (see **latest_preprint_MDPI_2022.pdf**),
 - As a published paper (open access, CC-BY license): https://www.mdpi.com/2076-3263/12/3/110 .
 
-The fully assembled instrument gets space into a box 12x12x9 cm, including 3 SAFT LSH20 D-size batteries, all the components, and the 9dof sensor:
+The fully assembled instrument gets space into a box 12x12x9 cm, including 3 D-size battery holders (at the bottom, empty on the picture, should use typically 3 SAFT LSH20 D-size batteries), all the components, and the 9dof sensor:
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/from_side.jpg" width="600" />
 
