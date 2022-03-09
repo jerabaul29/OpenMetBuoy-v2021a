@@ -8,6 +8,10 @@ The STEVAL-MKI207V1 contains the exact same 6dof (ISM330DHCX accelerometer + gyr
 - connect qwiic yellow (SCL) to: SCL
 - protect the rear part of the prototype PCB with duct tape (no naked metal policy)
 
+This should correspond to the following wiring (using the correct SCx and SDx, see the note!!) (credits and many thanks to @gauteh for providing the wiring schematic from a KiCAD model :) ):
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/ISM330DHCX_wireup.png" width="400" />
+
 Things should look like the following:
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/STEval_PCB.jpg" width="400" />
