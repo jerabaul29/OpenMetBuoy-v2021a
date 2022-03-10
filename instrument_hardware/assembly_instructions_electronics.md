@@ -114,7 +114,7 @@ This is only to be used if the wave measurement functionality should be part of 
 - cut the 2 LED pads on the qwiic switch (LED\_IN and LED\_OUT)
 - connect AGT to qwiic switch using a qwiic cable; the AGT should connect to the IN qwiic switch port
 - connect the qwiic switch to 9dof (or 6dof if only using a 6dof) using a qwiic cable; the 9dof should connect to the OUT qwiic switch port 
-- put the components in position on the plastic plate and in the box; if possible, try to locate the 9dof sensor on the opposite side to the magnet. The orientation of the 9dof sensor does not play any role (as it will compute its orientation automatically and compensate for it), just make sure that it is stably fixed with some duct tape, snap river, or similar.
+- put the components in position on the plastic plate and in the box; if possible, try to locate the 9dof sensor on the opposite side to the magnet. The orientation of the 9dof sensor does not play any role (as it will compute its orientation automatically and compensate for it), just make sure that it is stably fixed with some duct tape, snap river, or similar. I personally wrap it in tape (no naked metal policy), and tape it and add a dot of epoxy to keep it stable.
 - add a desiccant silica gel bag into the box to make sure that there will be no issues with condensation
 
 ## Final test and assembly
