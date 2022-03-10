@@ -22,6 +22,10 @@ This is a typical example of dataset collected by an instrument that drifted in 
 
 ![fig_for_linkedin](https://user-images.githubusercontent.com/8382834/155947239-19cf49fe-5649-4f91-b513-fb7ae9e2e0ad.jpg)
 
+We also describe how to build a standard, upper ocean drifter buoy, which allows to assemble a complete instrument+buoy setup looking like the following picture (to give a sense of scale, the PVC tube is about 1m long):
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/buoy_with_instrument.jpg" width="600" />
+
 ## Overview of the content and organisation of the repository
 
 - https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/development_environment : this contains the instructions on how to set up your development environment to write firmwares, either for the "legacy" (Arduino 1.8-based), or the "rewrite" (PlatformIO-based) firmware.
