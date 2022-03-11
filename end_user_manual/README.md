@@ -8,9 +8,9 @@ You can check the operation of an instrument through the serial USB-C connector 
 
 - make sure that the instrument is powered off and that there is no power input from the battery (ie "never feed in power from 2 different power sources at the same time" rule)
 - connect the instrument to your computer over USB
-- monitor the serial output over the USB port. The baudrate is 1000000 (1 million) you can either use the serial monitor built in inside the Arduino IDE or the PlatformIO editor, or on the linux command line:
+- monitor the serial output over the USB port. The baudrate is 1000000 (1 million), and you can either use the serial monitor built in inside the Arduino IDE or the PlatformIO editor, or on the linux command line:
 
-  - find which port the instrument is connected to (you can, depending on how your machine is set, use some combination of ```lsusb```, ```dmesg | grep tty```, ```ls ttyUSB*``` etc.
+  - find which port the instrument is connected to (you can, depending on how your machine is set, use some combination of ```lsusb```, ```dmesg | grep tty```, ```ls ttyUSB*``` etc).
   - set the baudrate and log the serial output as it is received:
 
 ```
