@@ -9,6 +9,7 @@ A few high level rules:
 - condensation and humidity is the ennemy of electronics; make sure to i) work in a room that is as dry as possible, ii) use desiccant bags
 - sudden temperature cycling is not good for electronics as i) it is a factor creating condensation, ii) repeated, sudden temperature changes put strains on solders. Try, if possible, to avoid too many harsh temperature cyclings (for example, if possible, avoid taking the instrument in from a +20 degrees temperature outside to a -20 degrees temperature too many times; ideally, let the instrument cool down and warm up slowly).
 - never try to use the GPS or the Iridium without antenna, to avoid RF feedback back into the GPS / Iridium chips. This means in practice, never feed power to the AGT without having connected an antenna to it first.
+- use good cables, in particular for the power supply part, to avoid voltage drop when the instrument is using a power burst (ie, when using the iridium modem). Avoid using cheap jumper cables or breadboards, as these may have very bad connectors that create some significant voltage drops and may cause brownouts.
 
 ## General schematic
 
@@ -21,6 +22,8 @@ The finished buoy should in the end look like:
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/from_side.jpg" width="600" />
 
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
+
+**NOTE**: for building the power supply part, I recommend that i) you avoid un-necessary cable lengths (try to keep cables a bit short), ii) you use some "good" cables that have low intrinsic resistance (typically, AWG 18 or lower, where lower AWG is thicker cable ie lower resistance). This will allow voltage drops when the instrument does draw quite a bit of current, ie when using the iridium modem.
 
 The goal is to get a circuit that looks like the following drawing:
 
