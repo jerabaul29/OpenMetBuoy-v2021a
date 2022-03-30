@@ -2,6 +2,10 @@
 
 This is the "minimum" manual for the end user - there is no need to be familiar with all the details about the instrument to just operate it :) .
 
+## Note about abrupt temperature changes
+
+Sudden, violent temperature cycling is not good for electronics as i) it is a factor creating condensation even when dessiccant bags are used inside the electronics enclosure, ii) repeated, sudden temperature changes put strains on solders and weaken / break some connections. Try, if possible, to avoid too many harsh temperature cyclings (for example, if possible, avoid taking the instrument brutally in from a +20 degrees temperature inside to outside at a -20 degrees temperature too many times; ideally, let the instrument cool down and warm up slowly, and / or have intermediate steps, for example, by putting the instrument in an "acclimatation" room at around 0 degrees before moving back and forth between a -20 and a +20 degrees environment). This will not be an issue when deployed in the field, as weather-related temperature changes are relatively slow, but may be an issue when taking instruments back and forth outside of a building / ship.
+
 ## Checking operation through serial
 
 You can check the operation of an instrument through the serial USB-C connector output: all instruments, if connected to a computer over USB, will output log information through serial-over-USB at baudrate 1000000. This can be useful to troubleshoot, check that an instrument is working as it should, do some development etc. To do so:
