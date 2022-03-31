@@ -105,7 +105,7 @@ The power supply to the AGT is very simple:
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/AGT_power.jpg" width="400" />
 
 - program the Artemis, see: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/development_environment for example for uploading the (currently recommended) legacy firmware: https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/development_environment/setup_arduino_v1-8_environment/Instructions.md . The simplest solution is to upload a pre compiled binary, if one of these fits your needs. Note that, if you use only a 6dof sensor, you need a firmware version without the magnetometer.
-- to save power, the always-on PWR LED on the AGT has to be cut; use a hobby knife to the "PWR\_LED" pad at the rear of the AGT (for explanations about cutting pads, see: https://learn.sparkfun.com/tutorials/how-to-work-with-jumper-pads-and-pcb-traces/cutting-a-trace-between-jumper-pads ).
+- to save power, the always-on PWR LED on the AGT has to be cut; use a hobby knife to the "PWR\_LED" pad at the rear of the AGT (for explanations about cutting pads, see: https://learn.sparkfun.com/tutorials/how-to-work-with-jumper-pads-and-pcb-traces/cutting-a-trace-between-jumper-pads ). No need to cut the other LEDs, there is no pad for cutting them anyways, and they use very little power (only a small blink here and there).
 - solder the power in to the AGT: the common GND from pololu and the battery to any GND pin; the 3.3V Vout coming out of the pololu regulator to any 3.3V pin
 - connect the antenna, using the extension cable
 - fix the AGT on the plastic plate using snap rivets
