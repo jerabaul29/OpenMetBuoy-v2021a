@@ -1,7 +1,24 @@
 Some examples of utils to get the binary messages from Rock7 and process them. Relies on Bash and Python3. These are only coarse examples, you will need to adapt to your needs.
 
 - **script_interact_Rock7_API.sh**: example of how to collect data from the Rock7 website, by getting a cookie, and sending a request for CSV data. A few notes:
-  - be careful about your username and password! Do not leak these into the open internet. For my part, I use pass as a password manager (and this is reflected in the script). It is also possible to just provide these as a ```password.secret``` and ```username.secret``` file, if needed (do not leak them!).
+  - be careful about your username and password! Do not leak these into the open internet. For my part, I use pass as a password manager (and this is reflected in the script). It is also possible to just provide these as a ```password.secret``` and ```username.secret``` file, if needed (do not leak them!). The way these files work is that they are sourced by the script, see:
+
+https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/0642539ecdb4fa2840296404551dc1456ff948b8/legacy_firmware/utils/script_interact_Rock7_API.sh#L85
+
+So the content of the file should be something like, for ```password.secret```:
+
+```bash
+PASSWORD="PASSWORD_URL_ENCRYPTED"
+```
+
+for ```username.secret```:
+
+```bash
+USERNAME="USERNAME_URL_ENCODED"
+```
+
+For the explanation about the URL-encoding, see a bit lower down, urlencode discussion.
+
   - I do not know about some documentation about the Rock7 API, so this was reverse-engineered from their website. To tune it to your needs, you can for example in firefox web browser:
     - Go to Application menu > More tools > enable web developper tools
     - Go to Rock7 website, craft the exact request you want
