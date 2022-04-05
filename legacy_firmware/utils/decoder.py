@@ -208,7 +208,7 @@ def decode_gnss_packet(bin_packet, print_decoded=False, print_debug_information=
     assert char_first_byte == 'F', "GNSS packets must start with a 'F', got {}".format(char_first_byte)
 
     posix_timestamp_fix = four_bytes_to_long(bin_packet[1:5])
-    datetime_fix = datetime.datetime.fromtimestamp(posix_timestamp_fix)
+    datetime_fix = datetime.datetime.utcfromtimestamp(posix_timestamp_fix)
 
     latitude_long = four_bytes_to_long(bin_packet[5:9])
     latitude = latitude_long / 1.0e7
@@ -301,7 +301,7 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
 
     posix_timestamp = four_bytes_to_long(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
     crrt_start_data_field += 4
-    datetime_packet = datetime.datetime.fromtimestamp(posix_timestamp)
+    datetime_packet = datetime.datetime.utcfromtimestamp(posix_timestamp)
 
     spectrum_number = four_bytes_to_int(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
     crrt_start_data_field += 4
@@ -309,10 +309,10 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
     Hs = four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
     crrt_start_data_field += 4
 
-    Tz = four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
+    Tz = 1.0 / four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
     crrt_start_data_field += 4
 
-    Tc = four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
+    Tc = 1.0 / four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
     crrt_start_data_field += 4
 
     _array_max_value = four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
@@ -438,7 +438,7 @@ def decode_ywave_message(bin_msg, print_decoded=True, print_debug_information=Fa
 
 
 def decode_thermistor_reading(crrt_thermistor_bin, print_debug_information=False):
-    
+
     # quite a bit of tweaking...
     # this is the inverse operation of the binary encoding done in the thermistor manager C++ code
 
@@ -514,7 +514,7 @@ def decode_thermistors_packet(bin_packet, print_decoded=False, print_debug_infor
     crrt_start_field = 1
 
     posix_timestamp = four_bytes_to_long(bin_packet[crrt_start_field: crrt_start_field+4])
-    datetime_packet = datetime.datetime.fromtimestamp(posix_timestamp)
+    datetime_packet = datetime.datetime.utcfromtimestamp(posix_timestamp)
     crrt_start_field += 4
 
     list_thermistors_readings = []
@@ -645,7 +645,7 @@ def decode_message(hex_string_message, print_decoded=True, print_debug_informati
 def auto_test():
     # TODO: assert all results for correct values
     print("------------------------------ START AUTO TEST ------------------------------")
-    
+
     hex_in = "4704469cb62a6007160f2ef5581e1246c2b62a60d3150f2e1b5b1e1246e8b62a6009110f2e2e8a1e1245"
     ic(hex_in)
     decode_gnss_message(hex_to_bin_message(hex_in), print_decoded=True, print_debug_information=True)
@@ -720,7 +720,7 @@ def cli(example, module, autotest, version, verbose, verbose_debug, plot, decode
     This can be added as a command by copying into $HOME/bin and making executable.
     (you may need to $ source ~/.profile to activate)
     """
-    
+
     if example:
         print("download messages directly from Rock7: https://rockblock.rock7.com/ > Messages > Export > Payload")
         print("for example decoding a GNSS message with 3 packets obtained there:")
@@ -793,7 +793,7 @@ def cli(example, module, autotest, version, verbose, verbose_debug, plot, decode
 
     if decode_hex:
         message_kind, message_metadata, list_decoded_packets = decode_message(decode_hex, print_decoded=verbose, print_debug_information=verbose_debug)
-        
+
         if plot:
             plot_decoded(message_kind, message_metadata, list_decoded_packets)
 

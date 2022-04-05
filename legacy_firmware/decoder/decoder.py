@@ -309,10 +309,10 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
     Hs = four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
     crrt_start_data_field += 4
 
-    Tz = four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
+    Tz = 1.0 / four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
     crrt_start_data_field += 4
 
-    Tc = four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
+    Tc = 1.0 / four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
     crrt_start_data_field += 4
 
     _array_max_value = four_bytes_to_float(bin_packet[crrt_start_data_field: crrt_start_data_field+4])
