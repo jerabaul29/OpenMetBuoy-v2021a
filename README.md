@@ -66,3 +66,8 @@ In case of any question / bug report, please use the Github issues tracker syste
 
 All materials on this repo are released under the MIT license, unless explicitly stated otherwise. Nothing on this repository comes with any warranty. I do not guarantee any form of support.
 
+## Quirks / errors
+
+This is a large code base, that I largely developed on my own with a very limited time budget, so there are some quirks / errors. I will fix the ones that lead to wrong results, but minor quirks may not be fixed fully. This is to list such quirks.
+
+- **dyslexia frequency vs. period**: the instrument, internally, computes the zero crossing and the mean *frequency*, not *period* as the code says (i.e. there is a relation by ```f(x)=1/x``` between what is named in the code and what is actually computed). This would be error prone to fix in all firmwares, so I choose to i) keep it "as it is" in the firmware, and ii) fix this a posteriori in the decoder by taking the inverse there. For more discussions, see: https://github.com/jerabaul29/OpenMetBuoy-v2021a/issues/36
