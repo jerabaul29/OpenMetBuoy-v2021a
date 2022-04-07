@@ -19,7 +19,7 @@ You can check the operation of an instrument through the serial USB-C connector 
 
 ```
 stty -F /dev/ttyUSB0 1000000  # set baudrate
-cat < /dev/ttyUSB0  # read from tty
+tail -f /dev/ttyUSB0  # read from tty
 od -x < /dev/ttyUSB0  # or read in octal, xxd can also be used etc
 ```
 
