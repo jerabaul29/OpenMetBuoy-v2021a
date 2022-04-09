@@ -29,3 +29,8 @@ steval_gps_waves_drifter.bin: perform tracking with GPS, and wave measurements. 
 ### two_ways_gps_waves_drifter.bin
 
 two_ways_gps_waves_drifter.bin: perform tracking with GPS, and wave measurements. The instrument MUST include an Adafruit ISM330DHCX + LIS3MDL FeatherWing or similar, ie both the ISM330DHCX and the LISM3MDL, over a qwiick switch, if not it will not work. Perform GPS measurement every 30 minutes, and waves measuremens every 3 hours. In addition, includes the functionality for 2-ways communications to update the measurement rate of the GPS and wave statistics.
+
+## functionality_test_mode.bin
+
+Same firmware as the STEval GPS + waves configuration, but set up so that the GPS, IMU, and Iridium modem are quickly checked for good functioning. This is useful after assembling an instrument to check quickly that all components are well connected. DO NOT USE THIS FOR PERFORMING A FIELD DEPLOYMENT, this uses "dummy" GPS and wave durations.
+

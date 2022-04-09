@@ -11,5 +11,6 @@ The main firmware versions:
 - **steval_gps_waves_drifter**: the gps and waves drifter adapted to the 6dof sensor, ie the replacement chip for when the Adafruit 9dof is not available; basically, the same code, but without the magnetometer
 - **standard_gps_waves_thermistors_drifter**: a standard gps and waves and thermistor drifter, with up to 6 DS18B20 thermistors
 - **two_ways_gps_waves_drifter**: the gps and waves drifter, with the 2-ways communication added to be able to change the frequency of GPS / waves measurements.
+- **functionality_test_mode**: the gps and waves drifter, set up in such a way that it tests that the GPS, IMU, and Iridium components are well working and showing it on the serial output.
 
 Of course, all versions of the firmware can be tuned to your needs; see in particular the **params.h** file.
