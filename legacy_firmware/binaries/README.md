@@ -26,6 +26,10 @@ standard_gps_waves_thermistors_drifter.bin: perform tracking with GPS, and wave 
 
 steval_gps_waves_drifter.bin: perform tracking with GPS, and wave measurements. The instrument is compatible with the STEVAL breakout boards, ie the ISM330DHCX alone, without the extra magnetometer chip, over a qwiick switch. Perform GPS measurement every 30 minutes, and waves measuremens every 3 hours.
 
+### steval_LSM6DSOX_gps_waves_drifter.bin
+
+steval_gps_waves_drifter.bin: perform tracking with GPS, and wave measurements. The instrument is compatible with the STEVAL breakout boards alternative to the ISM330DHCX, ie the LSM6DSOX alone, without the extra magnetometer chip, over a qwiick switch. Perform GPS measurement every 30 minutes, and waves measuremens every 3 hours.
+
 ### two_ways_gps_waves_drifter.bin
 
 two_ways_gps_waves_drifter.bin: perform tracking with GPS, and wave measurements. The instrument MUST include an Adafruit ISM330DHCX + LIS3MDL FeatherWing or similar, ie both the ISM330DHCX and the LISM3MDL, over a qwiick switch, if not it will not work. Perform GPS measurement every 30 minutes, and waves measuremens every 3 hours. In addition, includes the functionality for 2-ways communications to update the measurement rate of the GPS and wave statistics.
