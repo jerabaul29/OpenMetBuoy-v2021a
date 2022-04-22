@@ -23,7 +23,7 @@ The finished buoy should in the end look like:
 
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
 
-**NOTE**: for building the power supply part, I recommend that i) you avoid un-necessary cable lengths (try to keep cables a bit short), ii) you use some "good" cables that have low intrinsic resistance (typically, AWG 18 or lower, where lower AWG is thicker cable ie lower resistance). This will allow voltage drops when the instrument does draw quite a bit of current, ie when using the iridium modem.
+**NOTE**: for building the power supply part, I recommend that i) you avoid un-necessary cable lengths (try to keep cables a bit short), ii) you use some "good" cables that have low intrinsic resistance, avoid connections through breadboards that are typically some points where high resistance is obtained, etc. Typically, AGW 20 is ok for the AGT that implements some limitations in peak current draw, but in case you use some components that draw more current in your design, AWG 18 or lower may be necessary to avoid transient voltage drops when a current peak takes place - remember that lower AWG is thicker cable ie lower resistance and lower voltage drop. This will allow voltage drops when the instrument does draw quite a bit of current, for example when using the iridium modem (the AGT, by default, implements some current limiting that mitigate voltage drop issues).
 
 The goal is to get a circuit that looks like the following drawing:
 
