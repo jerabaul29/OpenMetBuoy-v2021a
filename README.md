@@ -22,9 +22,13 @@ The fully assembled instrument gets space into a box 12x12x9 cm, including 3 D-s
 
 This is a typical example of dataset collected by an instrument that drifted in the Caribbeans: the track of the instrument and the wave measurements are indicated by the black curve, while satellite measurements of significant wave height (from the Sentinel satellites in particular) are shown on intersecting transsects with colored lines:
 
-![fig_for_linkedin](https://user-images.githubusercontent.com/8382834/155947239-19cf49fe-5649-4f91-b513-fb7ae9e2e0ad.jpg)
+![caribbeans_deployment](https://user-images.githubusercontent.com/8382834/155947239-19cf49fe-5649-4f91-b513-fb7ae9e2e0ad.jpg)
 
-We also describe how to build a standard, upper ocean drifter buoy, which allows to assemble a complete instrument+buoy setup looking like the following picture (to give a sense of scale, the PVC tube is about 1m long):
+Using the standard box and components, and 3 Li LSH20 batteries, the box floats quite well and works just fine, and will behave quite similar to an iSphere surface drifter for example (note that you will have to add some floatability if you use alkaline batteries, that are much heavier):
+
+![box_no_extra_buoy](https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/floating_3LSH20_box.jpg)
+
+We also describe how to build a standard, upper ocean drifter buoy, which allows to assemble a complete instrument+buoy setup looking like the following picture (to give a sense of scale, the PVC tube is about 1m long); this will drift more like the 1m depth current:
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/buoy_with_instrument.jpg" width="600" />
 
