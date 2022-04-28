@@ -84,6 +84,8 @@ A buoy that needed to fly by plane (so Li batteries not allowed) had to be equip
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/floatenstein_light.jpg" width="600" />
 
+Picture credits: me :) .
+
 ### The Arctic is tough, even if you're expensive
 
 Instrumentation has a tendency to fail early and "randomly" in the Arctic - and harsh field conditions do not care about how much money you cost! This is an example where the telemetry from a Datawell Mk II deployed outside of Longyearbyen, Svalbard, was lost after just 2 hours. We were worried that the mooring had failed, or the buoy had sunk. In reality, due to the conditions (1 deg C water, -15 deg C air and some wind and waves), the Mk II had got iced and tilted. So next time your ocean buoy fails in the Arctic, don't take it too hard on yourself - it is likely not your fault, and it does not matter how much your instrument cost - stick to the OpenMetBuoy.
@@ -91,3 +93,11 @@ Instrumentation has a tendency to fail early and "randomly" in the Arctic - and 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/IMG_1099(1).JPG" width="400" />
 
 Picture credits Atle Jensen.
+
+### There is nothing as tasty as a free lunch
+
+If you work in the Arctic, don't use bright colors, blinking LEDs, and chunky flags that make your instruments visible from far away - for a polar bear, there is nothing as tasty as a free lunch, even if it tastes plastic. According with some friends who are experts on Arctic expeditions, polar bears have a particular affinity for round instruments that they can play football with, large instruments they can use as a trampoline, and soft plastic / rubber that they can use to sharpen their teeths. Oh, and cables too! Record to break according to my friend: 250kUSD destruction of scientific instrumentation within 12 minutes...
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/687px-Polar_bears_chewing_cables.jpg" width="600" />
+
+Picture credits: this is actually from wikimedia commons, I did not have a good picture lying around: https://commons.wikimedia.org/wiki/File:Polar_bears_chewing_cables.jpg .
