@@ -1,6 +1,6 @@
 **A question? => open an issue; An idea of improvement? => open an issue and / or submit a pull request.**
 
-# OpenMetBuoy-v2021a: an easy to build, affordable, customizable, open source instrument for oceanographic measurements.
+# OpenMetBuoy-v2021a (OMB / OMB-v21a): an easy to build, affordable, customizable, open source instrument for oceanographic measurements.
 
 **Our pledge**: many fields within Geosciences are relying on in-situ data collection. Traditionally, collecting in-situ data is expensive, with commercial instruments easily reaching several thousands of USDs even if only quite simple functionalities are provided. However, the recent emergence of open source communities within micro controllers and low level firmware for these opens new possibilities for developing low-cost, high performance instruments based on widely available and affordable components. This repository is focusing on developing an oceanic buoy based on such open source code and low cost components. Our solution is around 10 times cheaper than the least expensive similar commercial instrument we know of, and is actually superior to the commercial instrument in a number of regards, for example, for measurement in the polar regions. We hope that the present open source release, beyond sharing the design of our specific instrument, will encourage many more actors to share their developments within in-situ instrumentation and participate in building an open source community around geophysical instrumentation.
 
@@ -78,6 +78,8 @@ This is a large code base, that I largely developed on my own with a very limite
 
 ## Just for fun - a not so serious corner of the Readme :)
 
+If you have more fun / goofy / strange pictures or stories that can fit in here, just share them as an issue or open a pull request!
+
 ### Floatenstein, the ugly drifter
 
 A buoy that needed to fly by plane (so Li batteries not allowed) had to be equipped with 3 Alkaline D cells in series instead. Alkaline batteries are heavier than Li batteries, so it was not floating. The solution was to add two chunks of styrofoam, wrapped in duct tape, fixed with cable nilon strips, all of it tightened with bathroom silicon. That made for an ugly, sticky, stinky instrument, but meh, it crossed the Caribbeans without any issue, so don't worry about how your instruments look like - as long as they work! :) .
@@ -112,3 +114,6 @@ TODO: add picture and credits
 
 ### Go big or go home
 
+The aim of the OpenMetBuoy (OMB) is to increase the number of measurement points you can get at constant budget, NOT to reduce your overall field instrumentation budget! So, go big or go home! This is what you get for the cost of 4 or 5 classical commercial instruments: enough components to build 40 OMBs!
+
+TODO: add picture and credits
