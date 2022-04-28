@@ -83,3 +83,11 @@ This is a large code base, that I largely developed on my own with a very limite
 A buoy that needed to fly by plane (so Li batteries not allowed) had to be equipped with 3 Alkaline D cells in series instead. Alkaline batteries are heavier than Li batteries, so it was not floating. The solution was to add two chunks of styrofoam, wrapped in duct tape, fixed with cable nilon strips, all of it tightened with bathroom silicon. That made for an ugly, sticky, stinky instrument, but meh, it crossed the Caribbeans without any issue, so don't worry about how your instruments look like - as long as they work! :) .
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/floatenstein_light.jpg" width="600" />
+
+### The Arctic is tough, even if you're expensive
+
+Instrumentation has a tendency to fail early and "randomly" in the Arctic - and harsh field conditions do not care about how much money you cost! This is an example where the telemetry from a Datawell Mk II deployed outside of Longyearbyen, Svalbard, was lost after just 2 hours. We were worried that the mooring had failed, or the buoy had sunk. In reality, due to the conditions (1 deg C water, -15 deg C air and some wind and waves), the Mk II had got iced and tilted. So next time your ocean buoy fails in the Arctic, don't take it too hard on yourself - it is likely not your fault, and it does not matter how much your instrument cost - stick to the OpenMetBuoy.
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/IMG_1099(1).JPG" width="400" />
+
+Picture credits Atle Jensen.
