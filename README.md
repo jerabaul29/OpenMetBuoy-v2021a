@@ -75,3 +75,11 @@ All materials on this repo are released under the MIT license, unless explicitly
 This is a large code base, that I largely developed on my own with a very limited time budget, so there are some quirks / errors. I will fix the ones that lead to wrong results, but minor quirks may not be fixed fully. This is to list such quirks.
 
 - **dyslexia frequency vs. period**: the instrument, internally, computes the zero crossing and the mean *frequency*, not *period* as the code says (i.e. there is a relation by ```f(x)=1/x``` between what is named in the code and what is actually computed). This would be error prone to fix in all firmwares, so I choose to i) keep it "as it is" in the firmware, and ii) fix this a posteriori in the decoder by taking the inverse there. For more discussions, see: https://github.com/jerabaul29/OpenMetBuoy-v2021a/issues/36
+
+## Just for fun - a not so serious corner of the Readme :)
+
+### Floatenstein, the ugly drifter
+
+A buoy that needed to fly by plane (so Li batteries not allowed) had to be equipped with 3 Alkaline D cells in series instead. Alkaline batteries are heavier than Li batteries, so it was not floating. The solution was to add two chunks of styrofoam, wrapped in duct tape, fixed with cable nilon strips, all of it tightened with bathroom silicon. That made for an ugly, sticky, stinky instrument, but meh, it crossed the Caribbeans without any issue, so don't worry about how your instruments look like - as long as they work! :) .
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/floatenstein_light.jpg" width="600" />
