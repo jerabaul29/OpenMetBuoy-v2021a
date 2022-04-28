@@ -119,3 +119,7 @@ Credits: Picture Finn Plny, sharing Atle Jensen; we are going to pick up the box
 The aim of the OpenMetBuoy (OMB) is to increase the number of measurement points you can get at constant budget, NOT to reduce your overall field instrumentation budget! So, go big or go home! This is what you get for the cost of 4 or 5 classical commercial instruments: enough components to build 40 OMBs!
 
 TODO: add picture and credits
+
+### Dolly the search-and-rescue doll
+
+TODO
