@@ -110,7 +110,9 @@ Most (all?) of the floating trash we throw in the oceans, ultimately comes back 
 
 This picture is actually from one of my "old, v2018 instruments", that drifted all the way from the Arctic MIZ North of Svalbard, until it got stranded on the Northen coast of Iceland. Someone taking a walk on the beach was kind enough to open it, read the waterproof notice with our contact information, and let us know it was found. Pretty rusted!
 
-TODO: add picture and credits
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/electronics_trash.jpg" width="600" />
+
+Credits: Picture Finn Plny, sharing Atle Jensen; we are going to pick up the box, and try to get the raw data from the SD card.
 
 ### Go big or go home
 
