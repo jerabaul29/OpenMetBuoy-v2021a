@@ -101,3 +101,14 @@ If you work in the Arctic, don't use bright colors, blinking LEDs, and chunky fl
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/687px-Polar_bears_chewing_cables.jpg" width="600" />
 
 Picture credits: this is actually from wikimedia commons, I did not have a good picture lying around: https://commons.wikimedia.org/wiki/File:Polar_bears_chewing_cables.jpg .
+
+### Trashing planet Earth, one step at a time - I feel really bad about this one
+
+Most (all?) of the floating trash we throw in the oceans, ultimately comes back on the shores - or get caught in the Vortex. Also floating scientific instruments. I feel really bad about this, but at least our instruments are much smaller than typical commercial instruments (so, for a given number of measurements, we release less volume and mass of trash, so less trash footprint), and, at least, this is for a good cause (advancing human knowledge and protecting the world oceans), and not a random sacrifice to the pagan god of over-consumption and fast fashion... Still, if you have ideas on how to reduce the environmental footprint of the OMB, open an issue and help us get better :) .
+
+This picture is actually from one of my "old, v2018 instruments", that drifted all the way from the Arctic MIZ North of Svalbard, until it got stranded on the Northen coast of Iceland. Someone taking a walk on the beach was kind enough to open it, read the waterproof notice with our contact information, and let us know it was found. Pretty rusted!
+
+TODO: add picture and credits
+
+### Go big or go home
+
