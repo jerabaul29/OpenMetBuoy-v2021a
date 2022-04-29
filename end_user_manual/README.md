@@ -139,6 +139,8 @@ To receive iridium messages:
 
 The messages will be received on the user email adress, and can also be retrieved through the website GUI or with custom http requests (see https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/utils ). Note that it may take a bit of time (up to a few hours) for the information that your modem is active to "diffuse" to all satellites. Note that it is quite common for iridium messages to fail to go through, so do not worry if you miss a message now and then - things are buffered by the instrument anyways.
 
+If you have not activated the iridium line rentals, messages will be lost without any way to recover them. So don't forget to switch on (and renew!) the iridium line rental. An iridium modem without line rental activated will "think" that it can send messages (ie, the message will be considered as "sent" if it is actually received by the satellite, and the corresponding data removed from the buffers).
+
 ## Decoding the iridium messages
 
 The messages received from Rock7 are hex-encoded binary strings. Decode them with: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/decoder .
