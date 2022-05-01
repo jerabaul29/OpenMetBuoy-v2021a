@@ -32,6 +32,16 @@ We also describe how to build a standard, upper ocean drifter buoy, which allows
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/buoy_with_instrument.jpg" width="600" />
 
+## Key data
+
+These are explained in more details in the paper, see in particular Tables 1, 2, 3, and the associated text, for more details.
+
+- total cost of the parts: 562USD (Nov. 2021 price).
+- typical assembly time: around 1-1.5hr per buoy when producing a small series efficiently.
+- cost of the iridium communications: 42USD / month if using only GPS, up to 108USD / month when using GPS and high frequency wave measurements (Nov. 2021 price).
+- battery autonomy: i) 4.6 months using 2 Li D-cells, with GPS and wave measurements activated. ii) Over 1 year using 2 Li D-cells and GPS tracking only. iii) Battery life scales linearly with the number of D-cells included in the instrument.
+- typical detection threshold for waves in ice: 0.5cm at 16s period, even better detection threshold is obtained at higher frequency due to using an IMU to perform the measurements.
+
 ## Overview of the content and organisation of the repository
 
 - https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/development_environment : this contains the instructions on how to set up your development environment to write firmwares, either for the "legacy" (Arduino 1.8-based), or the "rewrite" (PlatformIO-based) firmware.
