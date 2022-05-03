@@ -14,17 +14,17 @@ List of components needed to build the instrument. Note that additional function
 
 ### Box
 
-- 1 x RND 455-01082 - Plastic Enclosure 120x120x90mm Polycarbonate: 15USD: https://www.elfadistrelec.no/en/plastic-enclosure-120x120x90mm-light-grey-polycarbonate-ip67-rnd-components-rnd-455-01082/p/30129934
+- 1 x RND 455-01082 - Plastic Enclosure 120x120x90mm Polycarbonate: 15USD: https://www.elfadistrelec.no/en/plastic-enclosure-120x120x90mm-light-grey-polycarbonate-ip67-rnd-components-rnd-455-01082/p/30129934 . This is the "most recommended" box, as it is high enough for the antenna to be set vertically.
 
 or
 
-- 1 x Hammond 1554P2GYCL - Watertight Enclosure Smoked Lid, Polycarbonate, 120x120x80mm: 23USD: https://www.elfadistrelec.no/en/watertight-enclosure-smoked-lid-polycarbonate-120x120x80mm-clear-light-grey-hammond-1554p2gycl/p/30100709?q=&pos=2&origPos=52&origPageSize=50&track=true
+- 1 x Hammond 1554P2GYCL - Watertight Enclosure Smoked Lid, Polycarbonate, 120x120x80mm: 23USD: https://www.elfadistrelec.no/en/watertight-enclosure-smoked-lid-polycarbonate-120x120x80mm-clear-light-grey-hammond-1554p2gycl/p/30100709?q=&pos=2&origPos=52&origPageSize=50&track=true . This works fine, but there is not really space for the antenna to be vertical - good enough though.
 
 or any other box you like (size may be adapted to number of battery cells, additional functionality that requires additional small PCBs, etc).
 
 ### Non rechargable batteries
 
-I recommend trying to get batteries with solder tags, and drop the battery holders alltogether, but it is not always easy to find batteries with solder tags for a good price:
+I recommend trying to get batteries with solder tags, and drop the battery holders alltogether, but it is not always easy to find batteries with solder tags for a good price; batteries without solder tags will need a battery holder, and these are often of low quality and create problems, so best to use battery solder tags and solder everything yourself:
 
 - 3 x Saft LSH20 3.6V batteries: 45USD:  https://eu.nkon.nl/saft-lsh-20-lithium-battery-3-6v.html
 
