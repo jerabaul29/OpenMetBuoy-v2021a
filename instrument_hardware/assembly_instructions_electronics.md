@@ -41,6 +41,8 @@ At this point, things should look like on the image below:
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/illustration_3_holders.jpg" width="400" />
 
+**NOTE**: some battery holders are of low quality and create bad contacts; when using battery holders, make sure that the voltage of the battery is well transmitted to the solder ends of the battery holder; depending on your model of battery holder, you will need to check this both when there is and there is no battery inserted, as some cheap battery holders can have a good contact when no battery is inserted, and a bad contact when the battery is inserted...
+
 ## Preparation of the power supply, part 2: mounting the magnetic switch, checking its good functioning
 
 The goal is to get a circuit that looks like the following drawing:
