@@ -19,7 +19,7 @@ You can check the operation of an instrument through the serial USB-C connector 
 
 ```
 stty -F /dev/ttyUSB0 1000000  # set baudrate
-cat < /dev/ttyUSB0  # read from tty
+tail -f /dev/ttyUSB0  # read from tty
 od -x < /dev/ttyUSB0  # or read in octal, xxd can also be used etc
 ```
 
@@ -138,6 +138,8 @@ To receive iridium messages:
 - buy some iridium data credits
 
 The messages will be received on the user email adress, and can also be retrieved through the website GUI or with custom http requests (see https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/utils ). Note that it may take a bit of time (up to a few hours) for the information that your modem is active to "diffuse" to all satellites. Note that it is quite common for iridium messages to fail to go through, so do not worry if you miss a message now and then - things are buffered by the instrument anyways.
+
+If you have not activated the iridium line rentals, messages will be lost without any way to recover them. So don't forget to switch on (and renew!) the iridium line rental. An iridium modem without line rental activated will "think" that it can send messages (ie, the message will be considered as "sent" if it is actually received by the satellite, and the corresponding data removed from the buffers).
 
 ## Decoding the iridium messages
 

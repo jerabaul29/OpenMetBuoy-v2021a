@@ -23,7 +23,7 @@ The finished buoy should in the end look like:
 
 ## Preparation of the power supply, part 1: making the 3 battery holders in parallel ready
 
-**NOTE**: for building the power supply part, I recommend that i) you avoid un-necessary cable lengths (try to keep cables a bit short), ii) you use some "good" cables that have low intrinsic resistance (typically, AWG 18 or lower, where lower AWG is thicker cable ie lower resistance). This will allow voltage drops when the instrument does draw quite a bit of current, ie when using the iridium modem.
+**NOTE**: for building the power supply part, I recommend that i) you avoid un-necessary cable lengths (try to keep cables a bit short), ii) you use some "good" cables that have low intrinsic resistance, avoid connections through breadboards that are typically some points where high resistance is obtained, etc. Typically, AGW 20 is ok for the AGT that implements some limitations in peak current draw, but in case you use some components that draw more current in your design, AWG 18 or lower may be necessary to avoid transient voltage drops when a current peak takes place - remember that lower AWG is thicker cable ie lower resistance and lower voltage drop. This will allow voltage drops when the instrument does draw quite a bit of current, for example when using the iridium modem (the AGT, by default, implements some current limiting that mitigate voltage drop issues).
 
 The goal is to get a circuit that looks like the following drawing:
 
@@ -40,6 +40,8 @@ This describes the case when 3 D-cell batteries are used inside some battery hol
 At this point, things should look like on the image below:
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/illustration_3_holders.jpg" width="400" />
+
+**NOTE**: some battery holders are of low quality and create bad contacts; when using battery holders, make sure that the voltage of the battery is well transmitted to the solder ends of the battery holder; depending on your model of battery holder, you will need to check this both when there is and there is no battery inserted, as some cheap battery holders can have a good contact when no battery is inserted, and a bad contact when the battery is inserted...
 
 ## Preparation of the power supply, part 2: mounting the magnetic switch, checking its good functioning
 
@@ -126,6 +128,8 @@ This is only to be used if the wave measurement functionality should be part of 
 The instrument should now look something like (this is a version without the wave measurements, so no qwiic switch and 9dof sensor):
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/instrument_ready.jpg" width="400" />
+
+Try to get the antenna "close to vertical, pointing up"; it is not critical if the antenna is not pointing exactly up, as it has a quite wide lobe, but better if it can generally "look up".
 
 - register the modem on Rock7 and activate it (see https://rockblock.rock7.com and the GUI interface there)
 - perform a full test outside; note that it may take a while for the registration of the modem to be effective, and that iridium messages do not always go through; i.e., do not worry if you do not get a message within a few minutes, and just let the instrument out for a few hours

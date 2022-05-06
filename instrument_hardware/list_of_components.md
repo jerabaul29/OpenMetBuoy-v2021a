@@ -14,17 +14,17 @@ List of components needed to build the instrument. Note that additional function
 
 ### Box
 
-- 1 x RND 455-01082 - Plastic Enclosure 120x120x90mm Polycarbonate: 15USD: https://www.elfadistrelec.no/en/plastic-enclosure-120x120x90mm-light-grey-polycarbonate-ip67-rnd-components-rnd-455-01082/p/30129934
+- 1 x RND 455-01082 - Plastic Enclosure 120x120x90mm Polycarbonate: 15USD: https://www.elfadistrelec.no/en/plastic-enclosure-120x120x90mm-light-grey-polycarbonate-ip67-rnd-components-rnd-455-01082/p/30129934 . This is the "most recommended" box, as it is high enough for the antenna to be set vertically.
 
 or
 
-- 1 x Hammond 1554P2GYCL - Watertight Enclosure Smoked Lid, Polycarbonate, 120x120x80mm: 23USD: https://www.elfadistrelec.no/en/watertight-enclosure-smoked-lid-polycarbonate-120x120x80mm-clear-light-grey-hammond-1554p2gycl/p/30100709?q=&pos=2&origPos=52&origPageSize=50&track=true
+- 1 x Hammond 1554P2GYCL - Watertight Enclosure Smoked Lid, Polycarbonate, 120x120x80mm: 23USD: https://www.elfadistrelec.no/en/watertight-enclosure-smoked-lid-polycarbonate-120x120x80mm-clear-light-grey-hammond-1554p2gycl/p/30100709?q=&pos=2&origPos=52&origPageSize=50&track=true . This works fine, but there is not really space for the antenna to be vertical - good enough though.
 
 or any other box you like (size may be adapted to number of battery cells, additional functionality that requires additional small PCBs, etc).
 
 ### Non rechargable batteries
 
-I recommend trying to get batteries with solder tags, and drop the battery holders alltogether, but it is not always easy to find batteries with solder tags for a good price:
+I recommend trying to get batteries with solder tags, and drop the battery holders alltogether, but it is not always easy to find batteries with solder tags for a good price; batteries without solder tags will need a battery holder, and these are often of low quality and create problems, so best to use battery solder tags and solder everything yourself:
 
 - 3 x Saft LSH20 3.6V batteries: 45USD:  https://eu.nkon.nl/saft-lsh-20-lithium-battery-3-6v.html
 
@@ -62,14 +62,17 @@ Any magnetic switch that of the same family that either is "normally closed" or 
 
 ### 9-dof sensor
 
-This part has a tendency to be sold out. I list some alternatives without the magnetometer (currently not in use) under:
+This part has a tendency to be sold out. At present, we only use the accelerometer and gyroscope data (6dof), i.e. the ISM330DHCX part, out of the accelerometer and gyroscope and magnetometer that are present on the default Adafruit breakout. The reference part is the Adafruit FeatherWing. I list some alternatives without the magnetometer (which is currently not in use) under:
 
-- 1 x Adafruit ISM330DHCX + LIS3MDL FeatherWing - High Precision 9-DoF IMU: 22USD: https://www.adafruit.com/product/4569
+- 1 x Adafruit ISM330DHCX + LIS3MDL FeatherWing - High Precision 9-DoF IMU: 22USD: https://www.adafruit.com/product/4569 (this is the default part; though it uses only the ISM330DHCX, the default firmware checks that the LIS3MDL is present, so using default firmware without the LIS3MDL will not work).
 
-Alternatives:
+In case the part above is sold out, you can buy one of the alternatives, that is only 6-dof (no magnetometer). For now, since the magnetometer is not in use, this does not affect functionality, but you will need to use a special firmware for this to work (the "STEval_" firmware versions):
 
 - 1 x Adafruit ISM330DHCX - 6 DoF IMU - Accelerometer and Gyroscope - STEMMA QT / Qwiic: 20USD: https://www.adafruit.com/product/4502
 - 1 x STEVAL-MKI207V1 - STMicroelectronics ISM330DHCX Adapter Board: 20USD: https://no.rs-online.com/web/p/sensor-development-tools/1961491
+- any other breakout or board that has an ISM330DHCX build in
+
+In adition, it is possible to use some other 6dof models; one such model is the LSM6DSOX for example. Though it has lower accuracy than the ISM330DHCX, it is still fine to use for large waves (typically, in the ocean). To use LSM6DOSX, you need another custom flavor of the firmware (see the "STEval_lsm6DSOX" firmware versions). Any breakout featuring the LSM6DSOX chip will then be compatible with the corresponding firwmare flavor.
 
 ### Temperature sensors
 
@@ -79,7 +82,7 @@ Alternatives:
 
 You will also need the usual "small extras" when doing electronics and assembling instruments that should go into the water:
 
-- electronics cables, typically some 20-22 AWG cables in a variety of colors do just fine for connections that do not carry much current: https://uk.rs-online.com/web/p/hook-up-wire/8724530 . For carrying more current (main power supply, etc), I recommend using some slightly thicker wires, for example 16-18AWG such as: https://www.elfadistrelec.no/en/stranded-wire-pvc-8mm-tinned-copper-black-3055-30-5m-alpha-wire-3055-bk005/p/30083071?trackQuery=18+awg+wire&pos=31&origPos=40&origPageSize=50&track=true .
+- electronics cables, typically some 20-22 AWG cables in a variety of colors do just fine for connections that do not carry much current: https://uk.rs-online.com/web/p/hook-up-wire/8724530 . For carrying more current (main power supply, etc), you can consider using some slightly thicker wires, for example 16-18AWG such as: https://www.elfadistrelec.no/en/stranded-wire-pvc-8mm-tinned-copper-black-3055-30-5m-alpha-wire-3055-bk005/p/30083071?trackQuery=18+awg+wire&pos=31&origPos=40&origPageSize=50&track=true , though these are harder to cut, solder, and handle, and the current limitations implemented in the AGT (no more than typically 150-250mA peak are used when the iridium modem is in use) mean that 20 AWG is good enough also for the power supply part. If you switch to a board using more current at peak, i.e. typically over 250mA , thicker cables (ie lower AWG) are then needed to avoid voltage drops.
 - soldering tools: soldering iron (I recommend the Pinecil https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/ ), soldering wire, soldering brass sponge, ...
 - plastic plate to fix the electronics: something like this works fine, 2mm thickness is enough, up to (included) 4 is fine, but more than 4 is a bit hard to cut: https://www.biltema.no/bygg/platematerialer/plastglass/plastglass-2000030030 plastglass.
 - desiccant bags

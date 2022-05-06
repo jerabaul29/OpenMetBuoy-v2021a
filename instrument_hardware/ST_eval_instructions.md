@@ -21,3 +21,9 @@ The qwiic cable coming out of the module can be connected to the qwiic switch OU
 ## NOTE
 
 The STEval breakout pinout is a bit confusing: there are 2 pins marked SCx and 2 pins marked SDx. However, it seems that these are NOT equivalent. 1 SCx is connected to the chip through a resistor (the one on the VDD / VDDIO side), while the other one (on the SCL / SDA side) is "connected" through an air jump, i.e. not connected, to the chip. Same for the SDx. So, **always connect the 3.3V to the SCx and SDx on the side of the VDD and VDDIO, never on the SCx and SDx on the side of the SCL / SDA**. For more information, link to discussions and datasheets, see: https://github.com/jerabaul29/OpenMetBuoy-v2021a/issues/25 . This corresponds to the wiring shown in the picture (though it is a bit hard to see, open the picture and zoom on it :) ).
+
+## Extra illustrations
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/STEval_in_box.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/STEval_front.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/STEval_back.jpg" width="400" />
