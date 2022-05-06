@@ -26,11 +26,11 @@ or any other box you like (size may be adapted to number of battery cells, addit
 
 I recommend trying to get batteries with solder tags, and drop the battery holders alltogether, but it is not always easy to find batteries with solder tags for a good price; batteries without solder tags will need a battery holder, and these are often of low quality and create problems, so best to use battery solder tags and solder everything yourself:
 
-- 3 x Saft LSH20 3.6V batteries: 45USD:  https://eu.nkon.nl/saft-lsh-20-lithium-battery-3-6v.html
+- 3 x Saft LSH20 3.6V batteries: 45USD:  https://eu.nkon.nl/saft-lsh-20-lithium-battery-3-6v.html : these batteries have a bit lower capability but are able to handle large transient pulses, like what the iridium modem needs, and these are the ones I personally use.
 
 or
 
-- 3 x Tadiran SL-2780 / D - 3.6V: 45USD: https://eu.nkon.nl/disposable-batteries/tadiran-sl-2780-sl-780-d-lithium-battery-3-6v.html
+- 3 x Tadiran SL-2780 / D - 3.6V: 45USD: https://eu.nkon.nl/disposable-batteries/tadiran-sl-2780-sl-780-d-lithium-battery-3-6v.html : these batteries have a bit higher capacity but more issues handling pulses of current; could be a good option, but then you should add a couple of 10F supercapacitors (2 in series so that they survive the 3.6V), in parallel of the batteries, to help when power spikes are needed.
 
 ### Battery holders
 
