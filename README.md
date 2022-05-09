@@ -96,7 +96,7 @@ If you deploy the OMB, feel free to let me know in an issue! These are so far th
 - 2 ice drifters: Seal pups monitoring cruise 2022, East Greenland sea, March 2022: on the ice in the MIZ, 2 drifters
 - 20 ice drifters: CIRFA 2022 cruise, East Greenland sea, April 2022: 20 instruments on the sea ice
 - 15 drifting buoys: CIRFA 2022 cruise, Barents sea, April 2022: 15 instruments, drifting in open water
-- 20 ice drifters:  
+- 20 ice drifters: AWI summer cruise 2022, Barents sea: 20 instruments, on the sea ice
 - 15 ice trackers: Hovercraft 2022 cruise, Yamal plateau / East Greenland sea, August 2022: 15 instruments on the sea ice
 
 ## Just for fun - a not so serious corner of the Readme :)
