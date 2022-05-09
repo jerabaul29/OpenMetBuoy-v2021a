@@ -86,6 +86,19 @@ This is a large code base, that I largely developed on my own with a very limite
 
 - **dyslexia frequency vs. period**: the instrument, internally, computes the zero crossing and the mean *frequency*, not *period* as the code says (i.e. there is a relation by ```f(x)=1/x``` between what is named in the code and what is actually computed). This would be error prone to fix in all firmwares, so I choose to i) keep it "as it is" in the firmware, and ii) fix this a posteriori in the decoder by taking the inverse there. For more discussions, see: https://github.com/jerabaul29/OpenMetBuoy-v2021a/issues/36
 
+## A few deployments I know about
+
+If you deploy the OMB, feel free to let me know in an issue! These are so far the deployments I know of (no guarantee this is up to date). This is just to show that we do have solid experience with the OMB, and that we have had many successful depoyments:
+
+- 2 test buoys: NABOS expedition, Arctic, September 2021: 1 in the open water in the MIZ, 1 on ice
+- 1 test drifter: OneOcean cruise, Caribbeans, November 2021: open water, freely drifting
+- 3 ice drifters: Japanese Antarctic program, Antarctica, February 2022: 3 instruments on the sea ice
+- 2 ice drifters: Seal pups monitoring cruise 2022, East Greenland sea, March 2022: on the ice in the MIZ, 2 drifters
+- 20 ice drifters: CIRFA 2022 cruise, East Greenland sea, April 2022: 20 instruments on the sea ice
+- 15 drifting buoys: CIRFA 2022 cruise, Barents sea, April 2022: 15 instruments, drifting in open water
+- 20 ice drifters:  
+- 15 ice trackers: Hovercraft 2022 cruise, Yamal plateau / East Greenland sea, August 2022: 15 instruments on the sea ice
+
 ## Just for fun - a not so serious corner of the Readme :)
 
 If you have more fun / goofy / strange pictures or stories that can fit in here, just share them as an issue or open a pull request!
