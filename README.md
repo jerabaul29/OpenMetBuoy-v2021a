@@ -50,7 +50,7 @@ These are explained in more details in the paper, see in particular Tables 1, 2,
 
 ## Coding environment
 
-I am using only Linux in the form of Ubuntu LTS distributions. Though the instructions here can likely be adapted to other distributions / OSes (possibly with the Windows Linux Subsystem or similar), if you want to use something else than Ubuntu 20.04 LTS or another modern Ubuntu LTS, you are on your own! Also, some of the PlatformIO building flags rely on using a Linux system. These could be adapted to also work on Windows, but I am not interesed in spending the time to get it to work at the moment on neither Windows not MacOS (but contributions can be welcome).
+I am using only Linux in the form of Ubuntu LTS distributions. Though the instructions here can likely be adapted to other distributions / OSes (possibly with the Windows Linux Subsystem or similar, see for example https://github.com/jerabaul29/OpenMetBuoy-v2021a/issues/53 ), if you want to use something else than Ubuntu 20.04 LTS or another modern Ubuntu LTS, you are on your own! Also, some of the PlatformIO building flags rely on using a Linux system. These could be adapted to also work on Windows, but I am not interesed in spending the time to get it to work at the moment on neither Windows not MacOS (but contributions can be welcome).
 
 ## About the "legacy" vs "rewrite" firmwares
 
