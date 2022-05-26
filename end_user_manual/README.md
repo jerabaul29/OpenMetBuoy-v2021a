@@ -141,6 +141,8 @@ The messages will be received on the user email adress, and can also be retrieve
 
 If you have not activated the iridium line rentals, messages will be lost without any way to recover them. So don't forget to switch on (and renew!) the iridium line rental. An iridium modem without line rental activated will "think" that it can send messages (ie, the message will be considered as "sent" if it is actually received by the satellite, and the corresponding data removed from the buffers).
 
+Note that it may be possible, for larger deployments, to set up some form of invoicing: see the last post in the discussion https://github.com/jerabaul29/OpenMetBuoy-v2021a/issues/28 .
+
 ## Decoding the iridium messages
 
 The messages received from Rock7 are hex-encoded binary strings. Decode them with: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/decoder .
