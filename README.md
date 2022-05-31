@@ -145,6 +145,8 @@ The aim of the OpenMetBuoy (OMB) is to increase the number of measurement points
 
 Credits: Takehiko Nose, preparing to assemble 50 OMBs.
 
-### Dolly the search-and-rescue doll
+### "Dolly" the search-and-rescue doll
 
-TODO
+The OMB has also been used to test search and rescue systems - hard time floating alone in the middle of the Norwegian sea! Credits: Forsvarets 330 Skv. Avd Sola.
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/search_and_rescue_doll" width="600" />
