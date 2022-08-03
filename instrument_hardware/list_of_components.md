@@ -66,10 +66,13 @@ This part has a tendency to be sold out. At present, we only use the acceleromet
 
 - 1 x Adafruit ISM330DHCX + LIS3MDL FeatherWing - High Precision 9-DoF IMU: 22USD: https://www.adafruit.com/product/4569 (this is the default part; though it uses only the ISM330DHCX, the default firmware checks that the LIS3MDL is present, so using default firmware without the LIS3MDL will not work).
 
-In case the part above is sold out, you can buy one of the alternatives, that is only 6-dof (no magnetometer). For now, since the magnetometer is not in use, this does not affect functionality, but you will need to use a special firmware for this to work (the "STEval_" firmware versions):
+In case the part above is sold out, you can buy one of the alternatives, that is only 6-dof (no magnetometer), or with another model of magnetometer. For now, since the magnetometer is not in use, this does not affect functionality, but you will need to use a special firmware for this to work (the "STEval_" firmware versions):
 
 - 1 x Adafruit ISM330DHCX - 6 DoF IMU - Accelerometer and Gyroscope - STEMMA QT / Qwiic: 20USD: https://www.adafruit.com/product/4502
 - 1 x STEVAL-MKI207V1 - STMicroelectronics ISM330DHCX Adapter Board: 20USD: https://no.rs-online.com/web/p/sensor-development-tools/1961491
+- 1 x SparkFun Micro 6DoF IMU (qwiic) - ISM330DHCX: 25 USD: https://www.sparkfun.com/products/20176
+- 1 x SparkFun 6DoF IMU Breakout - ISM330DHCX (qwiic): 25 USD: https://www.sparkfun.com/products/19764
+- 1 x SparkFun 9DoF IMU Breakout - ISM330DHCX, MMC5983MA (qwiic): 35 USD: https://www.sparkfun.com/products/19895
 - any other breakout or board that has an ISM330DHCX build in
 
 In adition, it is possible to use some other 6dof models; one such model is the LSM6DSOX for example. Though it has lower accuracy than the ISM330DHCX, it is still fine to use for large waves (typically, in the ocean). To use LSM6DOSX, you need another custom flavor of the firmware (see the "STEval_lsm6DSOX" firmware versions). Any breakout featuring the LSM6DSOX chip will then be compatible with the corresponding firwmare flavor.
