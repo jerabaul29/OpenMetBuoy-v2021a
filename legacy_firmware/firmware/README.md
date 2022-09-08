@@ -13,5 +13,6 @@ The main firmware versions:
 - **standard_gps_waves_thermistors_drifter**: a standard gps and waves and thermistor drifter, with up to 6 DS18B20 thermistors
 - **two_ways_gps_waves_drifter**: the gps and waves drifter, with the 2-ways communication added to be able to change the frequency of GPS / waves measurements.
 - **functionality_test_mode**: the gps and waves drifter, set up in such a way that it tests that the GPS, IMU, and Iridium components are well working and showing it on the serial output.
+- **steval_gps_waves_pcbtraces_2ways**: the gps and waves drifter, set up for the ISM330DHCX IMU, using the AGT SDA SCL pins / PCB traces for the I2C port to the IMU (ie shared with the GPS with current AGT configuration), and the 2 ways communications; this is a slightly less version by myself, but some partners have used it in depth; sidenote: the code was copied from the private repo: https://github.com/tnn77/tracker_and_waves_instrument/tree/feat/waves_in_ice_ISM330 .
 
 Of course, all versions of the firmware can be tuned to your needs; see in particular the **params.h** file.
