@@ -1,48 +1,17 @@
 Some examples of utils to get the binary messages from Rock7 and process them. Relies on Bash and Python3. These are only coarse examples, you will need to adapt to your needs.
 
-- **script_interact_Rock7_API.sh**: example of how to collect data from the Rock7 website, by getting a cookie, and sending a request for CSV data. A few notes:
-  - be careful about your username and password! Do not leak these into the open internet. For my part, I use pass as a password manager (and this is reflected in the script). It is also possible to just provide these as a ```password.secret``` and ```username.secret``` file, if needed (do not leak them!). The way these files work is that they are sourced by the script, see:
+- to run the full update automatically, run: ```bash script_regenerate_all.sh```. Note that there are 3 options to get the raw data:
+  - apirequest : will need a file ```username.secret``` with content ```USERNAME="YOUR_USERNAME"``` and a file ```password.secret``` with content ```PASSWORD="YOUR_PASSWORD"```, substituting with the correct values (be careful to not share publicly this information! In particular, be careful if you have an open repository and you use git / github / gitlab / similar). The URL encoding is done in the script, there is not need to URL encode the username and password.
+  - download : this assumes that you have downloaded by hand the CSV file you need, and that it is in the ```~/Downloads``` folder
+  - all.csv : this assumes that you already have a file ```all.csv``` containing the Rock7 data, in the current folder.
 
-https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/0642539ecdb4fa2840296404551dc1456ff948b8/legacy_firmware/utils/script_interact_Rock7_API.sh#L85
+- you can also run parts of the workflow separately:
+  - to generate the dict of data, use the ```script_all_messages_to_dict.py```
+  - to plot the drift, use the ```script_plot_trajectories.py```
+  - to plot the spectra, use the ```script_plot_spectra.py```
 
-So the content of the file should be something like, for ```password.secret```:
+- to run periodically the data acquisition, use the ```script_run_periodically.sh```
 
-```bash
-PASSWORD="PASSWORD_URL_ENCRYPTED"
-```
+- the ```params.py``` file contains all the parameters needed to perform the processing (list of instruments and deployment times, start / end times, geographical extent, etc).
 
-for ```username.secret```:
-
-```bash
-USERNAME="USERNAME_URL_ENCODED"
-```
-
-For the explanation about the URL-encoding, see a bit lower down, urlencode discussion.
-
-  - I do not know about some documentation about the Rock7 API, so this was reverse-engineered from their website. To tune it to your needs, you can for example in firefox web browser:
-    - Go to Application menu > More tools > enable web developper tools
-    - Go to Rock7 website, craft the exact request you want
-    - open the "Network" tab of the web developper tools
-    - perform the request of CSV data
-    - you will see a new GET request appearing
-    - click on it to get more information, this will show you the exact request (you can also hoover on it to see it / right click on the request to copy paste it)
-    - note that urls cannot use some of the special characters that have a specific meaning, so these are "escaped". See : https://www.w3schools.com/tags/ref_urlencode.asp . In particular, "/" when part of a date (not of a file path) is encoded as 2F. There are many tools to URL-encode strings, either in Bash or in Python or else; for example:
-    
-```
-~$ urlencode "22/Feb/"
-22%2FFeb%2F
-```
-
-  - the script is used to both get the data, and run the python post processing scripts
-
-- **decoder.py**: a local copy of the decoder from https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/decoder , to avoid import issues
-
-- **params.py**: information about what instruments to use over what time period
-
-- **script_all_messages_to_dict.py**: converting the Rock7 data into a python dict for convenience
-
-- **script_plot_trajectories_on_map.py**: plot on a map
-
-- **script_plot_spectra.py**: show the spectra
-
-- **utils.py**: various small utils for the other scripts
+- the ```*_cookie_*.sh``` scripts show examples of how to locally generate some cookie for sharing with colleagues.

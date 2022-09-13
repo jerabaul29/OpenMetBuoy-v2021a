@@ -12,7 +12,12 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 
+from utils import sliding_filter_nsigma
+
 from utils import get_index_of_first_list_elem_greater_starting_smaller
+
+from params import trajectories_use_full_timespan, trajectories_first_time, trajectories_last_time
+from params import central_latitude, central_longitude, standard_parallels, min_lon, max_lon, min_lat, max_lat, plot_show
 
 # ------------------------------------------------------------------------------------------
 # a few quick and dirty utils
@@ -30,16 +35,13 @@ with open("./dict_all_data.pkl", "rb") as fh:
 _ = ccrs.PlateCarree()
 
 # the map projection properties.
-proj = ccrs.LambertConformal(central_latitude=13.0,
-                             central_longitude=-70.0,
-                             standard_parallels=(8.0, 18.0))
+proj = ccrs.LambertConformal(central_latitude=central_latitude,
+                             central_longitude=central_longitude,
+                             standard_parallels=standard_parallels)
 
 # let's have a large figure
-plt.figure(figsize=(15, 18))
+plt.figure(figsize=(15, 10))
 ax = plt.axes(projection=proj)
-
-# for now let s set the extent
-ax.set_extent([-90.0, -68.0, 8.5, 20.0])
 
 # what to include on the map
 resol = '50m'
@@ -52,11 +54,22 @@ ocean = cartopy.feature.NaturalEarthFeature('physical', 'ocean',
 ax.add_feature(land, zorder=0)
 ax.add_feature(ocean, linewidth=0.2, zorder=0)
 
-# choose the extent of the map
+ax.set_extent([min_lon, max_lon, min_lat, max_lat])
 
-list_colors = list(mcolors.TABLEAU_COLORS)
-list_colors.append("w")
-list_colors.append("k")
+if False:
+    list_colors = list(mcolors.TABLEAU_COLORS)
+    list_colors.append("w")
+    list_colors.append("k")
+
+if True:
+    list_colors_base = list(mcolors.TABLEAU_COLORS)
+    list_colors_base.append("w")
+    list_colors_base.append("k")
+
+    list_colors = 3 * list_colors_base
+
+first_time = trajectories_first_time
+last_time = trajectories_last_time
 
 # plot the trajectories
 for ind, crrt_instrument in enumerate(dict_data_each_logger.keys()):
@@ -64,6 +77,25 @@ for ind, crrt_instrument in enumerate(dict_data_each_logger.keys()):
     list_datetime = [crrt_fix.datetime_fix for crrt_fix in dict_data_each_logger[crrt_instrument]["gnss_fixes"]]
     list_latitude = [crrt_fix.latitude for crrt_fix in dict_data_each_logger[crrt_instrument]["gnss_fixes"]]
     list_longitude = [crrt_fix.longitude for crrt_fix in dict_data_each_logger[crrt_instrument]["gnss_fixes"]]
+    
+    first_index = 0
+    while True:
+        if list_datetime[first_index] < first_time:
+            first_index = first_index + 1
+        else:
+            break
+    
+    list_datetime = list_datetime[first_index:]
+    list_latitude = list_latitude[first_index:]
+    list_longitude = list_longitude[first_index:]
+
+    np_latitude = sliding_filter_nsigma(np.array(list_latitude))
+    np_longitude = sliding_filter_nsigma(np.array(list_longitude))
+
+    if len(list_datetime) > 0 and trajectories_use_full_timespan:
+        crrt_last_time = list_datetime[-1]
+        if crrt_last_time > last_time:
+            last_time = crrt_last_time
 
     # get instrument ID
     ID = crrt_instrument
@@ -71,36 +103,101 @@ for ind, crrt_instrument in enumerate(dict_data_each_logger.keys()):
     size_scatter_markers = 100
 
     # plot full trajectory
-    plt.scatter(list_longitude, list_latitude, s=size_scatter_markers/8.0, transform=ccrs.PlateCarree(), zorder=3, label=ID, color=list_colors[ind])
+    if False:  # ID label
+        plt.scatter(np_longitude, np_latitude, s=size_scatter_markers/8.0, transform=ccrs.PlateCarree(), zorder=3, label=ID, color=list_colors[ind])
+    else:  # no ID label
+        plt.scatter(np_longitude, np_latitude, s=size_scatter_markers/8.0, transform=ccrs.PlateCarree(), zorder=3, color=list_colors[ind])
 
-    # plot initial position
-    if ind == 0:
-        plt.scatter(list_longitude[0], list_latitude[0], transform=ccrs.PlateCarree(), color='k', s=size_scatter_markers, label="start", zorder=10)
-    else:
-        plt.scatter(list_longitude[0], list_latitude[0], transform=ccrs.PlateCarree(), color='k', s=size_scatter_markers, zorder=10)
+    plt.plot(np_longitude, np_latitude, transform=ccrs.PlateCarree(), color=list_colors[ind])
 
-    # plot location at a few times
-    list_positions_to_plot = [
-        datetime.datetime(2021, 11, 10, 0, 0, 0),
-    ]
-
+if False:
     list_markers = [
         "*",
         "+",
         "x",
         "v",
         "s",
-        "P"
+        "P",
     ]
 
+if True:
+    list_markers = [
+        "*",
+        "+",
+        "x",
+        "v",
+        "s",
+        "P",
+        "*",
+        "+",
+        "x",
+        "v",
+        "s",
+        "P",
+        "*",
+        "+",
+        "x",
+        "v",
+        "s",
+        "P",
+    ]
+
+# plot location at a few times
+nbr_times = 5
+last_time = datetime.datetime(last_time.year, last_time.month, last_time.day, 0, 0, 0)
+interval_time = (last_time - first_time) / (nbr_times)
+
+legend_times_ready = False
+
+for ind, crrt_instrument in enumerate(dict_data_each_logger.keys()):
+    # get the data
+    list_datetime = [crrt_fix.datetime_fix for crrt_fix in dict_data_each_logger[crrt_instrument]["gnss_fixes"]]
+    list_latitude = [crrt_fix.latitude for crrt_fix in dict_data_each_logger[crrt_instrument]["gnss_fixes"]]
+    list_longitude = [crrt_fix.longitude for crrt_fix in dict_data_each_logger[crrt_instrument]["gnss_fixes"]]
+    
+    first_index = 0
+    while True:
+        if list_datetime[first_index] < first_time:
+            first_index = first_index + 1
+        else:
+            break
+    
+    list_datetime = list_datetime[first_index:]
+    list_latitude = list_latitude[first_index:]
+    list_longitude = list_longitude[first_index:]
+
+    if len(list_datetime) < 5:
+        continue
+
+    # get instrument ID
+    ID = crrt_instrument
+
+    size_scatter_markers = 100
+
+    list_positions_to_plot = [
+        first_time
+    ]
+
+    # plot initial position
+    if not legend_times_ready:
+        plt.scatter(list_longitude[0], list_latitude[0], transform=ccrs.PlateCarree(), color='k', s=size_scatter_markers, label="start", zorder=10)
+    else:
+        plt.scatter(list_longitude[0], list_latitude[0], transform=ccrs.PlateCarree(), color='k', s=size_scatter_markers, zorder=10)
+
+    for crrt_time in range(nbr_times):
+        list_positions_to_plot.append(first_time + (crrt_time + 1) * interval_time)
+
     for crrt_marker, crrt_time in zip(list_markers, list_positions_to_plot):
-        if ind == 0:
-            plt.scatter([], [], marker=crrt_marker, color='k', s=size_scatter_markers, label=str(crrt_time))
+        if not legend_times_ready:
+            plt.scatter([], [], marker=crrt_marker, color='k', s=size_scatter_markers, label=str(crrt_time)[:-6])
 
     for ind_time, crrt_time in enumerate(list_positions_to_plot):
         crrt_index = get_index_of_first_list_elem_greater_starting_smaller(list_datetime, crrt_time)
         if crrt_index is not None:
-            plt.scatter(list_longitude[crrt_index], list_latitude[crrt_index], transform=ccrs.PlateCarree(), marker=list_markers[ind_time], color="k", s=size_scatter_markers, zorder=10)
+            plt.scatter(list_longitude[crrt_index], list_latitude[crrt_index], transform=ccrs.PlateCarree(),
+                        marker=list_markers[ind_time], color="k", s=size_scatter_markers, zorder=10)
+
+    legend_times_ready = True
 
 
 # the meridians and parallels to show
@@ -114,7 +211,8 @@ gl.left_labels = False
 gl.right_labels = True
 # gl.xlines = False
 # gl.ylines = False
-# gl.xlocator = mticker.FixedLocator([-180, -45, 0, 45, 180])
+gl.xlocator = mticker.FixedLocator(list(range(-180, 180, 5)))
+gl.ylocator = mticker.FixedLocator(list(range(-80, 90, 1)))
 # gl.xformatter = LONGITUDE_FORMATTER
 # gl.yformatter = LATITUDE_FORMATTER
 # gl.xlabel_style = {'size': 15, 'color': 'gray'}
@@ -122,20 +220,12 @@ gl.right_labels = True
 
 plt.legend()
 
-plt.tight_layout()
+plt.title(f"generated {datetime.datetime.utcnow()}")
 
-plt.savefig("all_trajectories.pdf")
+# plt.tight_layout()
+
 plt.savefig("all_trajectories.png")
+plt.savefig("all_trajectories.pdf")
 
-print()
-print()
-print("---------- DUMP ALL POSITIONS START ----------")
-print("format: timestamp, lat, lon ; both lat and lon as DD; lat+ is N, lon+ is E")
-for crrt_datetime, crrt_lat, crrt_lon in zip(list_datetime, list_latitude, list_longitude):
-    print(f"{crrt_datetime.isoformat()}, {crrt_lat:10.6f}, {crrt_lon:10.6f}")
-print("---------- DONE DUMP ALL POSITIONS ----------")
-print()
-print()
-
-plt.show()
-
+if plot_show:
+    plt.show()

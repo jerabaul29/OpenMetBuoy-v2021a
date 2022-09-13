@@ -1,14 +1,8 @@
-from __future__ import print_function
-import numpy as np
 from icecream import ic
+import numpy as np
 
-ic.configureOutput(prefix="", outputFunction=print)
-
-
+# a function to return an ordered list of keys for which in the right time interval, ordered by time
 def sort_dict_keys_by_date(dict_in):
-    """dict_in should have a structure dict_in[some_key]["datetime"]; this function
-    will return a list of some_key.s ordered by the content of the "datetime" entry
-    under it."""
     list_key_datetime = []
 
     for crrt_key in dict_in:
@@ -20,6 +14,8 @@ def sort_dict_keys_by_date(dict_in):
 
     return(sorted_keys)
 
+
+# a function to return only the keys that correspond to a given kind of data (status / spectrum)
 
 def get_index_of_first_list_elem_greater_starting_smaller(list_in, value):
     """If the list_in first elem is larger than value, return None; if list_in has no
@@ -52,17 +48,11 @@ def sliding_filter_nsigma(np_array_in, nsigma=5.0, side_half_width=2):
     for crrt_middle_index in range(middle_point_index_start, middle_point_index_end+1, 1):
         crrt_left_included = crrt_middle_index - side_half_width
         crrt_right_included = crrt_middle_index + side_half_width
-        ic(crrt_middle_index)
-        ic(crrt_left_included)
-        ic(crrt_right_included)
         crrt_array_data = np.concatenate([ np_array_in[crrt_left_included:crrt_middle_index], np_array_in[crrt_middle_index+1:crrt_right_included+1] ])
-        ic(crrt_array_data)
         mean = np.mean(crrt_array_data)
         std = np.std(crrt_array_data)
-        ic(mean)
-        ic(std)
         if np.abs(np_array[crrt_middle_index] - mean) > nsigma * std:
-            ic("outlier")
+            print("found outlier")
             np_array[crrt_middle_index] = np.nan
 
     return np_array
