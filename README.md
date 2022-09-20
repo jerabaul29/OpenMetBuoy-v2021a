@@ -1,6 +1,6 @@
 **A question? => open an issue; An idea of improvement? => open an issue and / or submit a pull request.**
 
-# OpenMetBuoy-v2021a (OMB / OMB-v21a): an easy to build, affordable, customizable, open source instrument for oceanographic measurements.
+# OpenMetBuoy-v2021a (OMB / OMB-v21a): an easy to build, affordable, customizable, open source instrument for oceanographic measurements - that you can build yourself of buy commercially
 
 **Our pledge**: many fields within Geosciences are relying on in-situ data collection. Traditionally, collecting in-situ data is expensive, with commercial instruments easily reaching several thousands of USDs even if only quite simple functionalities are provided. However, the recent emergence of open source communities within micro controllers and low level firmware for these opens new possibilities for developing low-cost, high performance instruments based on widely available and affordable components. This repository is focusing on developing an oceanic buoy based on such open source code and low cost components. Our solution is around 10 times cheaper than the least expensive similar commercial instrument we know of, and is actually superior to the commercial instrument in a number of regards, for example, for measurement in the polar regions. We hope that the present open source release, beyond sharing the design of our specific instrument, will encourage many more actors to share their developments within in-situ instrumentation and participate in building an open source community around geophysical instrumentation.
 
@@ -15,6 +15,8 @@ Geosciences (2022).
 
 - As a preprint: https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean , and as pdf on this repository (see **latest_preprint_MDPI_2022.pdf**),
 - As a published paper (open access, CC-BY license): https://www.mdpi.com/2076-3263/12/3/110 .
+
+You can either build the OMB yourself using the resources available on this repository, or buy it as a turn-key (but still open source and hackable) product from LabMaker Gmbh for a reasonable cost: https://www.labmaker.org/collections/earth-and-ecology/products/openmetbuoy .
 
 The fully assembled instrument gets space into a box 12x12x9 cm, including 3 D-size battery holders (at the bottom, empty on the picture, should use typically 3 SAFT LSH20 D-size batteries), all the components, and the 9dof sensor:
 
