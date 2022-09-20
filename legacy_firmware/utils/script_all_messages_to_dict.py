@@ -103,7 +103,7 @@ for crrt_device in list_instruments:
     if len(dict_data[crrt_device]["spectra"]) > 0:
         res_spectra = [dict_data[crrt_device]["spectra"][0]]
         for crrt_entry in dict_data[crrt_device]["spectra"]:
-            if crrt_entry.datetime_fix == res_fixes[-1].datetime_fix:
+            if crrt_entry.datetime_fix == res_spectra[-1].datetime_fix:
                 pass
             else:
                 res_spectra.append(crrt_entry)
