@@ -15,3 +15,5 @@ Some examples of utils to get the binary messages from Rock7 and process them. R
 - the ```params.py``` file contains all the parameters needed to perform the processing (list of instruments and deployment times, start / end times, geographical extent, etc).
 
 - the ```*_cookie_*.sh``` scripts show examples of how to locally generate some cookie for sharing with colleagues.
+
+- in addition, we provide script examples for i) packing the .pkl data dict into netCDF-CF files, ii) displaying the data from the created netCDF file.
