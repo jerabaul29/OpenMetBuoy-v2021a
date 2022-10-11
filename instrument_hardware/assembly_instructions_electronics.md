@@ -10,6 +10,7 @@ A few high level rules:
 - sudden temperature cycling is not good for electronics as i) it is a factor creating condensation, ii) repeated, sudden temperature changes put strains on solders. Try, if possible, to avoid too many harsh temperature cyclings (for example, if possible, avoid taking the instrument in from a +20 degrees temperature outside to a -20 degrees temperature too many times; ideally, let the instrument cool down and warm up slowly).
 - never try to use the GPS or the Iridium without antenna, to avoid RF feedback back into the GPS / Iridium chips. This means in practice, never feed power to the AGT without having connected an antenna to it first.
 - use good cables, in particular for the power supply part, to avoid voltage drop when the instrument is using a power burst (ie, when using the iridium modem). Avoid using cheap jumper cables or breadboards, as these may have very bad connectors that create some significant voltage drops and may cause brownouts.
+- if you want to get good battery time, cut the always-on LEDs as indicated! If not, even though the always-on LEDs are low power, they are still per definition always on, and will end up using more battery than the actual operation of the buoy!
 
 ## General schematic
 
@@ -107,7 +108,7 @@ The power supply to the AGT is very simple:
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/AGT_power.jpg" width="400" />
 
 - program the Artemis, see: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/development_environment for example for uploading the (currently recommended) legacy firmware: https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/development_environment/setup_arduino_v1-8_environment/Instructions.md . The simplest solution is to upload a pre compiled binary, if one of these fits your needs. Note that, if you use only a 6dof sensor, you need a firmware version without the magnetometer.
-- to save power, the always-on PWR LED on the AGT has to be cut; use a hobby knife to the "PWR\_LED" pad at the rear of the AGT (for explanations about cutting pads, see: https://learn.sparkfun.com/tutorials/how-to-work-with-jumper-pads-and-pcb-traces/cutting-a-trace-between-jumper-pads ). No need to cut the other LEDs, there is no pad for cutting them anyways, and they use very little power (only a small blink here and there).
+- to save power, the always-on PWR LED on the AGT has to be cut; use a hobby knife to the "PWR\_LED" pad at the rear of the AGT (for explanations about cutting pads, see: https://learn.sparkfun.com/tutorials/how-to-work-with-jumper-pads-and-pcb-traces/cutting-a-trace-between-jumper-pads ). No need to cut the other LEDs, there is no pad for cutting them anyways, and they use very little power (only a small blink here and there). If you want to have good battery time, do remember to cut this LED, as otherwise the AGT power LED and the qwiic LEDs will end up using more energy than the actual activity of the instrument!
 - solder the power in to the AGT: the common GND from pololu and the battery to any GND pin; the 3.3V Vout coming out of the pololu regulator to any 3.3V pin
 - connect the antenna, using the extension cable
 - fix the AGT on the plastic plate using snap rivets
@@ -116,7 +117,7 @@ The power supply to the AGT is very simple:
 
 This is only to be used if the wave measurement functionality should be part of the instrument (i.e., this is not requested for "pure GPS drifters"). In case you have a ST-eval kit instead of a the 9dof sensor because of chips shortage, see the instructions for connecting the ST-eval kit at: https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/ST_eval_instructions.md .
 
-- cut the 2 LED pads on the qwiic switch (LED\_IN and LED\_OUT , there are pads dedicated at the back of the board for easily de activating them)
+- cut the 2 LED pads on the qwiic switch (LED\_IN and LED\_OUT , there are pads dedicated at the back of the board for easily de activating them). If you want to have good battery time, do remember to cut this LED, as otherwise the AGT power LED and the qwiic LEDs will end up using more energy than the actual activity of the instrument!
 - connect AGT to qwiic switch using a qwiic cable; the AGT should connect to the IN qwiic switch port
 - connect the qwiic switch to 9dof (or 6dof if only using a 6dof) using a qwiic cable; the 9dof should connect to the OUT qwiic switch port 
 - put the components in position on the plastic plate and in the box; if possible, try to locate the 9dof sensor on the opposite side to the magnet. The orientation of the 9dof sensor does not play any role (as it will compute its orientation automatically and compensate for it), just make sure that it is stably fixed with some duct tape, snap river, or similar. I personally wrap it in tape (no naked metal policy), and tape it and add a dot of epoxy to keep it stable.
