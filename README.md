@@ -51,7 +51,7 @@ These are explained in more details in the paper, see in particular Tables 1, 2,
 ## Overview of the content and organisation of the repository
 
 - https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/development_environment : this contains the instructions on how to set up your development environment to write firmwares, either for the "legacy" (Arduino 1.8-based), or the "rewrite" (PlatformIO-based) firmware.
-- https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/instrument_hardware : this describes the hardware needed, and the parts to source, for building different versions of the instrument, and includes the assembly instructions.
+- https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/instrument_hardware : this describes the hardware needed, and the parts to source, for building different versions of the instrument, and includes the assembly instructions. We also have a PCB (not released yet, take contact by issue or email to get access to it)
 - https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware : this contains the legacy firmware (version IDE 1.8), which at the moment is the only one ready to use. It provides both the source code (in different versions), and some pre-compiled binaries with default parameters.
 
 ## Coding environment
