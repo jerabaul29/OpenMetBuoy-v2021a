@@ -44,6 +44,10 @@ Any magnetic switch that of the same family that either is "normally closed" or 
 
 - 1 x MDRR-DT-25-30-F magnetic reed switch: 5USD: https://no.mouser.com/ProductDetail/Littelfuse/MDRR-DT-25-30-F?qs=nyo4TFax6New9CGWZwJeTA%3D%3D
 
+or, if you want something that is a bit more robust:
+
+- 1 x MK15-B-2-OE magnetic switch, normall close: 7 USD: https://www.digikey.com.au/en/products/detail/standex-meder-electronics/MK15-B-2-OE/2765323 , see datasheet at https://standexelectronics.com/viewer/pdfjs/web/viewer.php?file=https%3A%2F%2Fstandexelectronics.com%2Fwp-content%2Fuploads%2F2015%2F03%2FMK15_V02.pdf
+
 ### Magnet
 
 - 1 x Magnet Square - 0.25": 2USD: https://www.sparkfun.com/products/8643
