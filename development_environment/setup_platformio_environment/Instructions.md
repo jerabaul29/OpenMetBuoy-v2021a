@@ -36,7 +36,7 @@ To have a good coding environment, I recommend using a few VSC extensions:
 
 ## Installing the Sparkfun Ambiq Apollo3 core v1 platformio core
 
-The Sparkfun core is made available to PlatformIO through a community-contributed core, available at: https://github.com/nigelb/platform-apollo3blue . In particular, we will follow the instructions at https://github.com/nigelb/platform-apollo3blue/blob/master/docs/platform-apollo3blue/UsingMultipleVersionsOfArduino_Apollo3.md , section Install framework-arduinoapollo3@1.2.3 .
+The Sparkfun core is made available to PlatformIO through a community-contributed core, available at: https://github.com/nigelb/platform-apollo3blue . In particular, we will follow the instructions at https://github.com/nigelb/platform-apollo3blue/blob/master/docs/platform-apollo3blue/UsingMultipleVersionsOfArduino_Apollo3.md , section Install framework-arduinoapollo3@1.2.3 (note that more up to date instructions may be available there!).
 
 To install in the right version, assuming a "standard" Ubuntu setup, home, paths etc (some of the following commands will take quite some time, the toolchains to download are quite large!):
 
@@ -117,3 +117,6 @@ Now, going to the ```src/main.cpp``` file, you should be able to use the "compil
 
 ![Screenshot from 2021-12-04 17-05-52](https://user-images.githubusercontent.com/8382834/144716591-99f63e82-9a03-425d-aa40-13d4d7ed9620.png)
 
+## Using libraries compatible with the OMB
+
+When using PlatformIO, make sure to use the patched libraries that are compatible with the OMB when putting these as submodules in the platformio project ```lib``` folder! See in particular https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/development_environment/setup_arduino_v1-8_environment/Instructions.md , the points in section "Setting up the extra libraries" for the Adafruit libraries.
