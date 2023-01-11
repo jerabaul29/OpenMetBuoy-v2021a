@@ -22,9 +22,15 @@ or
 
 ### Box
 
+If using the PCB, it is thought to fit exactly in the following box:
+
 - 1 x RND 455-01082 - Plastic Enclosure 120x120x90mm Polycarbonate: 15USD: https://www.elfadistrelec.no/en/plastic-enclosure-120x120x90mm-light-grey-polycarbonate-ip67-rnd-components-rnd-455-01082/p/30129934 . This is the "most recommended" box, as it is high enough for the antenna to be set vertically.
 
-or
+if this specific box is sold out, you should find a box with the same internal shape; I *think* any RND 455 box with dimensions 120x120x90 will be fine, for example:
+
+- 1 x RND 455-00198 (same box without the "protubating bottom") https://www.elfadistrelec.no/en/plastic-enclosure-120x120x90mm-light-grey-polycarbonate-ip65-rnd-components-rnd-455-00198/p/30064419?trackQuery=RND+120x120x90&pos=8&origPos=8&origPageSize=50&track=true
+
+or if you do not use the PCB, any box with about the same volume should be fine (and if you use the PCB but find no RND 455 box in stock, you can just buy a box that has wider internal dimensions than the RND box):
 
 - 1 x Hammond 1554P2GYCL - Watertight Enclosure Smoked Lid, Polycarbonate, 120x120x80mm: 23USD: https://www.elfadistrelec.no/en/watertight-enclosure-smoked-lid-polycarbonate-120x120x80mm-clear-light-grey-hammond-1554p2gycl/p/30100709?q=&pos=2&origPos=52&origPageSize=50&track=true . This works fine, but there is not really space for the antenna to be vertical - good enough though.
 
