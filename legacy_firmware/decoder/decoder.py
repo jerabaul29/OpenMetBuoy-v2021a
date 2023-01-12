@@ -13,6 +13,7 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 import pprint
+import scipy.signal as signal
 
 ic.configureOutput(prefix='', outputFunction=print)
 p_print = pprint.PrettyPrinter(indent=2).pprint
@@ -138,6 +139,7 @@ class GNSS_Metadata:
 
 @dataclass
 class Waves_Packet:
+    # the decoded part: this is just decoding / textbook operations
     datetime_fix: datetime.datetime
     spectrum_number: int
     Hs: float
@@ -151,6 +153,15 @@ class Waves_Packet:
     list_elevation_energies: list
     wave_spectral_moments: Spectral_Moments
     is_valid: bool
+    # the processed part: this relies on some more advanced operations
+    processed_list_frequencies: list
+    processed_list_elevation_energies: list
+    processed_wave_spectral_moments: Spectral_Moments
+    processed_Hs: float
+    processed_Tz: float
+    processed_Tc: float
+    low_frequency_index_cutoff: int
+    # processed_quality_index: str  # todo: add a quality explanation string
 
 
 @dataclass
@@ -180,6 +191,57 @@ class Thermistors_Packet:
 @dataclass
 class Thermistors_Metadata:
     nbr_thermistors_measurements: int
+
+
+# --------------------------------------------------------------------------------
+# data quality and processing utils
+
+
+def find_low_frequency_cutoff(list_frequencies, list_elevation_energies):
+    """Find the low frequency cutoff to avoid double integration noise contamination
+    for IMU measurements of waves, similar to what is discussed in Fig. 7 of
+    https://www.mdpi.com/2076-3263/12/3/110 .
+
+    Inputs:
+        list_frequencies: the list of frequencies at which spectrum is provided
+        list_elevation_energies: the wave spectrum elevation energies at the corresponding
+            frequencies
+    Output:
+        index_low_frequency_cutoff: the index to use to cut off low frequency double
+            integration noise contamination; i.e., use only indexes > to the output
+            to consider the valid part of the spectrum.
+    """
+
+    assert isinstance(list_frequencies, list)
+    assert isinstance(list_elevation_energies, list)
+    assert len(list_frequencies) == len(list_elevation_energies)
+
+    # findpeaks:
+    # we look for minima (peaks looks for maxima, so -)
+    # we want peaks that are local peaks in their neighborhood and not just "super local minima": require distance = 3
+    # we want only peaks that are clear enough: normalize the spectrum so that the maximum is always 1.0, and want a prominence of at least 0.05
+    normalized_spectrum = -np.array(list_elevation_energies) / np.max(list_elevation_energies)
+    peaks_output = signal.find_peaks(normalized_spectrum, distance=3, prominence=0.05)
+
+    peaks = list(peaks_output[0])
+    if len(peaks) == 0:
+        peaks = [0]
+
+    # isolate the peak we want
+    # we are only interested in the first minimum, and it has to be low enough that it does correspond to a low freq. threshold
+    first_peak = peaks[0]
+    if list_frequencies[first_peak] > 0.10:  # the 0.1 value is somewhat arbitrary, but in practice we always have some energy at least there or before
+        first_peak = 0  # we keep all indexes if there was no clear minimum on the left (ie no low energy noise)
+
+    # we do not want to flag out valid parts of the spectrum when the spectrum is "really clean"
+    # in cases where the spectrum is "really clean", can happen that the first minimum is a local minimum after the first valid peak
+    # detect these cases and set the full spectrum as valid then
+    if (list_elevation_energies[first_peak] > ((list_elevation_energies[0] + list_elevation_energies[1]) / 2.0)):
+        first_peak = 0
+
+    index_low_frequency_cutoff = first_peak
+
+    return index_low_frequency_cutoff
 
 
 # --------------------------------------------------------------------------------
@@ -366,11 +428,40 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
     m2 = compute_spectral_moment(list_frequencies, list_elevation_energies, 2)
     m4 = compute_spectral_moment(list_frequencies, list_elevation_energies, 4)
 
+    # ic(list_frequencies)
+    # ic(list_elevation_energies)
+    # ic(m0)
+
     spectral_moments = Spectral_Moments(
         m0,
         m2,
         m4
     )
+
+    # add the post processed part
+
+    low_frequency_index_cutoff = find_low_frequency_cutoff(list_frequencies, list_elevation_energies)
+
+    processed_list_frequencies = list_frequencies[low_frequency_index_cutoff:]
+    processed_list_elevation_energies = list_elevation_energies[low_frequency_index_cutoff:]
+
+    processed_m0 = compute_spectral_moment(processed_list_frequencies, processed_list_elevation_energies, 0)
+    processed_m2 = compute_spectral_moment(processed_list_frequencies, processed_list_elevation_energies, 2)
+    processed_m4 = compute_spectral_moment(processed_list_frequencies, processed_list_elevation_energies, 4)
+
+    # ic(processed_list_frequencies)
+    # ic(processed_list_elevation_energies)
+    # ic(processed_m0)
+
+    processed_wave_spectral_moments = Spectral_Moments(
+        processed_m0,
+        processed_m2,
+        processed_m4,
+    )
+
+    processed_Hs = 4 * math.sqrt(processed_m0)
+    processed_Tz = math.sqrt(processed_m2 / processed_m0)
+    processed_Tc = math.sqrt(processed_m4 / processed_m2)
 
     decoded_packet = Waves_Packet(
         datetime_packet,
@@ -385,7 +476,14 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
         _BD_YWAVE_PACKET_FRQ_RES,
         list_elevation_energies,
         spectral_moments,
-        is_valid
+        is_valid,
+        processed_list_frequencies,
+        processed_list_elevation_energies,
+        processed_wave_spectral_moments,
+        processed_Hs,
+        processed_Tz,
+        processed_Tc,
+        low_frequency_index_cutoff,
     )
 
     if print_decoded:
@@ -405,9 +503,14 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
         ic(m0)
         ic(m2)
         ic(m4)
+        print("wave stats from moments")
         ic(4 * math.sqrt(m0))
         ic(math.sqrt(m2 / m0))
         ic(math.sqrt(m4 / m2))
+        print("wave stats from processed moments")
+        ic(processed_Hs)
+        ic(processed_Tz)
+        ic(processed_Tc)
         print("elevation energy spectrum:")
         for freq, energy in zip(list_frequencies, list_elevation_energies):
             print("  elevation spectrum energy at {:.8f} Hz : {:16.8f}".format(freq, energy))
