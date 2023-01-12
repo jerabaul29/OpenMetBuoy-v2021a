@@ -517,6 +517,9 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
         print("elevation energy spectrum:")
         for freq, energy in zip(list_frequencies, list_elevation_energies):
             print("  elevation spectrum energy at {:.8f} Hz : {:16.8f}".format(freq, energy))
+        print("processed elevation energy spectrum:")
+        for freq, energy in zip(processed_list_frequencies, processed_list_elevation_energies):
+            print("  processed elevation spectrum energy at {:.8f} Hz : {:16.8f}".format(freq, energy))
         if not is_valid:
             print("*** CAUTIOUS: THIS IS INVALID PACKET!!! ***")
         print("----- YWAVE END PRINT DERIVED -----")
@@ -757,7 +760,7 @@ def auto_test():
     decode_gnss_message(hex_to_bin_message(hex_in), print_decoded=True, print_debug_information=True)
     decode_message(hex_in)
 
-    hex_in = "591700000001000000D9D33440A1E9673E0AFC673E020A61430000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100050038005D0FE8FD6FC6E804220004000000000000000000000000000000000000000000000000000000000045"
+    hex_in = "59a016b363010000003e329b3c24dcce3df785203e122d1c398803dd0443057904e005f40d7c541748af0ad504a3036204aa0679073008fc07870e211b351cdf27b9933ccb40da03ca209a7586ce944625f70a6f0ae80aba0c9407cd0505088407c3089f0dce0f6f20954189cce8fd6737d9150b2bbd427640562d5153fe656656a83b9e2ea470000045" 
     ic(hex_in)
     decode_ywave_message(hex_to_bin_message(hex_in), print_decoded=True, print_debug_information=True)
     decode_message(hex_in)
