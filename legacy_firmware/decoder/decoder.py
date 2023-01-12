@@ -486,6 +486,9 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
         low_frequency_index_cutoff,
     )
 
+    processed_list_frequencies = list_frequencies
+    processed_list_elevation_energies = low_frequency_index_cutoff * [math.nan] + processed_list_elevation_energies
+
     if print_decoded:
         print("----- YWAVE START PRINT DECODED -----")
         ic(datetime_packet)
