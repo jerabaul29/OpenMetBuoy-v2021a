@@ -463,6 +463,9 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
     processed_Tz = math.sqrt(processed_m2 / processed_m0)
     processed_Tc = math.sqrt(processed_m4 / processed_m2)
 
+    processed_list_frequencies = list_frequencies
+    processed_list_elevation_energies = low_frequency_index_cutoff * [math.nan] + processed_list_elevation_energies
+
     decoded_packet = Waves_Packet(
         datetime_packet,
         spectrum_number,
@@ -485,9 +488,6 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
         processed_Tc,
         low_frequency_index_cutoff,
     )
-
-    processed_list_frequencies = list_frequencies
-    processed_list_elevation_energies = low_frequency_index_cutoff * [math.nan] + processed_list_elevation_energies
 
     if print_decoded:
         print("----- YWAVE START PRINT DECODED -----")
