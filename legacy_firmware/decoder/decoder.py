@@ -460,8 +460,8 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
     )
 
     processed_Hs = 4 * math.sqrt(processed_m0)
-    processed_Tz = math.sqrt(processed_m2 / processed_m0)
-    processed_Tc = math.sqrt(processed_m4 / processed_m2)
+    processed_Tz = 1.0 / math.sqrt(processed_m2 / processed_m0)
+    processed_Tc = 1.0 / math.sqrt(processed_m4 / processed_m2)
 
     processed_list_frequencies = list_frequencies
     processed_list_elevation_energies = low_frequency_index_cutoff * [math.nan] + processed_list_elevation_energies
@@ -760,7 +760,7 @@ def auto_test():
     decode_gnss_message(hex_to_bin_message(hex_in), print_decoded=True, print_debug_information=True)
     decode_message(hex_in)
 
-    hex_in = "59a016b363010000003e329b3c24dcce3df785203e122d1c398803dd0443057904e005f40d7c541748af0ad504a3036204aa0679073008fc07870e211b351cdf27b9933ccb40da03ca209a7586ce944625f70a6f0ae80aba0c9407cd0505088407c3089f0dce0f6f20954189cce8fd6737d9150b2bbd427640562d5153fe656656a83b9e2ea470000045" 
+    hex_in = "59a016b363010000003e329b3c24dcce3df785203e122d1c398803dd0443057904e005f40d7c541748af0ad504a3036204aa0679073008fc07870e211b351cdf27b9933ccb40da03ca209a7586ce944625f70a6f0ae80aba0c9407cd0505088407c3089f0dce0f6f20954189cce8fd6737d9150b2bbd427640562d5153fe656656a83b9e2ea470000045"
     ic(hex_in)
     decode_ywave_message(hex_to_bin_message(hex_in), print_decoded=True, print_debug_information=True)
     decode_message(hex_in)
