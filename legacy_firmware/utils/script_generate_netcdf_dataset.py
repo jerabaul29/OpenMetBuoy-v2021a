@@ -94,9 +94,10 @@ publisher_email_nc = ""
 # ------------------------------------------------------------------------------------------
 # useful for having some "pure drifters" vs some "drifteres with waves" instruments
 print("***** using a whitelist of admissible instruments for spectra information")
-list_instruments_use_spectra = ["PUT_INSTRUMENT_ID",
-                                "PUT_INSTRUMENT_ID"
-                                ]
+list_instruments_use_spectra = [
+    "PUT_INSTRUMENT_ID",
+    "PUT_INSTRUMENT_ID",
+]
 ic(list_instruments_use_spectra)
 
 # ------------------------------------------------------------------------------------------
@@ -142,7 +143,7 @@ ic(list_instruments_to_use)
 # some wave frequency stuff for the instrument v2021.a
 # note that we only use the instruments with a fftlen of 2048; if you use another fftlen or fft setup, you may need
 # to update at several locations - also the decoder
-list_frequencies = all_data["2022_seal1"]["spectra"][0].list_frequencies
+list_frequencies = all_data[list_instruments_use_spectra[0]]["spectra"][0].list_frequencies
 nbr_of_frequency_bins = len(list_frequencies)
 
 # ------------------------------------------------------------------------------------------
