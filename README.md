@@ -16,7 +16,7 @@ Geosciences (2022).
 - As a preprint: https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean , and as pdf on this repository (see **latest_preprint_MDPI_2022.pdf**),
 - As a published paper (open access, CC-BY license): https://www.mdpi.com/2076-3263/12/3/110 .
 
-You can either build the OMB yourself using the resources available on this repository, or buy it as a turn-key (but still open source and hackable) product from LabMaker Gmbh for a reasonable cost: https://www.labmaker.org/collections/earth-and-ecology/products/openmetbuoy (note: the screenshot under is from Sept. 2022, price and conditions at LabMaker may vary, and I am not affiliated to Labmaker nor getting any money from LabMaker).
+You can either build the OMB yourself using the resources available on this repository (total cost of the parts: around 550-600USD in late 2022), or buy it as a turn-key (but still open source and hackable) product from LabMaker Gmbh for a reasonable cost (around 1200USD in late 2022): https://www.labmaker.org/collections/earth-and-ecology/products/openmetbuoy (note: the screenshot under is from Sept. 2022, price and conditions at LabMaker may vary, and I am not affiliated to Labmaker nor getting any money from LabMaker).
 
 ![OMB_Labmaker](https://user-images.githubusercontent.com/8382834/191990617-ad533b96-0d03-4e05-a78f-1240b57d4700.png)
 
