@@ -18,6 +18,10 @@ The general schematic is as follows. The section belows are detailed instruction
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/general_schematic.jpg" width="800" />
 
+KiCAD schematic showing the use of the STM IMU breakout, credits Susanne Moen Olsen, MetNo.
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/CircuitDiamgram_OMB.png" width="800" />
+
 The finished buoy should in the end look like:
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/from_side.jpg" width="600" />
