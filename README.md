@@ -172,3 +172,18 @@ Credits: Takehiko Nose, preparing to assemble 50 OMBs.
 The OMB has also been used to test search and rescue systems - hard time floating alone in the middle of the Norwegian sea! Credits: Forsvarets 330 Skv. Avd Sola.
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/search_and_rescue_doll" width="600" />
+
+### OMB are small but tough - rounding 330 days on Antarctic drift ice
+
+The OMB is small but though. So far our record is having an OMB survive the harsh Antarctic environment for 330 days, drifting over 3000 kilometers, before the ice under it got broken and melt away during a summer storm. Amazing quality of assembly and deployment by the University of Tokyo, who are proud users of the OMB design!
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/misc/OMB_UoT.jpeg" width="400" />
+
+Credits: Takehiko Nose et. al., University of Tokyo.
+
+### This is what deployment "en masse" looks like!
+
+The reduced cost of the OMB allows to perform deployments "en masse": here, over 70 OMB trajectories, all gathered during the summer and fall 2022, around the Svalbard archipelago, by a range of contributors (University of Tokyo, Norwegian Meteorological Institute, University in Tromø, University in Bergen).
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/misc/all_drifters_outreach.png" width="400" />
+
