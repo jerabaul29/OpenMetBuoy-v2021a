@@ -117,6 +117,14 @@ If you look for OMB data, go there to get some examples. If you have some OMB da
 
 If you have more fun / goofy / strange pictures or stories that can fit in here, just share them as an issue or open a pull request!
 
+### The OMB is polar bears approved
+
+Polar bears approve of the use of OMBs to help monitor, understand, and protect their ecosystem!
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/misc/OMB_Polar_Bear_Mario_Hoppmann.jpg" width="400" />
+
+Picture credits Mario Hoppmann, AWI.
+
 ### Floatenstein, the ugly drifter
 
 A buoy that needed to fly by plane (so Li batteries not allowed) had to be equipped with 3 Alkaline D cells in series instead. Alkaline batteries are heavier than Li batteries, so it was not floating. The solution was to add two chunks of styrofoam, wrapped in duct tape, fixed with cable nilon strips, all of it tightened with bathroom silicon. That made for an ugly, sticky, stinky instrument, but meh, it crossed the Caribbeans without any issue, so don't worry about how your instruments look like - as long as they work! :) .
