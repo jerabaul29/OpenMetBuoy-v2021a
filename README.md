@@ -121,7 +121,7 @@ If you have more fun / goofy / strange pictures or stories that can fit in here,
 
 Polar bears approve of the use of OMBs to help monitor, understand, and protect their ecosystem!
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/misc/OMB_Polar_Bear_Mario_Hoppmann.jpg" width="400" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/misc/OMB_Polar_Bear_Mario_Hoppmann.jpg" width="600" />
 
 Picture credits Mario Hoppmann, AWI.
 
