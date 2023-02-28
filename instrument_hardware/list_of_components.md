@@ -112,4 +112,7 @@ You will also need the usual "small extras" when doing electronics and assemblin
 - bathroom silicon
 - plastic "pop / snap" rivets: I recommend the ones with diameter 3mm, length 9mm, though may be possible to do with a bit different rivets: https://no.rs-online.com/web/p/rivets/0280824 Richco Nylon Snap Rivet, 3mm diameter, 9mm length
 - various tools (cutter, drill, etc)
+- if using the PCB, male and female headers to put on: you will need standard 0.1" / 2.54mm, 1 row, male and female; for example something like:
+  - WR-PHD Straight Male, PCB Header, Through Hole, 1 Rows, 40 Contacts, 2.54mm Pitch, Würth Elektronik: https://www.elfadistrelec.no/en/wr-phd-straight-male-pcb-header-through-hole-rows-40-contacts-54mm-pitch-wuerth-elektronik-61304011121/p/30024557?trackQuery=Pin+header%2c+Straight+0.1%22&pos=8&origPos=8&origPageSize=50&track=true
+  - Straight Female, PCB Receptacle, Through Hole, 1 Rows, 32 Contacts, 2.54mm Pitch, Preci-Dip: https://www.elfadistrelec.no/en/801-straight-female-pcb-receptacle-through-hole-rows-32-contacts-54mm-pitch-preci-dip-801-87-032-10-001101/p/14383998?trackQuery=Pin+header%2c+Straight+0.1+inch+female&pos=7&origPos=554&origPageSize=50&track=true
 
