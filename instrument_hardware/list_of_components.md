@@ -6,15 +6,15 @@ List of components needed to build the instrument. Note that additional function
 
 ### Extension cable or SMA 90 degrees adapter
 
+- 1 x SMA Female to SMA Male L-shaped 90 degrees adapter: 7USD : https://no.farnell.com/amphenol/sma5072a2-3gt50g-50/adaptor-sma-plug-sma-jack-50ohm/dp/1111341 SMA5072A2-3GT50G-50 or similar; this will allow to have the AGT lying horizontal while having the antenna point upwards more or less vertical, and results in better signal quality; If you box has space for this solution, this is the one I recommend (or the last one if the AGT can stand "up")
+
+or
+
 - 1 x SMA Female to SMA Male 25cm: 5.5USD : https://www.sparkfun.com/products/12861 if you want to be able to move the antenna around; however, some user feedback indicates that this reduces the quality of the signal and reception
 
 or
 
-- 1 x SMA Female to SMA Male L-shaped 90 degrees adapter: 7USD : https://no.farnell.com/amphenol/sma5072a2-3gt50g-50/adaptor-sma-plug-sma-jack-50ohm/dp/1111341 SMA5072A2-3GT50G-50 or similar; this will allow to have the AGT lying horizontal while having the antenna point upwards more or less vertical, and results in better signal quality
-
-or
-
-- just have a box / setup in which the AGT can be oriented vertically, so the antenna can be put on top of the AGT without any adapter and still can point upwards.
+- just have a box / setup in which the AGT can be oriented vertically, so the antenna can be put on top of the AGT without any adapter and still can point upwards; if you use a large box with the AGT pointing up, this is of course the best.
 
 ### Antenna
 
