@@ -146,6 +146,7 @@ bool GNSS_Manager::get_and_push_fix(unsigned long timeout_seconds){
   print_GNSS_fixes_buffer();
   
   if(get_a_fix(timeout_seconds, true, true, false)){
+    
     number_of_GPS_fixes += 1;
 
     // clear the accumulators
@@ -154,9 +155,9 @@ bool GNSS_Manager::get_and_push_fix(unsigned long timeout_seconds){
     crrt_accumulator_posix_timestamp.clear();
 
     // push the current fix
-    crrt_accumulator_latitude.push_back(latitude);
-    crrt_accumulator_longitude.push_back(longitude);
-    crrt_accumulator_posix_timestamp.push_back(posix_timestamp);
+    // crrt_accumulator_latitude.push_back(latitude);
+    // crrt_accumulator_longitude.push_back(longitude);
+    // crrt_accumulator_posix_timestamp.push_back(posix_timestamp);
 
     // to be on the safe side, get a few extra fixes, and do some filtering on it to keep only "good" fixes;
     // maybe this helps avoid the "bad fix" problems (?)
@@ -166,10 +167,16 @@ bool GNSS_Manager::get_and_push_fix(unsigned long timeout_seconds){
 
     // sample of few extra fixes for the n-sigma filtering; we sample at most enough to fill
     // the accumulators, and we use at most 60 seconds
-    int crrt_fix_nbr {1};
+    int crrt_fix_nbr {0};
     unsigned long millis_start = millis();
     while ( (crrt_fix_nbr < size_accumulators-1) && (millis() - millis_start < 60000UL)){
       if(get_a_fix(5UL, true, false, false)){
+      
+        if ((latitude == 0) && (longitude == 0)){
+          Serial.println(F("ignore lat lon 0 fix"));
+          continue;
+        }
+        
         crrt_fix_nbr += 1;
         crrt_accumulator_latitude.push_back(latitude);
         crrt_accumulator_longitude.push_back(longitude);
