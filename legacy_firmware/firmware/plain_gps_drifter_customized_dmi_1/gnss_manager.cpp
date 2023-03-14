@@ -146,8 +146,6 @@ bool GNSS_Manager::get_and_push_fix(unsigned long timeout_seconds){
   print_GNSS_fixes_buffer();
   
   if(get_a_fix(timeout_seconds, true, true, false)){
-    
-    number_of_GPS_fixes += 1;
 
     // clear the accumulators
     crrt_accumulator_latitude.clear();
@@ -189,33 +187,45 @@ bool GNSS_Manager::get_and_push_fix(unsigned long timeout_seconds){
     turn_gnss_off();
     Wire1.end();
 
-    // then, get the values for the filtered lat, lon, timestamp
-    long crrt_latitude = accurate_sigma_filter<long>(crrt_accumulator_latitude, 2.0);
-    long crrt_longitude = accurate_sigma_filter<long>(crrt_accumulator_longitude, 2.0); 
-    long crrt_posix_timestamp = accurate_sigma_filter<long>(crrt_accumulator_posix_timestamp, 2.0); 
+    if (crrt_fix_nbr > 0){
+        Serial.println(F("compute averaged fix"));
+        
+        // then, get the values for the filtered lat, lon, timestamp
+        long crrt_latitude = accurate_sigma_filter<long>(crrt_accumulator_latitude, 2.0);
+        long crrt_longitude = accurate_sigma_filter<long>(crrt_accumulator_longitude, 2.0); 
+        long crrt_posix_timestamp = accurate_sigma_filter<long>(crrt_accumulator_posix_timestamp, 2.0); 
 
-    fix_information crrt_fix {crrt_posix_timestamp, crrt_latitude, crrt_longitude};
+        fix_information crrt_fix {crrt_posix_timestamp, crrt_latitude, crrt_longitude};
 
-    // if already full, need to make some space
-    if (gps_fixes_buffer.full()){
-      gps_fixes_buffer.pop_front();
+        // if already full, need to make some space
+        if (gps_fixes_buffer.full()){
+          gps_fixes_buffer.pop_front();
+        }
+
+        // push at the end the last fix
+        gps_fixes_buffer.push_back(crrt_fix);
+
+        Serial.print(F("pushed fix: "));
+        Serial.print(crrt_fix.posix_timestamp);
+        Serial.print(F(" | "));
+        Serial.print(crrt_fix.latitude);
+        Serial.print(F(" | "));
+        Serial.print(crrt_fix.longitude);
+        Serial.println();
+
+        Serial.println(F("end with GNSS buffer:"));
+        print_GNSS_fixes_buffer();
+        
+        number_of_GPS_fixes += 1;
+
+        return true;
     }
-
-    // push at the end the last fix
-    gps_fixes_buffer.push_back(crrt_fix);
-
-    Serial.print(F("pushed fix: "));
-    Serial.print(crrt_fix.posix_timestamp);
-    Serial.print(F(" | "));
-    Serial.print(crrt_fix.latitude);
-    Serial.print(F(" | "));
-    Serial.print(crrt_fix.longitude);
-    Serial.println();
-
-    Serial.println(F("end with GNSS buffer:"));
-    print_GNSS_fixes_buffer();
-
-    return true;
+    else {
+        Serial.println(F("no valid fix after all, abort fix pushing"));
+        Serial.println(F("end with GNSS buffer:"));
+        print_GNSS_fixes_buffer();
+        return false;
+    }
   }
 
   turn_gnss_off();
