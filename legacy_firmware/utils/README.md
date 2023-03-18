@@ -17,3 +17,25 @@ Some examples of utils to get the binary messages from Rock7 and process them. R
 - the ```*_cookie_*.sh``` scripts show examples of how to locally generate some cookie for sharing with colleagues.
 
 - in addition, we provide script examples for i) packing the .pkl data dict into netCDF-CF files, ii) displaying the data from the created netCDF file.
+
+## conda env
+
+All of this can be run from a conda env:
+
+- To create the environment:
+
+```
+conda env create -f OMBdata_env.yml
+```
+
+- To update if yml-file has changed:
+
+```
+conda env update --file OMBdata_env.yml --prune 
+```
+
+- To use the environment:
+
+```
+conda activate OMBdata
+```

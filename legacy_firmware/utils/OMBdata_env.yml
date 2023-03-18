@@ -1,0 +1,20 @@
+# To create the environment:
+# #########################
+# conda env create -f OMBdata_env.yml
+#    To update if yml-file has changed:
+#    conda env update --file OMBdata_env.yml --prune 
+# To use the environment:
+# ######################
+# conda activate OMBdata
+name: OMBdata
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.9
+  - scipy
+  - netCDF4
+  - matplotlib
+  - cartopy
+  - click
+  - icecream
+  - tqdm
