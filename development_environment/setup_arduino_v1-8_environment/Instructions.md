@@ -13,11 +13,28 @@ To upload the binaries:
 ~$ sudo apt-get install python3-pyqt5.qtserialport python3-serial
 ```
 - download the sparkfun tool: https://github.com/sparkfun/Artemis-Firmware-Upload-GUI , either by cloning the repository, or by downloading the zip.
+
+A note here: I use a relatively old version of this tool and got feedback that more recent versions may have issues; if you are in doubt, use the corresponding version of the GUI tool:
+
+```
+~/Desktop/Git/Artemis-Firmware-Upload-GUI [master ↓9|✔]> git log
+commit bdc3a9a0a01aef39a39d33e38292350f9e277200 (HEAD -> master, tag: v1.1)
+Merge: 147e06e 3a3bfae
+Author: Paul <pc235603@gmail.com>
+Date:   Fri Aug 13 12:10:29 2021 +0100
+
+    Merge pull request #9 from sparkfun/latest_svl_bin
+   
+    Update Windows exe with most recent v5 svl.bin.
+```
+
 - the executable does not seem to work out of the box due to some broken dependencies, but this is not an issue, as the python executable works just fine; for example, from the downloaded zip:
 ```
 ~/Downloads/Artemis-Firmware-Upload-GUI-master/tools$ python3 artemis_firmware_uploader_gui.py 
 ```
 - in the GUI, choose the firmware file to upload, the COM port of the Artemis, the baudrate (I recommend 921600), and click "Upload Firmware". This will flash the given firmware on the Artemis.
+
+A note here: as usual, your user will need to be in the dialout group on linux systems to be have the rights necessary to be able to manipulate the serial ports as needed; see "arduino dialout serial" and similar on google for more information.
 
 # Compiling the firware yourself
 
