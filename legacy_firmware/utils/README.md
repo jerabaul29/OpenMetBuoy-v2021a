@@ -1,5 +1,7 @@
 Some examples of utils to get the binary messages from Rock7 and process them. Relies on Bash and Python3. These are only coarse examples, you will need to adapt to your needs.
 
+## Workflow v1
+
 - to run the full update automatically, run: ```bash script_regenerate_all.sh```. Note that there are 3 options to get the raw data:
   - apirequest : will need a file ```username.secret``` with content ```USERNAME="YOUR_USERNAME"``` and a file ```password.secret``` with content ```PASSWORD="YOUR_PASSWORD"```, substituting with the correct values (be careful to not share publicly this information! In particular, be careful if you have an open repository and you use git / github / gitlab / similar). The URL encoding is done in the script, there is not need to URL encode the username and password.
   - download : this assumes that you have downloaded by hand the CSV file you need, and that it is in the ```~/Downloads``` folder
@@ -18,7 +20,7 @@ Some examples of utils to get the binary messages from Rock7 and process them. R
 
 - in addition, we provide script examples for i) packing the .pkl data dict into netCDF-CF files, ii) displaying the data from the created netCDF file.
 
-## conda env
+#### using in a conda env
 
 All of this can be run from a conda env:
 
@@ -39,3 +41,9 @@ conda env update --file OMBdata_env.yml --prune
 ```
 conda activate OMBdata
 ```
+
+## Workflow v2
+
+Note that this workflow relies on software that is still partially under development :) .
+
+TODO?
