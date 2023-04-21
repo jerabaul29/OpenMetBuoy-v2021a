@@ -1,5 +1,7 @@
 # Instructions for building the waves in ice instruments
 
+**Note**: A master PCB is being developed and makes assembly much easier and faster; if interested, take contact directly to get access to the PCB files and instructions on how to get it produced and assemble the OMB with the master PCB.
+
 A few high level rules:
 
 - Protect "naked" metal with duct tape, to avoid any possibility for short circuit if things move around in the box.
@@ -127,6 +129,14 @@ This is only to be used if the wave measurement functionality should be part of 
 - put the components in position on the plastic plate and in the box; if possible, try to locate the 9dof sensor on the opposite side to the magnet. The orientation of the 9dof sensor does not play any role (as it will compute its orientation automatically and compensate for it), just make sure that it is stably fixed with some duct tape, snap river, or similar. I personally wrap it in tape (no naked metal policy), and tape it and add a dot of epoxy to keep it stable.
 - if you want people to contact you when they find the box, print or write a piece of paper with your email, phone number etc, and tape it on the inside of the box lid, visible from outside
 - add a desiccant silica gel bag into the box to make sure that there will be no issues with condensation
+
+## A note about the assembly: antenna positioning
+
+- The antenna should point upwards, ideally as vertical as possible, though having a tilt angle up to 45 to 60 degrees in case the space in the box is limited is fine in our experience.
+- Ideally, there should be nothing (apart from the lid of the box) on the way between the antenna and the open sky; so, the antenna should be "under the lid, on the top" of the box
+- When assembly is performed as described here, and a base non conductive plastic plate is used, these instructions are enough to ensure good signal communication. In the case where a master PCB or similar is used, the master PCB ground plate can act as a base plate from a RF point of view. Then you should make sure that the antenna is as much as possible "fully above" the base plate obtained. See the drawing below.
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/illustration_antenna_placement_using_PCB.jpg" width="400" />
 
 ## Final test and assembly
 
