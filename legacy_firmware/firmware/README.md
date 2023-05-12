@@ -23,7 +23,7 @@ Of course, all versions of the firmware can be tuned to your needs; see in parti
 
 In case you want to compile your own firmware versions yourself, the simplest way is to do so in Docker, to make sure you have you environment set up correctly including all tools and dependencies.
 
-The provided Dockerfile (credits @gauteh , many thanks for developing this!) allows to reliably and reproducibely build the firmwares, by setting all the dependencies and tooling in exactly the way specified in the Dockerfile, and using this environmen to build. See any tutorial about docker online for more information. The instructions below should ensure that you are able to build even if you are not familiar with docker.
+The provided Dockerfile (https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/legacy_firmware/firmware/Dockerfile credits @gauteh , many thanks for developing this!) allows to reliably and reproducibely build the firmwares, by setting all the dependencies and tooling in exactly the way specified in the Dockerfile, and using this environmen to build. See any tutorial about docker online for more information. The instructions below should ensure that you are able to build even if you are not familiar with docker.
 
 - make sure you have docker (or podman, or singularity, these should be drop in replaceable) installed on your machine; see the latest instructions from the tool you want to use. I will assume docker in the following (though docker is on its way to being deprecated in favor of podman and singularity). If you use singularity or podman, just replace "docker" by the corresponding tool in the commands.
 
@@ -50,7 +50,7 @@ root@9ecf3c47682e:/work# cd OpenMetBuoy-v2021a/legacy_firmware/firmware/steval_l
 root@9ecf3c47682e:/work/OpenMetBuoy-v2021a/legacy_firmware/firmware/steval_lsm6DSOX_gps_waves_drifter# mv tracker.ino steval_lsm6DSOX_gps_waves_drifter.ino
 ```
 
-- compile and exit the container; note the location where the binary firmware was generated (here, the /tmp/arduino/sketches/705AC3464EF059C0473A6EBFB8A15A77/steval_lsm6DSOX_gps_waves_drifter.ino.axf folder)
+- compile and exit the container; note the location where the binary firmware was generated (here, the ```/tmp/arduino/sketches/705AC3464EF059C0473A6EBFB8A15A77/steval_lsm6DSOX_gps_waves_drifter.ino.axf``` folder)
 
 ```
 root@9ecf3c47682e:/work/OpenMetBuoy-v2021a/legacy_firmware/firmware/steval_lsm6DSOX_gps_waves_drifter# arduino-cli compile -v -b SparkFun:apollo3:artemis .
@@ -78,10 +78,10 @@ Used platform    Version Path
 SparkFun:apollo3 1.2.1   /root/.arduino15/packages/SparkFun/hardware/apollo3/1.2.1
 root@9ecf3c47682e:/work/OpenMetBuoy-v2021a/legacy_firmware/firmware/steval_lsm6DSOX_gps_waves_drifter# exit
 exit
-~/Desktop/Git/OpenMetBuoy-v2021a/legacy_firmware/firmware [main|✚1…1]>
+~/Desktop/Git/OpenMetBuoy-v2021a/legacy_firmware/firmware>
 ```
 
-- extract the firmware that just got compiled from the docker container into your host local folder; note that you need to use the ID of the container (that you can see in the command line information from above, in this case 9ecf3c47682e), and the path where the binary was generated (from the previous step):
+- extract the firmware that just got compiled from the docker container into your host local folder; note that you need to use the ID of the container (that you can see in the command line information from above, in this case ```9ecf3c47682e```), and the path where the binary was generated (from the previous step):
 
 ```
 ~/Desktop/Git/OpenMetBuoy-v2021a/legacy_firmware/firmware> docker cp 9ecf3c47682e:/tmp/arduino/sketches/705AC3464EF059C0473A6EBFB8A15A77/steval_lsm6DSOX_gps_waves_drifter.ino.bin custom_firmware.bin
