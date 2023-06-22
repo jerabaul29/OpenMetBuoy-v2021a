@@ -37,6 +37,15 @@ Quick walkthrough:
 - test and seal: we recommend to i) install batteries and put a dessiccant bag, ii) screw the lid, iii) put outside and do a test for a day to check messages are received as expected and the instrument works. Once this is done and it is confirmed that the instrument works well, seal it with bathroom silicon to make it 100% watertight; put the magnet and make sure the instrument is switched off.
 - deploy: to deploy, all you need to do is remove the magnet and the instrument will turn on. Remember to have an active Rock7 subscription and enough credits!
 
+## Estimating autonomy + cost
+
+To estimate battery autonomy + iridium costs, see respectively:
+
+- https://arxiv.org/pdf/2201.08384.pdf Table 1 + caption
+- https://arxiv.org/pdf/2201.08384.pdf Table 3 + caption
+
+You may need to adapt depending on the exact GPS and wave measurement frequency you use. Note that the published paper https://www.mdpi.com/2076-3263/12/3/110 contains a lot less information on these aspects (a reviewer asked us to remove the details from the paper as they found these too technical; don't be this reviewer, let users include technical description into their paper when they think user will need it (i.e. we regularly receive request for more detailed explanations about how the power consumption can be estimated, and have to refer the readers to the preprint initially submitted, as the details were removed from the paper following a request from the reviewer)!), so refer to the preprint above for these calculations!
+
 ## Taking contact
 
 In case of any question, open an issue on the present GH repository to get help: https://github.com/jerabaul29/OpenMetBuoy-v2021a/issues .
