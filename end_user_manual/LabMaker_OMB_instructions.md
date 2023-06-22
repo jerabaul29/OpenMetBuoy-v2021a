@@ -14,7 +14,7 @@ Keep in mind the following to avoid damaging your OMB:
 
 You will need a couple of extras for using the OMB from Labmaker:
 
-- batteries are not included; you will need SAFT LSH20 batteries (2x). Other D-cell-format, Lithium 3.6V batteries may work, but this comes without guarantee from us (and make sure if you use another kind / supplier of Li batteries to use batteries that these are 3.6V, and can provide enough current - at least up to around 200mA in bursts)
+- batteries are not included; you will need SAFT LSH20 batteries (2x in parallel; make sure to follow the polarity indicated on the battery holders + PCB). Other D-cell-format, Lithium 3.6V batteries may work, but this comes without guarantee from us (and make sure if you use another kind / supplier of Li batteries to use batteries that these are 3.6V, and can provide enough current - at least up to around 200mA in bursts)
 - to make the OMB fully watertight, we recommend using "bathroom silicon" to seal the box once the batteries are inserted
 - we recommend inserting "dessiccant bags" to make sure there is no humidity / condensation happening when there are temperature changes.
 
