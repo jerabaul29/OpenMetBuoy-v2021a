@@ -46,6 +46,14 @@ To estimate battery autonomy + iridium costs, see respectively:
 
 You may need to adapt depending on the exact GPS and wave measurement frequency you use. Note that the published paper https://www.mdpi.com/2076-3263/12/3/110 contains a lot less information on these aspects (a reviewer asked us to remove the details from the paper as they found these too technical; don't be this reviewer, let users include technical description into their paper when they think user will need it (i.e. we regularly receive request for more detailed explanations about how the power consumption can be estimated, and have to refer the readers to the preprint initially submitted, as the details were removed from the paper following a request from the reviewer)!), so refer to the preprint above for these calculations!
 
+## Quick web overview
+
+If you want access to a quick web overview such as:
+
+![wavebug](https://github.com/jerabaul29/OpenMetBuoy-v2021a/assets/8382834/66307be8-3b1d-4aaf-aad9-a64111b2a3b6)
+
+Take contact at jean.rblt@gmail.com for more information and to have your buoys registered in our system.
+
 ## Taking contact
 
 In case of any question, open an issue on the present GH repository to get help: https://github.com/jerabaul29/OpenMetBuoy-v2021a/issues .
