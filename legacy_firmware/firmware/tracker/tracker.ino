@@ -48,11 +48,11 @@ void setup(){
 
   // to test the functionalities: sleep, thermistors
   #ifndef DISABLE_ALL_THERMISTOR
-    if (true){
+    if (false){
       sleep_for_seconds(5);
       board_thermistors_manager.get_and_push_data();
-      sleep_for_seconds(5);
-      board_wave_analyzer.gather_and_analyze_wave_data();
+      //board_thermistors_manager.get_and_push_data();
+      //board_thermistors_manager.get_and_push_data();
       sleep_for_seconds(5);
       iridium_manager.attempt_transmit_thermistors_packets(1);
       sleep_for_seconds(5);

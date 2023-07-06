@@ -69,12 +69,12 @@ void print_params(void){
     Serial.print(F("tolerance_seconds_start_thermistors_measurements: ")); Serial.println(tolerance_seconds_start_thermistors_measurements);
     Serial.print(F("max number of temp sensors: ")); Serial.println(number_of_thermistors);
     Serial.print(F("duration temp sensors acquisition [ms]: ")); Serial.println(duration_thermistor_acquisition_ms);
-    Serial.print(F("duration imu acquisition for temp string attitutde [ms]: ")); Serial.println(duration_thermistor_imu_acquisition_ms);
+    // Serial.print(F("duration imu acquisition for temp string attitutde [ms]: ")); Serial.println(duration_thermistor_imu_acquisition_ms);
     Serial.print(F("max_nbr_thermistor_packet: ")); Serial.println(max_nbr_thermistor_packets);
     Serial.print(F("min_default_nbr_thermistor_packet: ")); Serial.println(min_default_nbr_thermistor_packets);
     Serial.print(F("size_thermistors_packet_buffer: ")); Serial.println(size_thermistors_packets_buffer);
-    Serial.print(F("roll_float_to_int8_factor: ")); Serial.println(roll_float_to_int8_factor);
-    Serial.print(F("pitch_float_to_int8_factor: ")); Serial.println(pitch_float_to_int8_factor);
+    // Serial.print(F("roll_float_to_int8_factor: ")); Serial.println(roll_float_to_int8_factor);
+    // Serial.print(F("pitch_float_to_int8_factor: ")); Serial.println(pitch_float_to_int8_factor);
     delay(50);
 
     Serial.println(F("----- MISC PARAMS -----"));

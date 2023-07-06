@@ -76,15 +76,15 @@
     Serial.print(F("posix_timestamp: ")); Serial.println(packet.posix_timestamp); delay(5);
     // Serial.print(F("reading_number: ")); Serial.println(packet.reading_number); delay(5);
 
-    Serial.print(F("pitch mean: ")); Serial.print(packet.mean_pitch); delay(5);
-      Serial.print(F(" | min: ")); Serial.print(packet.min_pitch); delay(5);
-      Serial.print(F(" | max: ")); Serial.print(packet.max_pitch); delay(5);
-      Serial.println();
+    // Serial.print(F("pitch mean: ")); Serial.print(packet.mean_pitch); delay(5);
+    //   Serial.print(F(" | min: ")); Serial.print(packet.min_pitch); delay(5);
+    //   Serial.print(F(" | max: ")); Serial.print(packet.max_pitch); delay(5);
+    //   Serial.println();
 
-    Serial.print(F("roll mean: ")); Serial.print(packet.mean_roll); delay(5);
-      Serial.print(F(" | roll min: ")); Serial.print(packet.min_roll); delay(5);
-      Serial.print(F(" | roll max: ")); Serial.print(packet.max_roll); delay(5);
-      Serial.println();
+    // Serial.print(F("roll mean: ")); Serial.print(packet.mean_roll); delay(5);
+    //   Serial.print(F(" | roll min: ")); Serial.print(packet.min_roll); delay(5);
+    //   Serial.print(F(" | roll max: ")); Serial.print(packet.max_roll); delay(5);
+    //   Serial.println();
 
     for (int crrt_ind=0; crrt_ind<number_of_thermistors; crrt_ind++){
       Serial.print(F("thermistor ")); Serial.print(crrt_ind);
@@ -114,6 +114,8 @@
 
     // ask for one conversion to start
     request_start_thermistors_conversion();
+    
+    thermistors_packet.posix_timestamp =  board_time_manager.get_posix_timestamp();
   }
 
     void Thermistors_Manager::stop(void) {

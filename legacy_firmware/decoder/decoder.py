@@ -63,12 +63,12 @@ assert _BD_YWAVE_PACKET_LENGTH == LENGTH_FROM_SERIAL_OUTPUT, "the arduino printo
 ####################
 # properties of the thermistors packets
 _BD_THERM_MSG_FIXED_LENGTH = 3  # start byte, byte metadata nbr packets, byte end
-_BD_THERM_MSG_NBR_THERMISTORS = 6
+_BD_THERM_MSG_NBR_THERMISTORS = 4
 _BD_THERM_PACKET_NBR_BYTES_PER_THERMISTOR = 3
-_BD_THERM_PACKET_LENGTH = 1 + 1*4 + _BD_THERM_PACKET_NBR_BYTES_PER_THERMISTOR * _BD_THERM_MSG_NBR_THERMISTORS * 1 + 6*1
+_BD_THERM_PACKET_LENGTH = 1 + 1*4 + _BD_THERM_PACKET_NBR_BYTES_PER_THERMISTOR * _BD_THERM_MSG_NBR_THERMISTORS * 1
 # these are from the params of the tracker
-_BD_THERM_ROLL_FLOAT_TO_INT8_FACTOR = 0.7
-_BD_THERM_PITCH_FLOAT_TO_INT8_FACTOR = 1.4
+# _BD_THERM_ROLL_FLOAT_TO_INT8_FACTOR = 0.7
+# _BD_THERM_PITCH_FLOAT_TO_INT8_FACTOR = 1.4
 # factor for converting bin 12 bits signed int to temperature; from thermistor datasheet
 _BD_THERM_12BITS_TO_FLOAT_TEMPERATURE_FACTOR = 1.0 / 16.0
 
@@ -180,12 +180,6 @@ class Thermistors_Reading:
 class Thermistors_Packet:
     datetime_packet: datetime.datetime
     thermistors_readings: list
-    mean_pitch: float
-    min_pitch: float
-    max_pitch: float
-    mean_roll: float
-    min_roll: float
-    max_roll: float
 
 
 @dataclass
@@ -599,12 +593,6 @@ def print_thermistor_reading(crrt_thermistor_reading):
 
 def print_thermistor_packet(crrt_thermistor_packet):
     ic(crrt_thermistor_packet.datetime_packet)
-    ic(crrt_thermistor_packet.mean_pitch)
-    ic(crrt_thermistor_packet.min_pitch)
-    ic(crrt_thermistor_packet.max_pitch)
-    ic(crrt_thermistor_packet.mean_roll)
-    ic(crrt_thermistor_packet.min_roll)
-    ic(crrt_thermistor_packet.max_roll)
 
     for ind, crrt_thermistor_reading in enumerate(crrt_thermistor_packet.thermistors_readings):
         print("--- thermistor reading nbr {}".format(ind))
@@ -635,43 +623,11 @@ def decode_thermistors_packet(bin_packet, print_decoded=False, print_debug_infor
         assert isinstance(crrt_thermistor_reading, Thermistors_Reading)
         list_thermistors_readings.append(crrt_thermistor_reading)
 
-    mean_pitch_bin = one_byte_to_signed_int(bin_packet[crrt_start_field: crrt_start_field+1])
-    crrt_start_field += 1
-
-    mean_roll_bin = one_byte_to_signed_int(bin_packet[crrt_start_field: crrt_start_field+1])
-    crrt_start_field += 1
-
-    min_pitch_bin = one_byte_to_signed_int(bin_packet[crrt_start_field: crrt_start_field+1])
-    crrt_start_field += 1
-
-    max_pitch_bin = one_byte_to_signed_int(bin_packet[crrt_start_field: crrt_start_field+1])
-    crrt_start_field += 1
-
-    min_roll_bin = one_byte_to_signed_int(bin_packet[crrt_start_field: crrt_start_field+1])
-    crrt_start_field += 1
-
-    max_roll_bin = one_byte_to_signed_int(bin_packet[crrt_start_field: crrt_start_field+1])
-    crrt_start_field += 1
-
     assert crrt_start_field == _BD_THERM_PACKET_LENGTH
-
-    if print_debug_information:
-        ic(mean_pitch_bin)
-        ic(mean_roll_bin)
-        ic(min_pitch_bin)
-        ic(max_pitch_bin)
-        ic(min_roll_bin)
-        ic(max_roll_bin)
 
     crrt_thermistor_packet = Thermistors_Packet(
         datetime_packet=datetime_packet,
         thermistors_readings=list_thermistors_readings,
-        mean_pitch=mean_pitch_bin / _BD_THERM_PITCH_FLOAT_TO_INT8_FACTOR,
-        min_pitch=min_pitch_bin / _BD_THERM_PITCH_FLOAT_TO_INT8_FACTOR,
-        max_pitch=max_pitch_bin / _BD_THERM_PITCH_FLOAT_TO_INT8_FACTOR,
-        mean_roll=mean_roll_bin / _BD_THERM_ROLL_FLOAT_TO_INT8_FACTOR,
-        min_roll=min_roll_bin / _BD_THERM_ROLL_FLOAT_TO_INT8_FACTOR,
-        max_roll=max_roll_bin / _BD_THERM_ROLL_FLOAT_TO_INT8_FACTOR
     )
 
     if print_decoded:
@@ -765,7 +721,7 @@ def auto_test():
     decode_ywave_message(hex_to_bin_message(hex_in), print_decoded=True, print_debug_information=True)
     decode_message(hex_in)
 
-    hex_in = "54025043000000E85C40605BC1205C41205C41105DC1045CC00608060608085021000000E85C01605BC1205C40205C41105DC0045C8106080606080845"
+    hex_in = "54035086000000CC6FD7806E5A8074D92063C25048000000CC769B8061C1806F922063C15009000000CC71578061C18062C120640245"
     ic(hex_in)
     decode_thermistors_message(hex_to_bin_message(hex_in), print_decoded=True, print_debug_information=True)
     decode_message(hex_in)

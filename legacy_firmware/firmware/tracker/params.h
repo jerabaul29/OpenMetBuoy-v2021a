@@ -199,16 +199,16 @@ constexpr long interval_between_thermistors_measurements_seconds = interval_betw
 constexpr long tolerance_seconds_start_thermistors_measurements {5 * 60};
 
 // how many thermistors to use on the thermistor string, at most
-constexpr int number_of_thermistors {6};
+constexpr int number_of_thermistors {4};
 
 // duration over which sample thermistor data
 constexpr int duration_thermistor_acquisition_ms {60000};
 // duration over which sample IMU data to get the attitude information
-constexpr int duration_thermistor_imu_acquisition_ms {60000};
-constexpr int number_of_thermistor_imu_measurements = duration_thermistor_imu_acquisition_ms / 100;
+// constexpr int duration_thermistor_imu_acquisition_ms {60000};
+// constexpr int number_of_thermistor_imu_measurements = duration_thermistor_imu_acquisition_ms / 100;
 
 // max number of thermistor packets that we transmit in a single thermistors message
-constexpr size_t max_nbr_thermistor_packets {8};
+constexpr size_t max_nbr_thermistor_packets {14};
 
 // min number of thermistors readings sent at once by defaul
 constexpr size_t min_default_nbr_thermistor_packets {4};
@@ -217,9 +217,9 @@ constexpr size_t min_default_nbr_thermistor_packets {4};
 constexpr size_t size_thermistors_packets_buffer {256};
 
 // roll is -180 to 180; to map it to -128 to 127 maximum
-constexpr float roll_float_to_int8_factor {0.7f};  // 180 * 0.7 = 126
+// constexpr float roll_float_to_int8_factor {0.7f};  // 180 * 0.7 = 126
 // pitch is -90 to 90; to map it to -128 to 127 maximum
-constexpr float pitch_float_to_int8_factor {1.4f};  // 90 * 1.4 = 126
+// constexpr float pitch_float_to_int8_factor {1.4f};  // 90 * 1.4 = 126
 
 static_assert(interval_between_thermistors_measurements_seconds % interval_between_gnss_measurements_seconds == 0, "should perform thermistors measurements at the same time as some GNSS fix acquisition");
 
