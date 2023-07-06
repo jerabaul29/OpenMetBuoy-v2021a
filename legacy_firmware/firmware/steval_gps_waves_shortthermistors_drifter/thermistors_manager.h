@@ -21,7 +21,7 @@ The thermistors are using the 1-wire interface. Data on pin 35, power on pin 4.
     #include "etl/algorithm.h"
     #include "etl/deque.h"
 
-    #include "imu_manager.h"
+    // #include "imu_manager.h"
     #include "watchdog_manager.h"
     #include "time_manager.h"
 
@@ -58,12 +58,12 @@ The thermistors are using the 1-wire interface. Data on pin 35, power on pin 4.
     struct Thermistors_Packet{
         long posix_timestamp;
         uint8_t data_array[3 * number_of_thermistors];
-        int8_t mean_pitch;
-        int8_t mean_roll;
-        int8_t min_pitch;
-        int8_t max_pitch;
-        int8_t min_roll;
-        int8_t max_roll;
+        // int8_t mean_pitch;
+        // int8_t mean_roll;
+        // int8_t min_pitch;
+        // int8_t max_pitch;
+        // int8_t min_roll;
+        // int8_t max_roll;
     };
 
     // TODO: functions to print these packets

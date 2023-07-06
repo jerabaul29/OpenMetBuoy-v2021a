@@ -76,15 +76,15 @@
     Serial.print(F("posix_timestamp: ")); Serial.println(packet.posix_timestamp); delay(5);
     // Serial.print(F("reading_number: ")); Serial.println(packet.reading_number); delay(5);
 
-    Serial.print(F("pitch mean: ")); Serial.print(packet.mean_pitch); delay(5);
-      Serial.print(F(" | min: ")); Serial.print(packet.min_pitch); delay(5);
-      Serial.print(F(" | max: ")); Serial.print(packet.max_pitch); delay(5);
-      Serial.println();
+    // Serial.print(F("pitch mean: ")); Serial.print(packet.mean_pitch); delay(5);
+    //   Serial.print(F(" | min: ")); Serial.print(packet.min_pitch); delay(5);
+    //   Serial.print(F(" | max: ")); Serial.print(packet.max_pitch); delay(5);
+    //   Serial.println();
 
-    Serial.print(F("roll mean: ")); Serial.print(packet.mean_roll); delay(5);
-      Serial.print(F(" | roll min: ")); Serial.print(packet.min_roll); delay(5);
-      Serial.print(F(" | roll max: ")); Serial.print(packet.max_roll); delay(5);
-      Serial.println();
+    // Serial.print(F("roll mean: ")); Serial.print(packet.mean_roll); delay(5);
+    //   Serial.print(F(" | roll min: ")); Serial.print(packet.min_roll); delay(5);
+    //   Serial.print(F(" | roll max: ")); Serial.print(packet.max_roll); delay(5);
+    //   Serial.println();
 
     for (int crrt_ind=0; crrt_ind<number_of_thermistors; crrt_ind++){
       Serial.print(F("thermistor ")); Serial.print(crrt_ind);
@@ -114,68 +114,8 @@
 
     // ask for one conversion to start
     request_start_thermistors_conversion();
-
-    // turn the IMU on
-    Serial.println(F("gather IMU data for attitude of thermistors"));
-    board_imu_manger.start_IMU();
-
-    float acc_N;
-    float acc_E;
-    float acc_D;
-    float yaw;
-    float pitch;
-    float roll;
-    int8_t pitch_int8;
-    int8_t roll_int8;
-
-    // in order to avoid overflows etc, discretize the pitch and roll into a uint8_t, and compute the mean using a uint32_t
-    int8_t min_roll {INT8_MAX};
-    int8_t max_roll {INT8_MIN};
-    int8_t min_pitch {INT8_MAX};
-    int8_t max_pitch {INT8_MIN};
-
-    int8_t mean_pitch {-128};
-    int8_t mean_roll {-128};
-    int32_t mean_pitch_accumulator {0};
-    int32_t mean_roll_accumulator {0};
-
-      // TODO: do something with these
-    for (int i=0; i<number_of_thermistor_imu_measurements;i++){
-      board_imu_manger.get_new_reading(acc_N, acc_E, acc_D, yaw, pitch, roll);
-
-      pitch_int8 = static_cast<int8_t>(pitch_float_to_int8_factor * pitch);
-      roll_int8 = static_cast<int8_t>(roll_float_to_int8_factor * roll);
-
-      Serial.print(F("yaw ")); Serial.print(yaw); Serial.print(F(" | pitch ")); Serial.print(pitch); Serial.print(F(" discretized ")); Serial.print(pitch_int8); Serial.print(F(" | roll "));  Serial.print(roll); Serial.print(F(" discretized ")); Serial.print(roll_int8);
-      Serial.println();
-
-      min_roll = min(min_roll, roll_int8);
-      max_roll = max(max_roll, roll_int8);
-      min_pitch = min(min_pitch, pitch_int8);
-      max_pitch = max(max_pitch, pitch_int8);
-      mean_pitch_accumulator += pitch_int8;
-      mean_roll_accumulator += roll_int8;
-
-      wdt.restart();
-    }
-
-    mean_pitch = static_cast<int8_t>(mean_pitch_accumulator / number_of_thermistor_imu_measurements);
-    mean_roll = static_cast<int8_t>(mean_roll_accumulator / number_of_thermistor_imu_measurements);
-
-    Serial.println(F("int8_t stats:"));
-    Serial.print(F("mean_pitch: ")); Serial.print(mean_pitch); Serial.print(F(" | min pitch ")); Serial.print(min_pitch); Serial.print(F(" | max pitch ")); Serial.print(max_pitch); Serial.println();
-    Serial.print(F("mean_roll: ")); Serial.print(mean_roll); Serial.print(F(" | min roll ")); Serial.print(min_roll); Serial.print(F(" | max roll ")); Serial.print(max_roll); Serial.println();
-
+    
     thermistors_packet.posix_timestamp =  board_time_manager.get_posix_timestamp();
-    // thermistors_packet.reading_number = reading_number;
-    thermistors_packet.mean_pitch = mean_pitch;
-    thermistors_packet.min_pitch = min_pitch;
-    thermistors_packet.max_pitch = max_pitch;
-    thermistors_packet.mean_roll = mean_roll;
-    thermistors_packet.min_roll = min_roll;
-    thermistors_packet.max_roll = max_roll;
-
-    board_imu_manger.stop_IMU();
   }
 
     void Thermistors_Manager::stop(void) {

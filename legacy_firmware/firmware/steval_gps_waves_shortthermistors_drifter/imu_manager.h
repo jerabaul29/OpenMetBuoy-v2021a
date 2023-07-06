@@ -4,7 +4,7 @@
 #include "Arduino.h"
 
 #include <Adafruit_ISM330DHCX.h>
-#include <Adafruit_LIS3MDL.h>
+//#include <Adafruit_LIS3MDL.h>
 #include <Adafruit_Sensor.h>
 
 #include <Adafruit_AHRS.h>
@@ -118,9 +118,9 @@ class IMU_Manager{
         int counter_nbr_cycles_LED_off {0};
 };
 
-extern QWIIC_POWER mySwitch;
+// extern QWIIC_POWER mySwitch;
 extern Adafruit_ISM330DHCX ism330dhcx;
-extern Adafruit_LIS3MDL lis3mdl;
+//extern Adafruit_LIS3MDL lis3mdl;
 extern Adafruit_NXPSensorFusion Kalman_filter;
 extern IMU_Manager board_imu_manger;
 

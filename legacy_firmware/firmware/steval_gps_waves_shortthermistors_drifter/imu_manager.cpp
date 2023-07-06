@@ -1,7 +1,7 @@
 #include "imu_manager.h"
 
 Adafruit_ISM330DHCX ism330dhcx;
-Adafruit_LIS3MDL lis3mdl;
+//Adafruit_LIS3MDL lis3mdl;
 Adafruit_NXPSensorFusion Kalman_filter;
 IMU_Manager board_imu_manger;
 
@@ -23,9 +23,14 @@ bool IMU_Manager::start_IMU(){
   Serial.println(F("started ArtemisWire"));
 
   Serial.println(F("start qwiic switch"));
-  if (qwiic_switch.begin(ArtemisWire) == false){
-      Serial.println(F("Qwiic Power Switch not detected at default I2C address. Please check wiring. Freezing."));
-      while (true){;}
+  while (true){
+    if (qwiic_switch.begin(ArtemisWire) == false){
+      Serial.println(F("Qwiic Power Switch not detected, will try again..."));
+      delay(500);
+    }
+    else{
+      break;
+    }
   }
   turn_qwiic_switch_off();
   delay(500);
@@ -54,6 +59,7 @@ bool IMU_Manager::start_IMU(){
   Serial.println("ISM330DHCX Found!");
   wdt.restart();
 
+  /*
   Serial.println(F("Adafruit LIS3MDL start!"));
   while (true){
     if (! lis3mdl.begin_I2C(LIS3MDL_I2CADDR_DEFAULT,
@@ -67,6 +73,7 @@ bool IMU_Manager::start_IMU(){
   }
   Serial.println("LIS3MDL Found!");
   wdt.restart();
+  */
 
    set_sensors_parameters();
    delay(100);
@@ -79,7 +86,9 @@ bool IMU_Manager::start_IMU(){
   wdt.restart();
 
   time_last_accel_gyro_reading_us = micros();
+  /*
   time_last_mag_reading_us = micros();
+  */
   time_last_Kalman_update_us = micros();
   time_last_IMU_update_us = micros();
 
@@ -122,6 +131,7 @@ void IMU_Manager::set_sensors_parameters(void){
   delay(500);
   wdt.restart();
 
+  /*
   // set the magnetometer properties
   lis3mdl.setPerformanceMode(LIS3MDL_HIGHMODE);
   lis3mdl.setOperationMode(LIS3MDL_CONTINUOUSMODE);
@@ -132,6 +142,7 @@ void IMU_Manager::set_sensors_parameters(void){
                           true, // polarity
                           false, // don't latch
                           true); // enabled!
+  */
   delay(500);
   wdt.restart();
 }
@@ -256,6 +267,7 @@ void IMU_Manager::print_sensors_information(void){
   }
    wdt.restart();
 
+  /*
   // print magneto info
   Serial.println(F("print magnetometer info"));
 
@@ -302,6 +314,7 @@ void IMU_Manager::print_sensors_information(void){
     case LIS3MDL_RANGE_16_GAUSS: Serial.println("+-16 gauss"); break;
   }
    wdt.restart();
+   */
 }
 
 bool IMU_Manager::update_accumulate_Kalman(void){
@@ -326,9 +339,11 @@ bool IMU_Manager::update_accumulate_Kalman(void){
       Serial.print(F("W behind ACC by ")); Serial.println(micros() - time_last_accel_gyro_reading_us - nbr_micros_between_accel_gyro_readings);
    }
 
+   /*
    if (micros() - time_last_mag_reading_us > 1.7 * nbr_micros_between_mag_readings){
       Serial.print(F("W behind MAG by ")); Serial.println(micros() - time_last_mag_reading_us - nbr_micros_between_mag_readings);
    }
+   */
 
    // perform as many measurements as possible while it is time
    while (micros() - time_last_Kalman_update_us < nbr_micros_between_Kalman_update){
@@ -356,6 +371,7 @@ bool IMU_Manager::update_accumulate_Kalman(void){
          stat_nbr_accel_gyro_readings++;
       }
 
+      /*
       // if time to read mag, do it
       if (micros() - time_last_mag_reading_us > nbr_micros_between_mag_readings){
          time_last_mag_reading_us += nbr_micros_between_mag_readings;
@@ -368,6 +384,7 @@ bool IMU_Manager::update_accumulate_Kalman(void){
 
          stat_nbr_mag_readings++;
       }
+      */
 
    }
    time_last_Kalman_update_us += nbr_micros_between_Kalman_update;
@@ -383,10 +400,12 @@ bool IMU_Manager::update_accumulate_Kalman(void){
    gyr_y = float_mean_filter(accu_gyr_y) * SENSORS_RADS_TO_DPS;
    gyr_z = float_mean_filter(accu_gyr_z) * SENSORS_RADS_TO_DPS;
 
+   /*
    mag_x = float_mean_filter(accu_mag_x);
    mag_y = float_mean_filter(accu_mag_y);
    mag_z = float_mean_filter(accu_mag_z);
-
+   */
+  
    // unsigned long crrt_micros;
    // crrt_micros = micros();
 
@@ -501,4 +520,3 @@ bool IMU_Manager::get_new_reading(float & acc_N_inout, float & acc_E_inout, floa
 
    return true;
 }
-
