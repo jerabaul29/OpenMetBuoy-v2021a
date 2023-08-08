@@ -147,6 +147,18 @@ Note that it may be possible, for larger deployments, to set up some form of inv
 
 The messages received from Rock7 are hex-encoded binary strings. Decode them with: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/decoder .
 
+## Estimating iridium costs
+
+From https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean : (note that this is from 2021, with 2021 GBP prices, and 2021 GBP/USD exchange rate: this may evolve with time):
+
+
+
+## Estimating battery time
+
+From https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean :
+
+
+
 ## Getting help
 
 If you need help / guidance, do not send a private email, but open an issue on this Github repository!
