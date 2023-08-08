@@ -159,6 +159,10 @@ From https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_eas
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/end_user_manual/assets/expected_battery.png" width="900" />
 
+## Specific details about the LabMaker buoy
+
+See: https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/end_user_manual/LabMaker_OMB_instructions.md .
+
 ## Getting help
 
 If you need help / guidance, do not send a private email, but open an issue on this Github repository!
