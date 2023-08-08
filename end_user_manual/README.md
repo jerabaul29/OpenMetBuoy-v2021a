@@ -151,13 +151,13 @@ The messages received from Rock7 are hex-encoded binary strings. Decode them wit
 
 From https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean : (note that this is from 2021, with 2021 GBP prices, and 2021 GBP/USD exchange rate: this may evolve with time):
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/end_user_manual/assets/expected_costs.png" width="600" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/end_user_manual/assets/expected_costs.png" width="900" />
 
 ## Estimating battery time
 
 From https://www.researchgate.net/publication/357712696_OpenMetBuoy-v2021_an_easy-to-build_affordable_customizable_open_source_instrument_for_oceanographic_measurements_of_drift_and_waves_in_sea_ice_and_the_open_ocean :
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/end_user_manual/assets/expected_battery.png" width="600" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/end_user_manual/assets/expected_battery.png" width="900" />
 
 ## Getting help
 
