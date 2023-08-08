@@ -99,3 +99,7 @@ Out[5]:
  GNSS_Packet(datetime_fix=datetime.datetime(2022, 2, 21, 13, 0, 38), latitude=59.9430994, longitude=10.7197618, is_valid=True),
  GNSS_Packet(datetime_fix=datetime.datetime(2022, 2, 21, 12, 30, 38), latitude=59.9429984, longitude=10.7197894, is_valid=True)]
 ```
+
+## Installing
+
+To install the decoder, simply copy the ```decoder.py``` file and install the necessary python packages (with either pip or conda for example). If you want to install in conda, you can follow the same instructions as: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/utils#using-in-a-conda-env .
