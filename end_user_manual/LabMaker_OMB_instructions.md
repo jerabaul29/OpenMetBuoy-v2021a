@@ -37,6 +37,10 @@ Quick walkthrough:
 - test and seal: we recommend to i) install batteries and put a dessiccant bag, ii) screw the lid, iii) put outside and do a test for a day to check messages are received as expected and the instrument works. Once this is done and it is confirmed that the instrument works well, seal it with bathroom silicon to make it 100% watertight; put the magnet and make sure the instrument is switched off.
 - deploy: to deploy, all you need to do is remove the magnet and the instrument will turn on. Remember to have an active Rock7 subscription and enough credits!
 
+## Decoding messages and communicating with Rock7 servers
+
+See the materials at: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/legacy_firmware/utils .
+
 ## Estimating autonomy + cost
 
 To estimate battery autonomy + iridium costs, see respectively:
@@ -53,6 +57,10 @@ If you want access to a quick web overview such as:
 ![wavebug](https://github.com/jerabaul29/OpenMetBuoy-v2021a/assets/8382834/66307be8-3b1d-4aaf-aad9-a64111b2a3b6)
 
 Take contact at jean.rblt@gmail.com for more information and to have your buoys registered in our system.
+
+## Commonly encountered issues
+
+- on  Linux, you may need to be in the dialout group to access usb port; for more information, see: https://support.arduino.cc/hc/en-us/articles/360016495679-Fix-port-access-on-Linux
 
 ## Taking contact
 
