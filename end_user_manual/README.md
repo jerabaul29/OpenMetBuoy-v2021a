@@ -2,6 +2,12 @@
 
 This is the "minimum" manual for the end user - there is no need to be familiar with all the details about the instrument to just operate it :) .
 
+## Overview of the components
+
+Descriptions of the main components on the board (this is from the LabMaker's illustration, but things should look similar with home made buoys):
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/end_user_manual/assets/ComponentsDescription.jpg" width="900" />
+
 ## Note about abrupt temperature changes
 
 Sudden, violent temperature cycling is not good for electronics as i) it is a factor creating condensation even when dessiccant bags are used inside the electronics enclosure, ii) repeated, sudden temperature changes put strains on solders and weaken / break some connections. Try, if possible, to avoid too many harsh temperature cyclings (for example, if possible, avoid taking the instrument brutally in from a +20 degrees temperature inside to outside at a -20 degrees temperature too many times; ideally, let the instrument cool down and warm up slowly, and / or have intermediate steps, for example, by putting the instrument in an "acclimatation" room at around 0 degrees before moving back and forth between a -20 and a +20 degrees environment). This will not be an issue when deployed in the field, as weather-related temperature changes are relatively slow, but may be an issue when taking instruments back and forth outside of a building / ship.
