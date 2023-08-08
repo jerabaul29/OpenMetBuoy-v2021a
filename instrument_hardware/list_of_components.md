@@ -97,7 +97,9 @@ In adition, it is possible to use some other 6dof models; one such model is the 
 
 ### Temperature sensors
 
-- 1 x DS18B20 waterproof: 10USD: https://www.sparkfun.com/products/11050
+- 1 x DS18B20 waterproof: 10USD: https://www.sparkfun.com/products/11050 (if you want to install several temperature sensors, you will need several of these of course).
+- 1 x 4.7kOhm resistor (or similar - 4.7 is not an "exact" value, 4.6 or 4.9 would be fine too) (you will need only 1 per instrument, even if you use several thermistors)
+- 2 x 50Ohm resistor (or similar - 48 or 52 would be fine too) (you will need only 2 per instrument, even if you use several thermistors)
 
 ### Small extras
 
