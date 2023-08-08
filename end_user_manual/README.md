@@ -47,6 +47,12 @@ Note that:
 - The exact location of the magnet relatively to the box wall is quite important: it has to actually activate a magnetic switch inside the box; insert the magnet at the marked location (usually a black dot of some kind).
 - The orientation of the magnet is important: you need to have one of the poles of the magnet facing the box wall, having the magnet "sideways" may not be enough to reliably activate the magnetic switch. To find the pole of the magnet, simply put 2 magnets together - they always end up attracting each other most strongly when they face "pole to pole".
 
+I.e.:
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/magnet_orientation.jpg" width="400" />
+
+Any reasonably strong magnet will do (even a good fridge magnet should be fine), if you need to buy magnets something like this can be good: https://www.sparkfun.com/products/8643 .
+
 ### Procedure to turn on and off and check that the action is effective
 
 In order to check that the switching on is effective, from the state of power down:
