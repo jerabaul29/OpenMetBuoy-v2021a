@@ -30,10 +30,14 @@ void setup(){
   Serial.flush();
 
   // to test the functionalities: sleep, thermistors
+  Serial.println(F("----- START -----"));
   board_thermistors_manager.start();
-  // this should look for thermistors and print their IDs
-  board_thermistors_manager.get_ordered_thermistors_ids();
+  
+  Serial.println(F("----- COLLECT -----"));
+  board_thermistors_manager.collect_thermistors_conversions();
+  
   board_thermistors_manager.stop();
+  Serial.println(F("----- DONE -----"));
 }
 
 void loop(){
