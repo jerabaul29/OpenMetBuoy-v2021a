@@ -66,7 +66,11 @@ I am using only Linux in the form of Ubuntu LTS distributions. Though the instru
 
 The coding environment for the "legacy" instrument was based on Arduino IDE-1.8 and the SparkFun Ambiq Apollo3 Arduino core, in a slightly older version of the "bare metal" core. It is well working, but a bit messy as it was developed "as things went". For now, this is the only one that is ready for use (see "Instrument firmware under rework" section).
 
+**NOTE**: in the end, I never had the time to rewrite the firmware, so this is still the main firmware version, and it works well enough :) . All published works use this firmware!
+
 ### Instrument firmware under rework
+
+**NOTE**: in the end, I never had the time to rewrite the firmware; so, this is a nice "framework" and nicer way to code if you want to develop your own firmware from scratch, but the OMB-v2021 will likely remain focused on the "legacy" firmware, which works well enough :) .
 
 The "legacy" instrument firmware has been developed "as things were going". It works well and is robust, but the codebase needs a good rework to clean it. The "reworked firmware" is a work in progress, without any guarantees on when it will be done, and is available at: https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/feat/platformio-tracker and "related" branches. It is based on:
 
