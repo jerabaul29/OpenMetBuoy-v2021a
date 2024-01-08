@@ -20,7 +20,11 @@ standard_gps_waves_drifter.bin: perform tracking with GPS, and wave measurements
 
 ### standard_gps_waves_thermistors_drifter.bin
 
-standard_gps_waves_thermistors_drifter.bin: perform tracking with GPS, and wave measurements, and measurement of the temperature string composed of several DS18B20 temperature sensors. The instrument MUST include an Adafruit ISM330DHCX + LIS3MDL FeatherWing or similar, ie both the ISM330DHCX and the LISM3MDL, over a qwiick switch, if not it will not work. Perform GPS measurement and temperature measurement every 30 minutes, and waves measuremens every 3 hours.
+standard_gps_waves_thermistors_drifter.bin: perform tracking with GPS, and wave measurements, and measurement of the temperature string composed of several DS18B20 temperature sensors. The instrument MUST include an Adafruit ISM330DHCX + LIS3MDL FeatherWing or similar, ie both the ISM330DHCX and the LISM3MDL, over a qwiick switch, if not it will not work. Perform GPS measurement and temperature measurement every 30 minutes, and waves measuremens every 3 hours. This supports up to 8 thermistors.
+
+## steval_30minsgps_2hrswaves_30minsshortthermistors.bin
+
+steval_30minsgps_2hrswaves_30minsshortthermistors.bin: perform tracking with GPS, and wave measurements, and measurement of the temperature string composed of several DS18B20 sensors. The instrument MUST include an Adafruit ISM330DHCX + LIS3MDL FeatherWing or similar, ie both the ISM330DHCX and the LISM3MDL, over a qwiick switch, if not it will not work. Perform GPS measurement and temperature measurement every 30 minutes, and waves measuremens every 2 hours. This supports up to 4 thermistors, which means smaller (hence the short name) thermistor packets than the one above which supports up to 8.
 
 ### steval_gps_waves_drifter.bin
 
