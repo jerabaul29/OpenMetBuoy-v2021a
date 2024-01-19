@@ -26,8 +26,8 @@ https://github.com/jerabaul29/OpenMetBuoy-v2021a/tree/main/end_user_manual
 
 Quick walkthrough:
 
-- upload the exact firmware version you want
-  - the instrument should come from LabMaker with the correct firmware. However, we recommend uploading the firmware yourself, to make sure the correct version is used. For this:
+- (facultative) upload the exact firmware version you want
+  - the instrument should come from LabMaker with the correct firmware. However, you can easily re-upload the firmware yourself, in case you want to tune or modify the firmware, and / or to make sure the exact version you want is used. For this:
     - install the GUI programming tool: see https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/development_environment/setup_arduino_v1-8_environment/Instructions.md#use-of-pre-compiled-firmware-binaries for instructions and / or instructions at https://github.com/sparkfun/Artemis-Firmware-Upload-GUI . (depending on your platform, you may need a bit of extra setup, such as registering to the ```dialout``` group on Linux: see : https://arduino.stackexchange.com/questions/74714/arduino-dev-ttyusb0-permission-denied-even-when-user-added-to-group-dialout-o .
     - remove batteries from the OMB
     - connect the OMB to your computer over USB-C
