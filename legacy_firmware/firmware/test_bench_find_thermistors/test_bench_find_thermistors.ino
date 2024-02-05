@@ -14,20 +14,15 @@
 
 void setup(){
   // --------------------------------------------------------------------------------
-  // startup and configuration...
-  delay(1000);
+
+  Serial.begin(1000000);
+  delay(500);
 
   // first set up the watchdog
   // WDT has 1 Hz frequency and raises interrupt after 32 ticks and resets after 32 ticks,
   // i.e. 32 seconds reset time.
   wdt.configure(WDT_1HZ, 32, 32);
   wdt.start();
-
-  // turn_on is needed to make sure all board pins are in correct state
-  // it turns off GNSS and Iridium, sets all pins to control the board, and starts debug serial
-  turn_on();
-  wdt.restart();
-  Serial.flush();
 
   // to test the functionalities: sleep, thermistors
   Serial.println(F("----- START -----"));
