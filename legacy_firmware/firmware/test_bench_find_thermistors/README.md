@@ -1,6 +1,9 @@
 This is just an ugly, quick test bench code for checking a thermistor ID. Do not use for any deployment or the likes!
 
 ```
+- the binary is available in the binaries folder
+- to program, use the "Artemis module" target, even if you use a Red Board Artemis
+
 - thermistor labeling test bench: description: need
 -- SF RB Art
 -- USB-C cable
