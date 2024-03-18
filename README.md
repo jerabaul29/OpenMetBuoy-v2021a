@@ -44,7 +44,7 @@ The OMB when used on the sea ice can be either put directly on sea ice, or on to
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/on_fender.jpg" width="500" />
 
-The deployment method used may depend on the expected wind, precipitation (in particular if heavy snowfalls are expected and the OMB should be a bit elevated to avoid being buried and loosing satellite communications), and ice breaking conditions.
+The deployment method used may depend on the expected wind, precipitation (in particular if heavy snowfalls are expected and the OMB should be a bit elevated to avoid being buried and loosing satellite communications), and ice breaking conditions. A note though: polar bears **love** big, flashy colors, chewy stuff, and they will happily chew / play football with such a buoy: consider painting it white to make it less attractive if you are working in an area with a lot of polar bear activity!
 
 ## Key data
 
