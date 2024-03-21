@@ -40,7 +40,7 @@ We also describe how to build a standard, upper ocean drifter buoy, which allows
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/buoy_with_instrument.jpg" width="600" />
 
-The OMB when used on the sea ice can be either put directly on sea ice, or on top of a PVC tube that is frozen over some depth in the sea ice, or on top of, for example, a fender buoy drilled a bit into the ice for stability, and equipped with a netting to attach the buoy, and a heavy chain at the bottom to keep it upright (photo and method credits for the fender buoy method: Ruth Mottram and colleagues, Danish Meteorological Institute, NCKF/DMI, with help from Greenlandic hunters to develop and build the setup):
+The OMB when used on the sea ice can be either put directly on sea ice, or on top of a PVC tube that is frozen over some depth in the sea ice, or on top of, for example, a fender buoy drilled a bit into the ice for stability, and equipped with a netting to attach the buoy, and a heavy chain at the bottom to keep it upright (photo and method credits for the fender buoy method: Ruth Mottram, Andrea Gierisch, and colleagues, Danish Meteorological Institute, NCKF/DMI, with help from Greenlandic hunters to develop and build the setup):
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/on_fender.jpg" width="500" />
 
