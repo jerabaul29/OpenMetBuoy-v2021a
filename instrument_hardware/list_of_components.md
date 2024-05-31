@@ -40,27 +40,29 @@ or any other box you like (size may be adapted to number of battery cells, addit
 
 I recommend trying to get batteries with solder tags, and drop the battery holders alltogether, but it is not always easy to find batteries with solder tags for a good price; batteries without solder tags will need a battery holder, and these are often of low quality and create problems, so best to use battery solder tags and solder everything yourself:
 
-- 3 x Saft LSH20 3.6V batteries: 45USD:  https://eu.nkon.nl/saft-lsh-20-lithium-battery-3-6v.html : these batteries have a bit lower capability but are able to handle large transient pulses, like what the iridium modem needs, and these are the ones I personally use.
+- 2 (default PCB) or 3 (directly soldered on the PCB with U-tags) x Saft LSH20 3.6V batteries: 45USD:  https://eu.nkon.nl/saft-lsh-20-lithium-battery-3-6v.html : these batteries have a bit lower capability but are able to handle large transient pulses, like what the iridium modem needs, and these are the ones I personally use.
 
 or
 
-- 3 x Tadiran SL-2780 / D - 3.6V: 45USD: https://eu.nkon.nl/disposable-batteries/tadiran-sl-2780-sl-780-d-lithium-battery-3-6v.html : these batteries have a bit higher capacity but more issues handling pulses of current; could be a good option, but then you should add a couple of 10F supercapacitors (2 in series so that they survive the 3.6V), in parallel of the batteries, to help when power spikes are needed.
+- 2 (default PCB) or 3 (directly soldered on the PCB with U-tags) x Tadiran SL-2780 / D - 3.6V: 45USD: https://eu.nkon.nl/disposable-batteries/tadiran-sl-2780-sl-780-d-lithium-battery-3-6v.html : these batteries have a bit higher capacity but more issues handling pulses of current; could be a good option, but then you should add a couple of 10F supercapacitors (2 in series so that they survive the 3.6V), in parallel of the batteries, to help when power spikes are needed.
+
+Note that batteries are items on which transport restrictions by plane apply, and depending on the carrier / shipping company, it may not be possible to ship instruments with the batteries inside by plane due to the lithium content. Personally, I have some batteries in the lab to do the testing there, and then I order the batteries directly to the pick up place where the ship takes equipment on board, and I ship the instruments to the ship without the batteries. I then put the batteries in the instrument while on the ship.
 
 ### Battery holders
 
 Any D-cell battery holder will do. Careful, some cheap ones are of bad quality and will create bad contacts. I recommend using batteries with soldering tags if possible, and drop the battery holders altogether:
 
-- 3 x BX0037 D-cell battery holder: 10USD: https://no.farnell.com/bulgin/bx0037/holder-battery-d-cell/dp/301097 (these have been of consistent good quality in my experience)
+- 2 (default PCB) or 3 (custom setup) x BX0037 D-cell battery holder: 10USD: https://no.farnell.com/bulgin/bx0037/holder-battery-d-cell/dp/301097 (these have been of consistent good quality in my experience)
 
 ### Magnetic switch
 
 Any magnetic switch that of the same family that either is "normally closed" or has "3 legs" will do.
 
-- 1 x MDRR-DT-25-30-F magnetic reed switch: 5USD: https://no.mouser.com/ProductDetail/Littelfuse/MDRR-DT-25-30-F?qs=nyo4TFax6New9CGWZwJeTA%3D%3D
-
-or, if you want something that is a bit more robust:
-
 - 1 x MK15-B-2-OE magnetic switch, normall close: 7 USD: https://www.digikey.com.au/en/products/detail/standex-meder-electronics/MK15-B-2-OE/2765323 , see datasheet at https://standexelectronics.com/viewer/pdfjs/web/viewer.php?file=https%3A%2F%2Fstandexelectronics.com%2Fwp-content%2Fuploads%2F2015%2F03%2FMK15_V02.pdf
+
+or, for example
+
+- 1 x MDRR-DT-25-30-F magnetic reed switch: 5USD: https://no.mouser.com/ProductDetail/Littelfuse/MDRR-DT-25-30-F?qs=nyo4TFax6New9CGWZwJeTA%3D%3D
 
 ### Magnet
 
@@ -97,9 +99,11 @@ In adition, it is possible to use some other 6dof models; one such model is the 
 
 ### Temperature sensors
 
-- 1 x DS18B20 waterproof: 10USD: https://www.sparkfun.com/products/11050 (if you want to install several temperature sensors, you will need several of these of course).
-- 1 x 4.7kOhm resistor (or similar - 4.7 is not an "exact" value, 4.6 or 4.9 would be fine too) (you will need only 1 per instrument, even if you use several thermistors)
-- 2 x 50Ohm resistor (or similar - 48 or 52 would be fine too) (you will need only 2 per instrument, even if you use several thermistors)
+Optional, only if you want to have the additional temperature measurement installed:
+
+- 1 to 8 (though even more are theoretically possible; depending on your setup / goal / firmware) x DS18B20 waterproof: 10USD: https://www.sparkfun.com/products/11050 (if you want to install several temperature sensors, you will need several of these of course).
+- 1 x 4.7 kOhm resistor (or similar - 4.7 is not an "exact" value, 4.6 or 4.9 would be fine too) (you will need only 1 per instrument, even if you use several thermistors)
+- 2 x 50 Ohm resistor (or similar - 48 or 52 would be fine too) (you will need only 2 per instrument, even if you use several thermistors)
 
 ### Small extras
 
