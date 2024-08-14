@@ -28,13 +28,13 @@ constexpr int i2c_port_number {4};
 
     // parameters for getting the first GNSS fix
     // put 2UL * 60UL for a first fix timeout of 2 minutes
-    constexpr unsigned long timeout_first_fix_seconds = 20UL * 60UL;  // a reasonable value
+    constexpr unsigned long timeout_first_fix_seconds = 15UL * 60UL;  // a reasonable value
     // put 6UL * 60UL * 60UL for a sleep if no initial fix of 6 hours
     constexpr long sleep_no_initial_fix_seconds = 2L * 60L * 60L;  // for testing
 
     // parameter for timeout of later (i.e. non first) GNSS fixes
     // put 3UL * 60UL for a later fix timeout of 3 minutes
-    constexpr unsigned long timeout_gnss_fix_seconds = 15UL * 60UL;
+    constexpr unsigned long timeout_gnss_fix_seconds = 6UL * 60UL;
     // parameters for how often to acquire and if needed send gps data
     // a measurement will always be performed at 00:00:00, and after that each interval_between_gnss_measurements_seconds seconds
     // so put 60UL * 60UL for each hour at 00 minutes, 30UL * 60UL for each hour at 00 and 30 minutes, etc.
@@ -199,7 +199,7 @@ constexpr long interval_between_thermistors_measurements_seconds = interval_betw
 constexpr long tolerance_seconds_start_thermistors_measurements {5 * 60};
 
 // how many thermistors to use on the thermistor string, at most
-constexpr int number_of_thermistors {4};
+constexpr int number_of_thermistors {10};
 
 // duration over which sample thermistor data
 constexpr int duration_thermistor_acquisition_ms {60000};
@@ -208,13 +208,13 @@ constexpr int duration_thermistor_acquisition_ms {60000};
 // constexpr int number_of_thermistor_imu_measurements = duration_thermistor_imu_acquisition_ms / 100;
 
 // max number of thermistor packets that we transmit in a single thermistors message
-constexpr size_t max_nbr_thermistor_packets {14};
+constexpr size_t max_nbr_thermistor_packets {6};
 
 // min number of thermistors readings sent at once by defaul
 constexpr size_t min_default_nbr_thermistor_packets {4};
 
 // how many thermistor packets we keep in memory
-constexpr size_t size_thermistors_packets_buffer {256};
+constexpr size_t size_thermistors_packets_buffer {100};
 
 // roll is -180 to 180; to map it to -128 to 127 maximum
 // constexpr float roll_float_to_int8_factor {0.7f};  // 180 * 0.7 = 126
