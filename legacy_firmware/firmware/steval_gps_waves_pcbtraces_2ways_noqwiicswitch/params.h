@@ -14,6 +14,8 @@ constexpr int i2c_port_number {1};
 // for using the I2C port corresponding to the Qwiic connector
 // constexpr int i2c_port_number {4};
 
+#define IMUPwr 42
+
 // TODO: use some form of constexpr if instead
 // first declare the variables and document
 // then use if constexpr to set the values

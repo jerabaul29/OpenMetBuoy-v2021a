@@ -3,6 +3,7 @@
 void print_params(void){
     Serial.print(F("baudrate_debug_serial : ")); Serial.println(baudrate_debug_serial );
     Serial.print(F("i2c_port_number: ")); Serial.println(i2c_port_number );
+    Serial.print(F("IMU power pin: ")); Serial.println(IMUPwr);
 
     Serial.println(F("----- TEST_MODE -----"));
     Serial.print(F("DEPLOYMENT_MODE: ")); Serial.println(DEPLOYMENT_MODE);

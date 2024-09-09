@@ -1,5 +1,7 @@
 # About this branch
-This is the version to use for JARE deployments
+
+This is the version to use for JARE deployments.
+This is updated to work without the qwiic switch. Instead of using the qwiic switch to power the IMU on and off, we use a digital pin with 12mA sourcing strength that we turn on and off. Note that the "qwiic" name still appears in the code (for example, turn_qwiic_switch_on), but this is only for historical reasons: the corresponding code just turns the pin HIGH and LOW.
 
 # Getting the code to compile and upload
 
@@ -60,9 +62,7 @@ Switched to a new branch 'fix/SPI_with_Artemis'
 - Artemis Global Tracker
 - Iridium and GNSS passive antenna
 - SMA extension cable
-- Qwiic switch
 - Adafruit 9-dof (Adafruit ISM330DHCX + LIS3MDL FeatherWing - High Precision 9-DoF IMU, PRODUCT ID: 4569)
-- 2 Qwiic cables
 - LSH20 cells, 3 in parallel
 - pololu 3.3V step up step down regulator
 
@@ -74,9 +74,9 @@ Switched to a new branch 'fix/SPI_with_Artemis'
 ## Assembly
 
 - connect AGT - SMA extender - antenna
-- connect AGT Qwiic - Qwiic switch in - Qwiic switch out - Adafruit 9 dof
+- connect IMUPwr pin (see definition in the code) to the 3.3V Vin of the IMU, and SCL / SDA from the IMU to the corresponding pins for the I2C port chosen on the AGT
 - solder battery - 3.3V regulator - 3.3V pin
-- cut the LED enable traces on the AGT (```PWR_LED```) and Qwiich switch (```LED_IN``` and ```LED_OUT```)
+- cut the LED enable traces on the AGT (```PWR_LED```)
 
 # Operating notes
 
