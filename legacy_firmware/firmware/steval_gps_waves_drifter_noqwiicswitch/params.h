@@ -186,7 +186,7 @@ extern long modifiable_interval_between_wave_spectra_measurements;
 
 // defining this macro variable will macro out all the thermistor related code
 // to be able to use thermistors, comment the next macro definition out
-// #define DISABLE_ALL_THERMISTOR
+#define DISABLE_ALL_THERMISTOR
 
 constexpr bool use_thermistor_string {false};
 
