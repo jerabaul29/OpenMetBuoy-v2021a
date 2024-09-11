@@ -22,23 +22,12 @@ bool IMU_Manager::start_IMU(){
   wdt.restart();
   Serial.println(F("started ArtemisWire"));
 
-  Serial.println(F("start qwiic switch"));
-  if (qwiic_switch.begin(ArtemisWire) == false){
-      Serial.println(F("Qwiic Power Switch not detected at default I2C address. Please check wiring. Freezing."));
-      while (true){;}
-  }
   turn_qwiic_switch_off();
   delay(500);
   wdt.restart();
 
    // TODO: instead of hang, return false...
   turn_qwiic_switch_on();
-
-  // configure the power switch
-  turn_qwiic_switch_on();
-  qwiic_switch.isolationOff();
-  delay(500);
-  wdt.restart();
 
   Serial.println("Adafruit ISM330DHCX start!");
   while (true){

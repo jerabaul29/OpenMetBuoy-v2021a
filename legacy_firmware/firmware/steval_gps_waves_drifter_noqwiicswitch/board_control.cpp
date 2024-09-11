@@ -1,7 +1,6 @@
 #include "board_control.h"
 
 TwoWire ArtemisWire(i2c_port_number);
-QWIIC_POWER qwiic_switch;
 
 void blink_LED_n_times(unsigned int number_of_blinks, float frequency_hz){
   wdt.restart();  // we choose to restart at the start and end, but not in loop as a way to make sure not so much blinking that we freeze.
@@ -22,6 +21,9 @@ void blink_LED_n_times(unsigned int number_of_blinks, float frequency_hz){
 
 void setup_pins(void){
   pinMode(LED, OUTPUT); // Make the LED pin an output
+
+  // make the IMUPwr pin an output
+   pinMode(IMUPwr, g_AM_HAL_GPIO_OUTPUT_12);  // enable 12mA output
 
   turn_gnss_off(); // Disable power for the GNSS
   pinMode(geofencePin, INPUT); // Configure the geofence pin as an input
@@ -80,19 +82,17 @@ void turn_iridium_off(void){
 
 void turn_qwiic_switch_off(void){
   Serial.println(F("turn qwiic switch off"));
-   qwiic_switch.pinMode(1, INPUT);
-   qwiic_switch.pinMode(2, INPUT);
-   delay(50);
-   qwiic_switch.powerOff();
+   pinMode(IMUPwr, g_AM_HAL_GPIO_OUTPUT_12);  // enable 12mA output
+  digitalWrite(IMUPwr, LOW);
+  // NOTE: maybe we also need to put the I2C SCL SDA to INPUT to avoid crosstalks and power wasting?
    delay(100);
 }
 
 void turn_qwiic_switch_on(void){
   Serial.println(F("turn qwiic switch on"));
-   qwiic_switch.powerOn();
+   pinMode(IMUPwr, g_AM_HAL_GPIO_OUTPUT_12);  // enable 12mA output
+  digitalWrite(IMUPwr, HIGH);
    delay(50);
-   qwiic_switch.pinMode(1, INPUT);
-   qwiic_switch.pinMode(2, INPUT);
 }
 
 void turn_thermistors_on(void){

@@ -118,7 +118,6 @@ class IMU_Manager{
         int counter_nbr_cycles_LED_off {0};
 };
 
-extern QWIIC_POWER mySwitch;
 extern Adafruit_ISM330DHCX ism330dhcx;
 //extern Adafruit_LIS3MDL lis3mdl;
 extern Adafruit_NXPSensorFusion Kalman_filter;
