@@ -46,6 +46,8 @@ void turn_gnss_on(void){
   Serial.println(F("turn gnss on"));
   turn_iridium_off();
   delay(100);
+  turn_qwiic_switch_on();
+  delay(100);
   pinMode(gnssEN, OUTPUT); // Configure the pin which enables power for the ZOE-M8Q GNSS
   digitalWrite(gnssEN, LOW); // Enable GNSS power (HIGH = disable; LOW = enable)
   delay(1000);
@@ -57,6 +59,8 @@ void turn_gnss_off(void){
   digitalWrite(gnssEN, HIGH); // Disable GNSS power (HIGH = disable; LOW = enable)
   delay(10);
   pinMode(gnssEN, INPUT_PULLUP); // Configure the pin which enables power for the ZOE-M8Q GNSS
+  delay(100);
+  turn_qwiic_switch_off();
 }
 
 void turn_iridium_on(void){
