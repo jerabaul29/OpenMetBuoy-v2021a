@@ -74,8 +74,8 @@ Switched to a new branch 'fix/SPI_with_Artemis'
 ## Assembly
 
 - connect AGT - SMA extender - antenna
-- connect IMUPwr pin (see definition in the code) to the 3.3V Vin of the IMU, and SCL / SDA from the IMU to the corresponding pins for the I2C port chosen on the AGT
-- solder battery - 3.3V regulator - 3.3V pin
+- connect IMUPwr pin (see definition in the code) to the 3.3V Vin of the IMU, and SCL / SDA from the IMU to the corresponding pins for the I2C port chosen on the AGT. (NOTE: If using the port corresponding to the qwiic switch, this can be done by using a qwiic cable, cutting it, and soldering the cut ends to the SCL / SDA pins of the IMU; but this is not the default, as by default this uses the PCB traces ie the broken SCL and SDA pins that are shared with the GPS). If using the port that is broken out on the AGT, this can be done by directly connecting to the SCL / SDA pins that are broken out. (note: these are shared with the GNSS)
+- solder battery - 3.3V regulator - 3.3V pin.
 - cut the LED enable traces on the AGT (```PWR_LED```)
 
 # Operating notes
@@ -87,3 +87,9 @@ Typical power consumption, with up to date code, LEDs cut:
 - 9-dof on and calculation of Kalman filter is 10mA altogether.
 - FFTs go so fast it is negligible. Generally the Artemis MCU uses very little energy when active (typically a mA at most)
 - Iridium is difficult to measure but in practice not much energy, as it goes very fast and is used only now and then, though there may be some instantaneous power peaks.
+
+## TODOs
+
+- long term test and stability of the firmware
+- power use check and if needed make pins float as they may need
+

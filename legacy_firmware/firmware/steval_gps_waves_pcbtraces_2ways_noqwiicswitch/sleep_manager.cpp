@@ -75,6 +75,11 @@ void prepare_to_sleep(void){
   turn_thermistors_off();
   delay(50);
 
+  // force the SCL and SDA pins to float, especially important when using the IMU with pullups without qwiic switch
+  // this is for the port number 1, i.e. the one broken on the pins and shared with the GNSS
+  pinMode(8, INPUT); // Configure the Iridium Ring Indicator as an input
+  pinMode(9, INPUT); // Configure the Iridium Network Available as an input
+
   Serial.println(F("power down board"));
   Serial.println(F("------ SLEEP ------"));
   delay(100);
