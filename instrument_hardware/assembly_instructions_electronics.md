@@ -14,6 +14,10 @@ A few high level rules:
 - use good cables, in particular for the power supply part, to avoid voltage drop when the instrument is using a power burst (ie, when using the iridium modem). Avoid using cheap jumper cables or breadboards, as these may have very bad connectors that create some significant voltage drops and may cause brownouts.
 - if you want to get good battery time, cut the always-on LEDs as indicated! If not, even though the always-on LEDs are low power, they are still per definition always on, and will end up using more battery than the actual operation of the buoy!
 
+**Important QC rule: check that all components work before soldering anything!**
+
+**Before** soldering anything, make a simple test with Artemis Global Tracker (AGT) + qwiic cables + qwiic switch + IMU + antenna. Program the AGT, and check that the AGT boots when being powered up after being programmend and that everything works well. There have been quality issues with the AGTs of one production batch, where for example the AGT could be programmed but did not boot. In such case, this much be catched as early as possible, ideally before the AGT is soldered on any motherboard, so it can be sent back as a warranty issue to SparkFun and replaced.
+
 ## General schematic
 
 The general schematic is as follows. The section belows are detailed instructions / tips and tricks to assemble it:
