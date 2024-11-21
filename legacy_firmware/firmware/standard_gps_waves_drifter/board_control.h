@@ -1,6 +1,8 @@
 #ifndef BOARD_CONTROL
 #define BOARD_CONTROL
 
+//#define USE_QWIIC_SWITCH
+
 #include "Arduino.h"
 
 #include "params.h"
@@ -55,12 +57,14 @@ void turn_iridium_off(void);
 
 void blink_LED_n_times(unsigned int number_of_blinks, float frequency_hz=1.0);
 
+#ifdef USE_QWIIC_SWITCH
 //--------------------------------------------------------------------------------
 // functions to save power on the Qwiic switch
 
 void turn_qwiic_switch_on(void);
 
 void turn_qwiic_switch_off(void);
+#endif
 
 //--------------------------------------------------------------------------------
 // functions to turn on / off the thermistors
@@ -73,6 +77,8 @@ void turn_thermistors_off(void);
 //making the ArtemisWire Qwiic port and Qwiic switch available to all 
 
 extern TwoWire ArtemisWire;
+#ifdef USE_QWIIC_SWITCH
 extern QWIIC_POWER qwiic_switch;
+#endif
 
 #endif

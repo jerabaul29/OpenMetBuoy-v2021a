@@ -74,7 +74,11 @@ bool WaveAnalyzer::gather_imu_data(void){
 
       Serial.print(millis()); Serial.print(F("ms | nmeas "));
       Serial.print(sample); Serial.print(F(" | "));
-      Serial.print(acc_D); Serial.print(" ");
+      Serial.print(acc_D); 
+#ifdef USE_MAG
+      Serial.print(" | ");
+      Serial.print(yaw__); 
+#endif
       Serial.println();
     }
 

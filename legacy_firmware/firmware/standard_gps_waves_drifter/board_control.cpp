@@ -1,7 +1,10 @@
 #include "board_control.h"
 
 TwoWire ArtemisWire(4);
+
+#ifdef USE_QWIIC_SWITCH
 QWIIC_POWER qwiic_switch;
+#endif
 
 void blink_LED_n_times(unsigned int number_of_blinks, float frequency_hz){
   wdt.restart();  // we choose to restart at the start and end, but not in loop as a way to make sure not so much blinking that we freeze.
@@ -78,6 +81,7 @@ void turn_iridium_off(void){
   digitalWrite(iridiumSleep, LOW); // Put the Iridium 9603N to sleep (HIGH = on; LOW = off/sleep)
 }
 
+#ifdef USE_QWIIC_SWITCH
 void turn_qwiic_switch_off(void){
   Serial.println(F("turn qwiic switch off"));
    qwiic_switch.pinMode(1, INPUT);
@@ -94,6 +98,7 @@ void turn_qwiic_switch_on(void){
    qwiic_switch.pinMode(1, INPUT);
    qwiic_switch.pinMode(2, INPUT);
 }
+#endif
 
 void turn_thermistors_on(void){
  // turn on power to the OneWire sensors

@@ -1,7 +1,18 @@
 #include "imu_manager.h"
 
+#if IMU_TYPE == 1
 Adafruit_ISM330DHCX ism330dhcx;
+#endif
+#if IMU_TYPE == 2
+Adafruit_LSM6DS3 ism330dhcx;
+#endif
+#if IMU_TYPE == 3
+Adafruit_LSM6DSL ism330dhcx;
+#endif
+
+#ifdef USE_MAG
 Adafruit_LIS3MDL lis3mdl;
+#endif
 Adafruit_NXPSensorFusion Kalman_filter;
 IMU_Manager board_imu_manger;
 
@@ -17,28 +28,31 @@ bool IMU_Manager::start_IMU(){
 
    // TODO: instead of hang, return false...
 
+#ifdef USE_QWIIC_SWITCH
   turn_qwiic_switch_on();
 
   // configure the power switch
   turn_qwiic_switch_on();
   qwiic_switch.isolationOff();
   delay(500);
+#endif
   wdt.restart();
 
-  Serial.println("Adafruit ISM330DHCX start!");
+  Serial.println("Adafruit IMU start!");
   while (true){
     if (!ism330dhcx.begin_I2C(LSM6DS_I2CADDR_DEFAULT,
                      &ArtemisWire, 0)) {
-      Serial.println("Failed to find ISM330DHCX chip, will try again...");
+      Serial.println("Failed to find IMU chip, will try again...");
       delay(500);
     }
     else{
       break;
     }
   }
-  Serial.println("ISM330DHCX Found!");
+  Serial.println("IMU Found!");
   wdt.restart();
 
+#ifdef USE_MAG
   Serial.println(F("Adafruit LIS3MDL start!"));
   while (true){
     if (! lis3mdl.begin_I2C(LIS3MDL_I2CADDR_DEFAULT,
@@ -52,6 +66,7 @@ bool IMU_Manager::start_IMU(){
   }
   Serial.println("LIS3MDL Found!");
   wdt.restart();
+#endif
 
    set_sensors_parameters(); 
    delay(100);
@@ -81,7 +96,15 @@ bool IMU_Manager::stop_IMU(){
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LOW);
 
+#ifdef USE_QWIIC_SWITCH
    turn_qwiic_switch_off();
+#else
+  ism330dhcx.setAccelDataRate(LSM6DS_RATE_SHUTDOWN);
+  ism330dhcx.setGyroDataRate(LSM6DS_RATE_SHUTDOWN);
+  #ifdef USE_MAG
+    lis3mdl.setOperationMode(LIS3MDL_POWERDOWNMODE);
+  #endif
+#endif
    delay(100);
 
    disableBurstMode();
@@ -102,6 +125,7 @@ void IMU_Manager::set_sensors_parameters(void){
   delay(500);
   wdt.restart();
 
+#ifdef USE_MAG
   // set the magnetometer properties
   lis3mdl.setPerformanceMode(LIS3MDL_HIGHMODE);
   lis3mdl.setOperationMode(LIS3MDL_CONTINUOUSMODE);
@@ -114,6 +138,7 @@ void IMU_Manager::set_sensors_parameters(void){
                           true); // enabled!
   delay(500);
   wdt.restart();
+#endif
 }
 
 void IMU_Manager::print_sensors_information(void){
@@ -236,6 +261,7 @@ void IMU_Manager::print_sensors_information(void){
   }
    wdt.restart();
 
+#ifdef USE_MAG
   // print magneto info
   Serial.println(F("print magnetometer info"));
 
@@ -282,6 +308,7 @@ void IMU_Manager::print_sensors_information(void){
     case LIS3MDL_RANGE_16_GAUSS: Serial.println("+-16 gauss"); break;
   }
    wdt.restart();
+#endif
 }
 
 bool IMU_Manager::update_accumulate_Kalman(void){
@@ -294,9 +321,11 @@ bool IMU_Manager::update_accumulate_Kalman(void){
    accu_gyr_y.clear();
    accu_gyr_z.clear();
 
+#ifdef USE_MAG
    accu_mag_x.clear();
    accu_mag_y.clear();
    accu_mag_z.clear();
+#endif
 
   /*
    if (micros() - time_last_Kalman_update_us > nbr_micros_between_Kalman_update){
@@ -338,6 +367,7 @@ bool IMU_Manager::update_accumulate_Kalman(void){
          stat_nbr_accel_gyro_readings++;
       }
 
+#ifdef USE_MAG
       // if time to read mag, do it
       if (micros() - time_last_mag_reading_us > nbr_micros_between_mag_readings){
          time_last_mag_reading_us += nbr_micros_between_mag_readings;
@@ -350,7 +380,8 @@ bool IMU_Manager::update_accumulate_Kalman(void){
 
          stat_nbr_mag_readings++;
       }
-      
+#endif
+
    }
    time_last_Kalman_update_us += nbr_micros_between_Kalman_update;
 
@@ -364,10 +395,15 @@ bool IMU_Manager::update_accumulate_Kalman(void){
    gyr_x = float_mean_filter(accu_gyr_x) * SENSORS_RADS_TO_DPS;
    gyr_y = float_mean_filter(accu_gyr_y) * SENSORS_RADS_TO_DPS;
    gyr_z = float_mean_filter(accu_gyr_z) * SENSORS_RADS_TO_DPS;
-
+#ifdef USE_MAG
    mag_x = float_mean_filter(accu_mag_x);
    mag_y = float_mean_filter(accu_mag_y);
    mag_z = float_mean_filter(accu_mag_z);
+#else
+   mag_x = 0.0;
+   mag_y = 0.0;
+   mag_z = 0.0;
+#endif
 
    // unsigned long crrt_micros;
    // crrt_micros = micros();

@@ -71,7 +71,9 @@ void prepare_to_sleep(void){
   digitalWrite(busVoltageMonEN, LOW);
   digitalWrite(LED, LOW);
 
+#ifdef USE_QWIIC_SWITC
   turn_qwiic_switch_off();
+#endif
   turn_thermistors_off();
   delay(50);
 
@@ -142,12 +144,14 @@ void wake_up(void){
   wdt.restart();
   Serial.println(F("started ArtemisWire"));
 
+#ifdef USE_QWIIC_SWITCH
   Serial.println(F("start qwiic switch"));
   if (qwiic_switch.begin(ArtemisWire) == false){
       Serial.println(F("Qwiic Power Switch not detected at default I2C address. Please check wiring. Freezing."));
       while (true){;}
   }
   turn_qwiic_switch_off();
+#endif
 
   setup_pins();
   turn_gnss_off();

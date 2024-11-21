@@ -4,6 +4,8 @@
 #include "Arduino.h"
 #include "board_control.h"
 
+//#define USE_MAG
+
 constexpr unsigned long baudrate_debug_serial = 1000000;
 
 // TODO: use some form of constexpr if instead
@@ -66,7 +68,11 @@ constexpr int timeout_attempt_transmit_seconds {300};
 
 //--------------------------------------------------------------------------------
 // IMU params
-constexpr bool imu_use_magnetometer {false};
+#ifdef USE_MAG
+  constexpr bool imu_use_magnetometer {true};
+#else
+  constexpr bool imu_use_magnetometer {false};
+#endif
 constexpr bool blink_when_use_IMU {true};
 constexpr int number_update_between_blink {30};
 
@@ -112,7 +118,7 @@ constexpr size_t size_wave_packet_buffer {128};
 // for example:
 // - if GPS measurements are performed each 30 minutes, then can take wave measurements each 30 minutes, or each hour, or each 2 hours, etc
 // - to start each 2 hours, the value would be: 2 * 60 * 60
-constexpr long interval_between_wave_spectra_measurements {2 * 60 * 60};
+constexpr long interval_between_wave_spectra_measurements {1 * 60 * 60};
 // tolerance in seconds for jitter; typically 5 minutes should be more than enough
 constexpr long tolerance_seconds_start_wave_measurements {10 * 60};
 
