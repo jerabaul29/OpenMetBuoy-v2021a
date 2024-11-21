@@ -31,6 +31,10 @@ void setup(){
   wdt.restart();
   Serial.flush();
 
+  Serial.println("----------------");
+  Serial.println("OpenMetBuoy " __DATE__ " " __TIME__ );
+  Serial.println();
+ 
   // offer a print of the params used for the setup of the instrument
   print_params();
 
@@ -62,6 +66,96 @@ void setup(){
     sleep_for_seconds(5);
     iridium_manager.attempt_transmit_gps_fixes(1);
     sleep_for_seconds(5);
+  }
+
+  // i2c scan
+  if (true){
+      byte error, address;
+      int nDevices;
+      uint8_t waiByte[1];
+
+      Serial.println("Scanning... AstemisWire");
+
+      nDevices = 0;
+      for(address = 1; address < 127; address++ ) {
+          // The i2c_scanner uses the return value of
+          // the Write.endTransmisstion to see if
+          // a device did acknowledge to the address.
+          ArtemisWire.beginTransmission(address);
+          ArtemisWire.write(0x0F);                                   // Set register address, WHOI_AM_I
+          error = ArtemisWire.endTransmission(false);
+
+          if (error == 0){
+              Serial.print("I2C device found at address 0x");
+              if (address<16)
+                  Serial.print("0");
+              Serial.print(address,HEX);
+              Serial.println("  !");
+
+              ArtemisWire.requestFrom(address, 1, true);     // Request bytes, release I2C-bus after data read
+              int i = 0;                                             //
+              while(ArtemisWire.available()) {
+                  if (i < 1)
+                      waiByte[i++] = ArtemisWire.read();                               // Add data to array
+              }
+              Serial.print("WHOI Byte 0x");
+              if (waiByte[0]<16)
+                  Serial.print("0");
+              Serial.println(waiByte[0],HEX);
+
+              nDevices++;
+          }
+#ifdef PRINT_I2C_ERRORS
+          else if (error==4) {
+              Serial.print("Unknown error at address 0x");
+              if (address<16)
+                  Serial.print("0");
+              Serial.println(address,HEX);
+          }    
+#endif
+      }
+      if (nDevices == 0)
+          Serial.println("No I2C devices found\n");
+
+
+      Serial.println("Scanning...Wire1");
+
+      Wire1.begin();
+      Serial.println(F("Wire1 started"));
+      turn_gnss_on();
+      delay(1000); // Give it time to power up
+      wdt.restart();
+
+      nDevices = 0;
+      for(address = 1; address < 127; address++ ) {
+          // The i2c_scanner uses the return value of
+          // the Write.endTransmisstion to see if
+          // a device did acknowledge to the address.
+          Wire1.beginTransmission(address);
+          error = Wire1.endTransmission(false);
+
+          if (error == 0) {
+              Serial.print("I2C device found at address 0x");
+              if (address<16)
+                  Serial.print("0");
+              Serial.print(address,HEX);
+              Serial.println("  !");
+
+              nDevices++;
+          }
+#ifdef PRINT_I2C_ERRORS
+          else if (error==4) {
+              Serial.print("Unknown error at address 0x");
+              if (address<16)
+                  Serial.print("0");
+              Serial.println(address,HEX);
+          }    
+#endif
+      }
+      if (nDevices == 0)
+          Serial.println("No I2C devices found\n");
+
+      Serial.println("-----------------");
   }
 
   // to thest the functionalities: sleep, waves measurements
