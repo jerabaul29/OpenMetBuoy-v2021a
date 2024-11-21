@@ -4,6 +4,7 @@
 import binascii
 import struct
 import datetime
+from datetime import timezone
 import time
 import os
 from dataclasses import dataclass
@@ -264,7 +265,7 @@ def decode_gnss_packet(bin_packet, print_decoded=False, print_debug_information=
     assert char_first_byte == 'F', "GNSS packets must start with a 'F', got {}".format(char_first_byte)
 
     posix_timestamp_fix = four_bytes_to_long(bin_packet[1:5])
-    datetime_fix = datetime.datetime.utcfromtimestamp(posix_timestamp_fix)
+    datetime_fix = datetime.datetime.fromtimestamp(posix_timestamp_fix, timezone.utc)
 
     latitude_long = four_bytes_to_long(bin_packet[5:9])
     latitude = latitude_long / 1.0e7
@@ -690,9 +691,7 @@ def decode_thermistors_message(bin_msg, print_decoded=False, print_debug_informa
     return message_metadata, list_decoded_packets
 
 
-def decode_message(hex_string_message, print_decoded=True, print_debug_information=False):
-    bin_msg = hex_to_bin_message(hex_string_message)
-
+def decode_bin(bin_msg, print_decoded=True, print_debug_information=False):
     kind = message_kind(bin_msg)
 
     if kind == "G":
@@ -705,6 +704,19 @@ def decode_message(hex_string_message, print_decoded=True, print_debug_informati
         raise RuntimeError("Unknown message kind: {}".format(kind))
 
     return (kind, message_metadata, list_decoded_packets)
+
+
+def decode_message(hex_string_message, print_decoded=True, print_debug_information=False):
+    bin_msg = hex_to_bin_message(hex_string_message)
+
+    return decode_bin(bin_msg, print_decoded, print_debug_information)
+
+
+def decode_sbd_file(file_name, print_decoded=True, print_debug_information=False):
+    file = open(file_name, "rb")
+    bin_msg = file.read()
+
+    return decode_bin(bin_msg, print_decoded, print_debug_information)
 
 
 def auto_test():
@@ -735,7 +747,7 @@ def plot_wave_packet(list_wave_packet_in):
     plt.figure()
     plt.plot(wave_packet_in.list_frequencies, wave_packet_in.list_elevation_energies)
     plt.xlabel("frq [Hz]")
-    plt.ylabel("S$_{\eta}$(f) [m$^2$/Hz]")
+    plt.ylabel("S$_{\\eta}$(f) [m$^2$/Hz]")
     title_str = "{}, Hs={:05.2f}m, Tz={:05.2f}s".format(wave_packet_in.datetime_fix, wave_packet_in.Hs, wave_packet_in.Tz)
     plt.title(title_str)
     plt.tight_layout()
@@ -778,8 +790,9 @@ def plot_decoded(message_kind, message_metadata, list_decoded_packets):
 @click.option('--verbose', '-v', is_flag=True, help="Turn on verbosity")
 @click.option('--verbose-debug', '-b', is_flag=True, help="Turn on verbosity to debug level")
 @click.option('--decode-hex', '-d', default=None, help="Decode the provided hex message")
+@click.option('--decode-file', '-f', default=None, help="Decode the data from file")
 @click.option('--plot', '-p', is_flag=True, help="Plot the data contained in the message")
-def cli(example, module, autotest, version, verbose, verbose_debug, plot, decode_hex):
+def cli(example, module, autotest, version, verbose, verbose_debug, plot, decode_hex, decode_file):
     """
     Simple CLI for decoding tracker messages.
     This can be added as a command by copying into $HOME/bin and making executable.
@@ -861,6 +874,13 @@ def cli(example, module, autotest, version, verbose, verbose_debug, plot, decode
 
         if plot:
             plot_decoded(message_kind, message_metadata, list_decoded_packets)
+
+    if decode_file:
+        message_kind, message_metadata, list_decoded_packets = decode_sbd_file(decode_file, print_decoded=verbose, print_debug_information=verbose_debug)
+
+        if plot:
+            plot_decoded(message_kind, message_metadata, list_decoded_packets)
+
 
 
 if __name__ == "__main__":
