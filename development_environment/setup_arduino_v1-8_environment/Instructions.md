@@ -55,6 +55,8 @@ This is getting old and brittle... there are more and more workarounds that need
 
 - The arduino artemis core 1.2.3 needs a bit of tuning to avoid error messages. In `/home/jeanr/.arduino15/packages/SparkFun/hardware/apollo3/1.2.3/libraries/WDT/library.properties` , add the attribute `Other` to the category to avoid error messages.
 
+- If using the MLX90164 IR sensor, `git clone git@github.com:jerabaul29/MLX90614_SOFTWIRE.git` into the `~/Arduino/libraries` . Edit the SCL and SDA pins as needed.
+
 - I am using several extra libraries. These can be installed directly from the library manager. In case of missing library, the compiler will indicate which library needs to be installed; to get all the libraries you need: compile, fail, install missing new library, repeat... You can get an overview of the libraries I am using (note: this may get outdated) by looking at the output in https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/development_environment/setup_arduino_v1-8_environment/INFO_compilation_output_lib_infos.txt .
 
 - The etl / embedded template library requires a bit of user "tuning". On my machine (and most Ubuntu machines), it should be found (after installation) at: ```~/Arduino/libraries/etl```. I was initially using an old version of the library, which requested adding an empty file in the library ```src``` to compile. For the present code to compile, the etl folder should look like:
