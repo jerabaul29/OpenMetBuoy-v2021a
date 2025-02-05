@@ -31,7 +31,7 @@ The thermistors are using the 1-wire interface. Data on pin 35, power on pin 4.
     #include <SparkFunMLX90614.h>
     #include <SoftWireArtemis/MLX_SoftWireArtemis.h>
 
-    #include "board_control.h"
+    #include "params.h"
 
     /*
     Brainstorming

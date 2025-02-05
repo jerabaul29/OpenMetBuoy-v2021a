@@ -81,8 +81,6 @@ bool IMU_Manager::start_IMU(){
   Serial.println("ISM330DHCX Found!");
   wdt.restart();
 
-  // TODO: make the MLX sleep
-
   /*
   Serial.println(F("Adafruit LIS3MDL start!"));
   while (true){

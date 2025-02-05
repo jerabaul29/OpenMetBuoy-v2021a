@@ -1,7 +1,4 @@
 #include "thermistors_manager.h"
-#include "board_control.h"
-#include "params.h"
-#include <cstdint>
 
 #ifndef DISABLE_ALL_THERMISTOR
   //--------------------------------------------------------------------------------
