@@ -71,7 +71,38 @@ void prepare_to_sleep(void){
   digitalWrite(busVoltageMonEN, LOW);
   digitalWrite(LED, LOW);
 
+
+  // ideally, we would use the following, but circular imports problems...
+  /*
+    // switch on qwiic switch to give power to the the MLX
+    // copied from imu_manager
+    ArtemisWire.begin();
+    delay(100);
+    ArtemisWire.setClock(100000);
+    delay(100);
+    wdt.restart();
+    Serial.println(F("started ArtemisWire"));
+
+    Serial.println(F("start qwiic switch"));
+    while (true){
+      if (qwiic_switch.begin(ArtemisWire) == false){
+        Serial.println(F("Qwiic Power Switch not detected, will try again..."));
+        delay(500);
+      }
+      else{
+        break;
+      }
+    }
+    turn_qwiic_switch_off();
+    delay(500);
+    wdt.restart();
+
+      turn_qwiic_switch_off();
+      delay(100);
+  */
+      
   turn_qwiic_switch_off();
+
   turn_thermistors_off();
   delay(50);
 

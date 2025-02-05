@@ -27,6 +27,12 @@ The thermistors are using the 1-wire interface. Data on pin 35, power on pin 4.
 
     #include <OneWire.h>
 
+    #include <defWireArtemis.h>
+    #include <SparkFunMLX90614.h>
+    #include <SoftWireArtemis/MLX_SoftWireArtemis.h>
+
+    #include "board_control.h"
+
     /*
     Brainstorming
     - need to send the ID of the thermistors, or no way to know anything if one of them dies...
@@ -57,6 +63,9 @@ The thermistors are using the 1-wire interface. Data on pin 35, power on pin 4.
 
     struct Thermistors_Packet{
         long posix_timestamp;
+        int16_t ir_reading;
+        int16_t ir_ambient_reading;
+        uint8_t ir_reading_range_over_20;
         uint8_t data_array[3 * number_of_thermistors];
         // int8_t mean_pitch;
         // int8_t mean_roll;
@@ -106,6 +115,11 @@ The thermistors are using the 1-wire interface. Data on pin 35, power on pin 4.
             etl::array<int16_t, number_of_thermistors> max_reading;  // sum of the squared of the readings
             etl::array<int16_t, number_of_thermistors> min_reading;  // sum of the squared of the readings
 
+            float min_ir_temp_reading {-100};
+            float max_ir_temp_reading {100};
+            float sum_ir_temp_reading {0};
+            float sum_ir_ambient_reading {0};
+
             unsigned long start_last_conversion_ms;
 
             etl::deque<Thermistors_Packet, size_thermistors_packets_buffer> thermistors_packets_buffer;
@@ -116,10 +130,15 @@ The thermistors are using the 1-wire interface. Data on pin 35, power on pin 4.
 
             size_t write_message_to_buffer(etl::ivector<unsigned char>& buffer, size_t max_nbr_packets=max_nbr_thermistor_packets);
             void clear_number_sent_packets(size_t number_of_packets_to_clear);
+
+            bool working_mlx {false};
     };
 
     extern OneWire one_wire_thermistors;
     extern Thermistors_Manager board_thermistors_manager;
+
+    extern IRTherm therm;
+    extern TwoWireArtemis WireArtemis;
 
 #endif
 

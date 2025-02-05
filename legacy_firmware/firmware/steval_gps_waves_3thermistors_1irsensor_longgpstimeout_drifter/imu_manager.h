@@ -20,6 +20,8 @@
 
 #include "watchdog_manager.h"
 
+#include "thermistors_manager.h"
+
 #include "board_control.h"
 
 class IMU_Manager{

@@ -45,6 +45,28 @@ bool IMU_Manager::start_IMU(){
   delay(500);
   wdt.restart();
 
+  // ----------------------
+  // make the MLX sleep, if this is messing things up, this can be skipped, not really needed
+  ArtemisWire.setClock(100000);
+  delay(500);
+
+  // turn off the MLX on the same bus
+    WireArtemis.begin();
+    delay(500);
+    wdt.restart();
+
+    if (therm.begin() == false) { // Initialize the MLX90614
+      Serial.println(F("Qwiic IR thermometer did not acknowledge! Ignore"));
+    }
+    else{
+      Serial.println(F("set MLX to sleep"));
+      therm.sleep();
+      }
+
+  ArtemisWire.setClock(1000000);
+  delay(500);
+  // -----------------------
+
   Serial.println("Adafruit ISM330DHCX start!");
   while (true){
     if (!ism330dhcx.begin_I2C(LSM6DS_I2CADDR_DEFAULT,
@@ -58,6 +80,8 @@ bool IMU_Manager::start_IMU(){
   }
   Serial.println("ISM330DHCX Found!");
   wdt.restart();
+
+  // TODO: make the MLX sleep
 
   /*
   Serial.println(F("Adafruit LIS3MDL start!"));
@@ -105,6 +129,10 @@ bool IMU_Manager::stop_IMU(){
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LOW);
 
+   turn_qwiic_switch_off();
+   delay(100);
+   turn_qwiic_switch_off();
+   delay(100);
    turn_qwiic_switch_off();
    delay(100);
 

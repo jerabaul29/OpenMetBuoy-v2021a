@@ -1,4 +1,7 @@
 #include "thermistors_manager.h"
+#include "board_control.h"
+#include "params.h"
+#include <cstdint>
 
 #ifndef DISABLE_ALL_THERMISTOR
   //--------------------------------------------------------------------------------
@@ -86,6 +89,13 @@
     //   Serial.print(F(" | roll max: ")); Serial.print(packet.max_roll); delay(5);
     //   Serial.println();
 
+    Serial.print(F("ir_reading: "));
+    Serial.println(packet.ir_reading);
+    Serial.print(F("ir_ambient_reading: "));
+    Serial.println(packet.ir_ambient_reading);
+    Serial.print(F("ir_reading_range_over_20: "));
+    Serial.println(packet.ir_reading_range_over_20);
+
     for (int crrt_ind=0; crrt_ind<number_of_thermistors; crrt_ind++){
       Serial.print(F("thermistor ")); Serial.print(crrt_ind);
         Serial.print(F(" | ID: ")); Serial.print((packet.data_array[3 * crrt_ind + 0] & 0b11111100) >> 2);
@@ -114,12 +124,124 @@
 
     // ask for one conversion to start
     request_start_thermistors_conversion();
+
+    // switch on qwiic switch to give power to the the MLX
+    // copied from imu_manager
+    ArtemisWire.begin();
+    delay(100);
+    ArtemisWire.setClock(100000);
+    delay(100);
+    wdt.restart();
+    Serial.println(F("started ArtemisWire"));
+
+    Serial.println(F("start qwiic switch"));
+    while (true){
+      if (qwiic_switch.begin(ArtemisWire) == false){
+        Serial.println(F("Qwiic Power Switch not detected, will try again..."));
+        delay(500);
+      }
+      else{
+        break;
+      }
+    }
+    turn_qwiic_switch_off();
+    delay(500);
+    wdt.restart();
+
+     // TODO: instead of hang, return false...
+    turn_qwiic_switch_on();
+
+    // configure the power switch
+    turn_qwiic_switch_on();
+    qwiic_switch.isolationOff();
+    delay(500);
+    wdt.restart();
+    turn_qwiic_switch_on();
+
+    // switch off the ISM330DHCX
+    // NOTE: unfortunately, does not seem easy to do with our library; this is so little power that it is not a bit problem
+
+    // turn on the MLX sensor
+    WireArtemis.begin();
+    delay(500);
+    wdt.restart();
+
+    if (therm.begin() == false) { // Initialize the MLX90614
+      Serial.println(F("Qwiic IR thermometer did not acknowledge! Ignore"));
+      working_mlx = false;
+    }
+    else{
+      Serial.println(F("Qwiic IR thermometer acknowledged."));
+      working_mlx = true;
+
+      if (therm.readID()) // Read from the ID registers
+      {                   // If the read succeeded, print the ID:
+        Serial.println("ID: 0x" + String(therm.getIDH(), HEX) +
+                       String(therm.getIDL(), HEX));
+      }
+      Serial.println(String(therm.readEmissivity()));
+
+      therm.setUnit(TEMP_C); // Set the library's units to Farenheit
+      // Alternatively, TEMP_F can be replaced with TEMP_C for Celsius or
+      // TEMP_K for Kelvin.
+    }
+    wdt.restart();
+
+    // zero out all thermistors information
+    thermistors_packet.posix_timestamp = {0};
+    thermistors_packet.ir_reading = {0};
+    thermistors_packet.ir_ambient_reading = {0};
+    thermistors_packet.ir_reading_range_over_20 = {0};
+    for (int i=0; i<3*number_of_thermistors; i++){
+      thermistors_packet.data_array[i] = 0;
+    }
     
-    thermistors_packet.posix_timestamp =  board_time_manager.get_posix_timestamp();
+    thermistors_packet.posix_timestamp = board_time_manager.get_posix_timestamp();
   }
 
     void Thermistors_Manager::stop(void) {
       turn_thermistors_off();
+
+      // TODO: this may be quite a bit more work, need to turn off the artemis wire too...
+      // switch off the qwiic switch
+      // WireArtemis.stop();
+      delay(500);
+      wdt.restart();
+
+    // switch on qwiic switch to give power to the the MLX
+    // copied from imu_manager
+    ArtemisWire.begin();
+    delay(100);
+    ArtemisWire.setClock(100000);
+    delay(100);
+    wdt.restart();
+    Serial.println(F("started ArtemisWire"));
+
+    Serial.println(F("start qwiic switch"));
+    while (true){
+      if (qwiic_switch.begin(ArtemisWire) == false){
+        Serial.println(F("Qwiic Power Switch not detected, will try again..."));
+        delay(500);
+      }
+      else{
+        break;
+      }
+    }
+    turn_qwiic_switch_off();
+    delay(500);
+    wdt.restart();
+
+      turn_qwiic_switch_off();
+      delay(100);
+      turn_qwiic_switch_off();
+      delay(100);
+
+      Serial.println(F("power down ArtemisWire"));
+      ArtemisWire.end();
+      wdt.restart();
+      delay(100);
+
+      wdt.restart();
   }
 
   void Thermistors_Manager::get_ordered_thermistors_ids(void){
@@ -185,8 +307,8 @@
       // we sort greater first; i.e., the sensors with greater IDs are sorted first;
       // i.e., if the thermistor string have greater IDs higher up, then the sensors are sorted from higher up to lower down
       // we actually need to order by reduced ID, as these are the ones we are transmitting...
-      // etl::sort(vector_of_ids.begin(), vector_of_ids.end(), std::greater<uint64_t>());  // order by normal ID; not what we need
-      etl::sort(vector_of_ids.begin(), vector_of_ids.end(), greater_6bits_id);
+      etl::sort(vector_of_ids.begin(), vector_of_ids.end(), std::greater<uint64_t>());  // order by normal ID
+      // etl::sort(vector_of_ids.begin(), vector_of_ids.end(), greater_6bits_id);  // order by 6-bit ID
     
       Serial.println(F("sorted list of IDs"));
     
@@ -317,12 +439,39 @@
     max_reading.fill(INT16_MIN);
     min_reading.fill(INT16_MAX);
 
+    min_ir_temp_reading = 100;
+    max_ir_temp_reading = -100;
+    sum_ir_temp_reading = 0;
+    sum_ir_ambient_reading = 0;
+
     int number_of_readings = 0;
 
     while (millis() - time_start_acquisition <
            duration_thermistor_acquisition_ms) {
       collect_thermistors_conversions();
 
+      if (working_mlx){
+        Serial.println(F("read MLX"));
+
+        if (therm.read()) // On success, read() will return 1, on fail 0.
+        {
+          float object = therm.object();
+          float ambient = therm.ambient();
+
+          Serial.print("Object: " + String(object, 2));
+          Serial.println(F("C"));
+          Serial.print("Ambient: " + String(ambient, 2));
+          Serial.println(F("C"));
+          Serial.println();
+
+          min_ir_temp_reading = min(min_ir_temp_reading, object);
+          max_ir_temp_reading = max(max_ir_temp_reading, object);
+          sum_ir_temp_reading = sum_ir_temp_reading + object;
+          sum_ir_ambient_reading = sum_ir_ambient_reading + ambient;
+        }
+      }
+      wdt.restart();
+      
       // use the data
       Serial.println(F("register the data"));
       size_t crrt_index = 0;
@@ -347,6 +496,12 @@
 
     // done with collecting the stats; put them into the current packet
     Serial.println(F("get the stats and write stats"));
+
+    // TODO: write the ir stats
+    thermistors_packet.ir_reading = static_cast<int16_t>(sum_ir_temp_reading / number_of_readings * 100.0);
+    thermistors_packet.ir_ambient_reading = static_cast<int16_t>(sum_ir_ambient_reading / number_of_readings * 100);
+    thermistors_packet.ir_reading_range_over_20 = static_cast<uint8_t>((max_ir_temp_reading-min_ir_temp_reading)*20);
+    
     for (size_t crrt_index=0; crrt_index<number_of_thermistors; crrt_index++){
       int16_t crrt_mean = static_cast<int16_t>(sum_of_readings[crrt_index] / number_of_readings);
       uint16_t crrt_range = static_cast<uint16_t>(max_reading[crrt_index] - min_reading[crrt_index]);
@@ -437,7 +592,8 @@
     // message format:
     // T  [nbr packets so far] P [message] P [message] E
 
-    buffer.push_back('T');
+    // buffer.push_back('T');
+    buffer.push_back('U');  // U for a message with packets including both IR and DS18b20
     buffer.push_back((unsigned char)(reading_number%256));
 
     // how many packets to write
@@ -476,5 +632,9 @@
 
   OneWire one_wire_thermistors(THERMISTORS_ONE_WIRE_PIN);
   Thermistors_Manager board_thermistors_manager;
+
+  IRTherm therm;
+  TwoWireArtemis WireArtemis;
+  
 #endif
 

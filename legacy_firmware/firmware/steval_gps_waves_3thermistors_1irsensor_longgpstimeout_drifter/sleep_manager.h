@@ -6,6 +6,8 @@
 #include "time_manager.h"
 #include "watchdog_manager.h"
 #include "params.h"
+// #include "thermistors_manager.h"
+// #include "imu_manager.h"
 
 //--------------------------------------------------------------------------------
 // a few high level ways to control sleep

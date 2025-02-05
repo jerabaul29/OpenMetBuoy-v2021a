@@ -199,7 +199,7 @@ constexpr long interval_between_thermistors_measurements_seconds = interval_betw
 constexpr long tolerance_seconds_start_thermistors_measurements {5 * 60};
 
 // how many thermistors to use on the thermistor string, at most
-constexpr int number_of_thermistors {10};
+constexpr int number_of_thermistors {3};
 
 // duration over which sample thermistor data
 constexpr int duration_thermistor_acquisition_ms {60000};
