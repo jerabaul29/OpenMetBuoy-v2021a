@@ -1,0 +1,7 @@
+- 2025-02-05:
+  - on OpenMetBuoy-v2021a/legacy_firmware/firmware/steval_gps_waves_3thermistors_1irsensor_longgpstimeout_drifter:
+    - order ds18b20 by full ID
+	- clear ds18b20 packet before writing to avoid having the same packet again and again if stops working
+	- add the mlx sensor
+	- TODOs: full test, including power use and robustness
+  - on decoder: add decoding of "U" messages: packets of 3 ds18b20 + 1 ir sensor
