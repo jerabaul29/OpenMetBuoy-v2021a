@@ -63,6 +63,9 @@ bool IMU_Manager::start_IMU(){
       therm.sleep();
       }
 
+  delay(500);
+  WireArtemis.stop();
+
   ArtemisWire.setClock(1000000);
   delay(500);
   // -----------------------

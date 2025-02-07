@@ -43,12 +43,12 @@ constexpr int i2c_port_number {4};
     // parameter for how many GNSS fixes data to remember for later at most, if do not manage to send with Iridium
     // this is useful because we expect that iridium transmission is harder to achieve than GNSS fix
     // to remember up to 256 fixes that could not be transmitted, put 256
-    constexpr size_t size_gps_fix_buffer = 256;  // a reasonable value
+    constexpr size_t size_gps_fix_buffer = 200;  // a reasonable value
     // for saving battery, we can decide to transmit bundled GNSS data only once in a while;
     // setting this to 1 will transmit each time a new GNSS fix is obtained,
     // setting to a higher value will wait for the buffer to fill, for example 6 will bundle at least 6 fixes per message.
     constexpr size_t min_nbr_of_fix_per_message = 6;  // a reasonable value
-    constexpr size_t max_nbr_GPS_fixes_per_message = 20;
+    constexpr size_t max_nbr_GPS_fixes_per_message = 15;
 
 #elif (DEPLOYMENT_MODE == 1)
     #define DEPLOYMENT_INFO "testing"
@@ -142,7 +142,7 @@ constexpr size_t welch_bin_min {9};
 constexpr size_t welch_bin_max {64};
 constexpr size_t nbr_wave_packet_freqs = welch_bin_max - welch_bin_min;
 
-constexpr size_t size_wave_packet_buffer {128};
+constexpr size_t size_wave_packet_buffer {64};
 
 // how often to take wave spectrum measurements
 // this is a value in seconds, that:
@@ -214,7 +214,7 @@ constexpr size_t max_nbr_thermistor_packets {6};
 constexpr size_t min_default_nbr_thermistor_packets {4};
 
 // how many thermistor packets we keep in memory
-constexpr size_t size_thermistors_packets_buffer {100};
+constexpr size_t size_thermistors_packets_buffer {128};
 
 // roll is -180 to 180; to map it to -128 to 127 maximum
 // constexpr float roll_float_to_int8_factor {0.7f};  // 180 * 0.7 = 126

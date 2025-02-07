@@ -16,7 +16,6 @@
 #include "statistical_processing.h"
 
 #include "params.h"
-#include "board_control.h"
 
 #include "watchdog_manager.h"
 

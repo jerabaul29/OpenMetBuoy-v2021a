@@ -46,39 +46,41 @@ void setup(){
   // will test basic functionality of each main component of the instrument
   // we test with some sleep before and after to allow testing for power use
 
-  // to test the functionalities: sleep, thermistors
-  #ifndef DISABLE_ALL_THERMISTOR
+  while(true){
+    // to test the functionalities: sleep, thermistors
+    #ifndef DISABLE_ALL_THERMISTOR
+      if (true){
+        sleep_for_seconds(5);
+        board_thermistors_manager.get_and_push_data();
+        sleep_for_seconds(5);
+        board_thermistors_manager.get_and_push_data();
+        sleep_for_seconds(5);
+        iridium_manager.attempt_transmit_thermistors_packets(2);
+        sleep_for_seconds(5);
+      }
+    #endif
+
+    // to test the functionalities: sleep, gnss
     if (true){
       sleep_for_seconds(5);
-      board_thermistors_manager.get_and_push_data();
-      //board_thermistors_manager.get_and_push_data();
-      //board_thermistors_manager.get_and_push_data();
+      gnss_manager.get_and_push_fix(3UL * 60UL);
       sleep_for_seconds(5);
-      // iridium_manager.attempt_transmit_thermistors_packets(1);
+      // iridium_manager.attempt_transmit_gps_fixes(1);
+      // sleep_for_seconds(5);
+    }
+
+    // to thest the functionalities: sleep, waves measurements
+    if (true){
+      // sleep_for_seconds(5);
+      // board_imu_manger.start_IMU();
+      // board_imu_manger.stop_IMU();
+      // sleep_for_seconds(5);
+      board_wave_analyzer.gather_and_analyze_wave_data();
+      sleep_for_seconds(5);
+      iridium_manager.attempt_transmit_wave_spectra();
       sleep_for_seconds(5);
     }
-  #endif
-
-  // to test the functionalities: sleep, gnss
-  if (false){
-    sleep_for_seconds(5);
-    gnss_manager.get_and_push_fix(3UL * 60UL);
-    sleep_for_seconds(5);
-    iridium_manager.attempt_transmit_gps_fixes(1);
-    sleep_for_seconds(5);
-  }
-
-  // to thest the functionalities: sleep, waves measurements
-  if (true){
-    sleep_for_seconds(5);
-    board_imu_manger.start_IMU();
-    board_imu_manger.stop_IMU();
-    sleep_for_seconds(5);
-    board_wave_analyzer.gather_and_analyze_wave_data();
-    sleep_for_seconds(5);
-    iridium_manager.attempt_transmit_wave_spectra();
-    sleep_for_seconds(5);
-  }
+    }
 
   // some debugging stuff END
   // ########################################

@@ -125,9 +125,10 @@
     // switch on qwiic switch to give power to the the MLX
     // copied from imu_manager
     ArtemisWire.begin();
-    delay(100);
+    delay(500);
+    wdt.restart();
     ArtemisWire.setClock(100000);
-    delay(100);
+    delay(500);
     wdt.restart();
     Serial.println(F("started ArtemisWire"));
 
@@ -141,19 +142,19 @@
         break;
       }
     }
+    delay(500);
+    wdt.restart();
     turn_qwiic_switch_off();
     delay(500);
     wdt.restart();
 
-     // TODO: instead of hang, return false...
-    turn_qwiic_switch_on();
-
     // configure the power switch
     turn_qwiic_switch_on();
+    delay(500);
+    wdt.restart();
     qwiic_switch.isolationOff();
     delay(500);
     wdt.restart();
-    turn_qwiic_switch_on();
 
     // switch off the ISM330DHCX
     // NOTE: unfortunately, does not seem easy to do with our library; this is so little power that it is not a bit problem
@@ -199,18 +200,17 @@
     void Thermistors_Manager::stop(void) {
       turn_thermistors_off();
 
-      // TODO: this may be quite a bit more work, need to turn off the artemis wire too...
-      // switch off the qwiic switch
-      // WireArtemis.stop();
+      WireArtemis.stop();
       delay(500);
       wdt.restart();
 
     // switch on qwiic switch to give power to the the MLX
     // copied from imu_manager
     ArtemisWire.begin();
-    delay(100);
+    delay(500);
+    wdt.restart();
     ArtemisWire.setClock(100000);
-    delay(100);
+    delay(500);
     wdt.restart();
     Serial.println(F("started ArtemisWire"));
 
@@ -228,13 +228,9 @@
     delay(500);
     wdt.restart();
 
-      turn_qwiic_switch_off();
-      delay(100);
-      turn_qwiic_switch_off();
-      delay(100);
-
       Serial.println(F("power down ArtemisWire"));
       ArtemisWire.end();
+      delay(500);
       wdt.restart();
       delay(100);
 
