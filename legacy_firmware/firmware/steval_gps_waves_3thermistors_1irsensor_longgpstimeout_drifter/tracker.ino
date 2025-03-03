@@ -46,24 +46,23 @@ void setup(){
   // will test basic functionality of each main component of the instrument
   // we test with some sleep before and after to allow testing for power use
 
-  while(true){
+  if (false){
     // to test the functionalities: sleep, thermistors
     #ifndef DISABLE_ALL_THERMISTOR
       if (true){
         sleep_for_seconds(5);
         board_thermistors_manager.get_and_push_data();
         sleep_for_seconds(5);
-        board_thermistors_manager.get_and_push_data();
-        sleep_for_seconds(5);
-        iridium_manager.attempt_transmit_thermistors_packets(2);
-        sleep_for_seconds(5);
+        // board_thermistors_manager.get_and_push_data();
+        // sleep_for_seconds(5);
+        // iridium_manager.attempt_transmit_thermistors_packets(2);
+        // sleep_for_seconds(5);
       }
     #endif
 
     // to test the functionalities: sleep, gnss
     if (true){
-      sleep_for_seconds(5);
-      gnss_manager.get_and_push_fix(3UL * 60UL);
+      gnss_manager.get_and_push_fix(20UL);
       sleep_for_seconds(5);
       // iridium_manager.attempt_transmit_gps_fixes(1);
       // sleep_for_seconds(5);
@@ -91,6 +90,11 @@ void setup(){
   // attempt to get an initial GNSS fix, to both 1) check that sky access, 2) know when to wake up
   // if get the fix, also (attempt to) transmit it at once to let know we booted
   // if cannot get an initial fix, we do not have a clear view of the sky: sleep and re-try later
+
+  // make sure the qwiic switch is off
+  board_thermistors_manager.get_and_push_data();
+  board_thermistors_manager.thermistors_packets_buffer.clear();
+  
   while (true){
     blink_LED_n_times(2, 1.0);
 
