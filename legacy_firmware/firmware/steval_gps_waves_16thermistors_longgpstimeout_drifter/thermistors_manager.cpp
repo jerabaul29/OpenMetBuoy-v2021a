@@ -180,6 +180,8 @@
             Serial.println("EROR: Device is not a DS18x20 family device.");
             continue;
         } 
+
+        delay(100);
       }
     
       // we sort greater first; i.e., the sensors with greater IDs are sorted first;
@@ -214,6 +216,9 @@
       one_wire_thermistors.reset();
       one_wire_thermistors.select(crrt_address);
       one_wire_thermistors.write(0x44); // start conversion, with parasite power on at the end
+
+      delay(100);
+      wdt.restart();
     }
 
     return;
@@ -296,6 +301,9 @@
       Serial.println();
 
       vector_of_instantaneous_readings.push_back(raw);
+
+      delay(100);
+      wdt.restart();
     }
   }
 
