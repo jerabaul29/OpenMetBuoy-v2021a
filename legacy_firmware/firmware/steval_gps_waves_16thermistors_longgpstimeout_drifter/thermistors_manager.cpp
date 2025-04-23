@@ -185,8 +185,8 @@
       // we sort greater first; i.e., the sensors with greater IDs are sorted first;
       // i.e., if the thermistor string have greater IDs higher up, then the sensors are sorted from higher up to lower down
       // we actually need to order by reduced ID, as these are the ones we are transmitting...
-      // etl::sort(vector_of_ids.begin(), vector_of_ids.end(), std::greater<uint64_t>());  // order by normal ID; not what we need
-      etl::sort(vector_of_ids.begin(), vector_of_ids.end(), greater_6bits_id);
+      etl::sort(vector_of_ids.begin(), vector_of_ids.end(), std::greater<uint64_t>());  // order by normal ID; not what we need
+      // etl::sort(vector_of_ids.begin(), vector_of_ids.end(), greater_6bits_id);
     
       Serial.println(F("sorted list of IDs"));
     
