@@ -445,7 +445,7 @@
     // message format:
     // T  [nbr packets so far] P [message] P [message] E
 
-    buffer.push_back('T');
+    buffer.push_back('V');
     buffer.push_back((unsigned char)(reading_number%256));
 
     // how many packets to write
