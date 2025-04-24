@@ -61,7 +61,7 @@ LENGTH_FROM_SERIAL_OUTPUT = 138
 assert _BD_YWAVE_PACKET_LENGTH == LENGTH_FROM_SERIAL_OUTPUT, "the arduino printout indicates that wave packets have length {}".format(LENGTH_FROM_SERIAL_OUTPUT)
 
 ####################
-# properties of the thermistors packets
+# properties of the default (4) thermistors packets
 _BD_THERM_MSG_FIXED_LENGTH = 3  # start byte, byte metadata nbr packets, byte end
 _BD_THERM_MSG_NBR_THERMISTORS = 4
 _BD_THERM_PACKET_NBR_BYTES_PER_THERMISTOR = 3
@@ -71,6 +71,18 @@ _BD_THERM_PACKET_LENGTH = 1 + 1*4 + _BD_THERM_PACKET_NBR_BYTES_PER_THERMISTOR * 
 # _BD_THERM_PITCH_FLOAT_TO_INT8_FACTOR = 1.4
 # factor for converting bin 12 bits signed int to temperature; from thermistor datasheet
 _BD_THERM_12BITS_TO_FLOAT_TEMPERATURE_FACTOR = 1.0 / 16.0
+
+####################
+# properties of the thermistors16 packets
+_BD_THERM16_MSG_FIXED_LENGTH = 3  # start byte, byte metadata nbr packets, byte end
+_BD_THERM16_MSG_NBR_THERMISTORS = 16
+_BD_THERM16_PACKET_NBR_BYTES_PER_THERMISTOR = 3
+_BD_THERM16_PACKET_LENGTH = 1 + 1*4 + _BD_THERM16_PACKET_NBR_BYTES_PER_THERMISTOR * _BD_THERM16_MSG_NBR_THERMISTORS * 1
+# these are from the params of the tracker
+# _BD_THERM_ROLL_FLOAT_TO_INT8_FACTOR = 0.7
+# _BD_THERM_PITCH_FLOAT_TO_INT8_FACTOR = 1.4
+# factor for converting bin 12 bits signed int to temperature; from thermistor datasheet
+_BD_THERM16_12BITS_TO_FLOAT_TEMPERATURE_FACTOR = 1.0 / 16.0
 
 ####################
 # properties of the thermistors + mlx packets
@@ -277,7 +289,7 @@ def hex_to_bin_message(hex_string_message, print_info=False):
 
 def message_kind(bin_msg):
     first_char = byte_to_char(bin_msg[0])
-    valid_first_chars = ["G", "Y", "T", "U"]
+    valid_first_chars = ["G", "Y", "T", "U", "V"]
     assert first_char in valid_first_chars, "unknown first_char message kind: got {}, valids are {}".format(first_char, valid_first_chars)
     return first_char
 
@@ -676,6 +688,46 @@ def decode_thermistors_packet(bin_packet, print_decoded=False, print_debug_infor
     return crrt_thermistor_packet
 
 
+def decode_thermistors16_packet(bin_packet, print_decoded=False, print_debug_information=False):
+    if print_debug_information:
+        print("----- START DECODE THERM PACKET -----")
+
+    assert len(bin_packet) == _BD_THERM16_PACKET_LENGTH
+
+    char_first_byte = byte_to_char(bin_packet[0])
+    assert char_first_byte == "P"
+
+    crrt_start_field = 1
+
+    posix_timestamp = four_bytes_to_long(bin_packet[crrt_start_field: crrt_start_field+4])
+    datetime_packet = datetime.datetime.utcfromtimestamp(posix_timestamp)
+    crrt_start_field += 4
+
+    list_thermistors_readings = []
+
+    for crrt_thermistor in range(_BD_THERM16_MSG_NBR_THERMISTORS):
+        crrt_thermistor_bin = bin_packet[crrt_start_field: crrt_start_field+3]
+        crrt_start_field += 3
+        crrt_thermistor_reading = decode_thermistor_reading(crrt_thermistor_bin, print_debug_information=print_debug_information)
+        assert isinstance(crrt_thermistor_reading, Thermistors_Reading)
+        list_thermistors_readings.append(crrt_thermistor_reading)
+
+    assert crrt_start_field == _BD_THERM16_PACKET_LENGTH
+
+    crrt_thermistor_packet = Thermistors_Packet(
+        datetime_packet=datetime_packet,
+        thermistors_readings=list_thermistors_readings,
+    )
+
+    if print_decoded:
+        print_thermistor_packet(crrt_thermistor_packet)
+
+    if print_debug_information:
+        print("----- DONE DECODE THERM PACKET -----")
+
+    return crrt_thermistor_packet
+
+
 def decode_thermistorsmlx_packet(bin_packet, print_decoded=False, print_debug_information=False):
     if print_debug_information:
         print("----- START DECODE THERMMLX PACKET -----")
@@ -838,6 +890,57 @@ def decode_thermistorsmlx_message(bin_msg, print_decoded=False, print_debug_info
     return message_metadata, list_decoded_packets
 
 
+def decode_thermistors16_message(bin_msg, print_decoded=False, print_debug_information=False):
+    if print_decoded:
+        print("----------------------- START DECODE THERMISTORS MESSAGE -----------------------")
+
+    assert message_kind(bin_msg) == "V"
+    assert byte_to_char(bin_msg[-1]) == "E"
+
+    if (print_debug_information):
+        print("received message of length: {}".format(len(bin_msg)))
+
+    expected_message_length = int( (len(bin_msg) - _BD_THERM16_MSG_FIXED_LENGTH) / _BD_THERM16_PACKET_LENGTH )
+    assert expected_message_length * _BD_THERM16_PACKET_LENGTH + _BD_THERM16_MSG_FIXED_LENGTH == len(bin_msg)
+
+    nbr_thermistors_measurements = one_byte_to_int(bin_msg[1: 2])
+    message_metadata = Thermistors_Metadata(nbr_thermistors_measurements=nbr_thermistors_measurements)
+
+    if print_decoded:
+        print(message_metadata)
+
+    crrt_packet_start = 2
+    list_decoded_packets = []
+
+    while True:
+        if print_decoded:
+            print("----- START PACKET -----")
+
+        crrt_byte_start = byte_to_char(bin_msg[crrt_packet_start])
+        assert crrt_byte_start == "P"
+
+        # decode
+        crrt_decoded_packet = decode_thermistors16_packet(bin_msg[crrt_packet_start: crrt_packet_start+_BD_THERM16_PACKET_LENGTH], print_decoded=print_decoded, print_debug_information=print_debug_information)
+        list_decoded_packets.append(crrt_decoded_packet)
+
+        trailing_char = byte_to_char(bin_msg[crrt_packet_start + _BD_THERM16_PACKET_LENGTH])
+        assert trailing_char in ["P", "E"]
+        if trailing_char == "E":
+            break
+        else:
+            crrt_packet_start += _BD_THERM16_PACKET_LENGTH
+
+        if print_decoded:
+            print("----- END PACKET -----")
+
+    assert expected_message_length == len(list_decoded_packets)
+
+    if print_decoded:
+        print("----------------------- DONE DECODE THERMISTORS MESSAGE -----------------------")
+
+    return message_metadata, list_decoded_packets
+
+
 def decode_message(hex_string_message, print_decoded=True, print_debug_information=False):
     bin_msg = hex_to_bin_message(hex_string_message)
 
@@ -851,6 +954,8 @@ def decode_message(hex_string_message, print_decoded=True, print_debug_informati
         message_metadata, list_decoded_packets = decode_thermistors_message(bin_msg, print_decoded=print_decoded, print_debug_information=print_debug_information)
     elif kind == "U":
         message_metadata, list_decoded_packets = decode_thermistorsmlx_message(bin_msg, print_decoded=print_decoded, print_debug_information=print_debug_information)
+    elif kind == "V":
+        message_metadata, list_decoded_packets = decode_thermistors16_message(bin_msg, print_decoded=print_decoded, print_debug_information=print_debug_information)
         
     else:
         raise RuntimeError("Unknown message kind: {}".format(kind))
