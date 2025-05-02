@@ -59,7 +59,7 @@ void setup(){
         sleep_for_seconds(5);
         board_thermistors_manager.get_and_push_data();
         sleep_for_seconds(5);
-        iridium_manager.attempt_transmit_thermistors_packets();
+        iridium_manager.attempt_transmit_thermistors_packets(3);
         sleep_for_seconds(5);
       }
     #endif
