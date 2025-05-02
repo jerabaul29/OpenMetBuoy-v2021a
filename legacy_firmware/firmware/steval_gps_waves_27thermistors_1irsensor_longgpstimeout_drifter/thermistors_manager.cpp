@@ -329,6 +329,9 @@
       one_wire_thermistors.reset();
       one_wire_thermistors.select(crrt_address);
       one_wire_thermistors.write(0x44); // start conversion, with parasite power on at the end
+
+      delay(100);
+      wdt.restart();
     }
 
     return;
@@ -586,7 +589,7 @@
     // T  [nbr packets so far] P [message] P [message] E
 
     // buffer.push_back('T');
-    buffer.push_back('U');  // U for a message with packets including both IR and DS18b20
+    buffer.push_back('W');  // U for a message with packets including both IR and DS18b20
     buffer.push_back((unsigned char)(reading_number%256));
 
     // how many packets to write
