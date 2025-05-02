@@ -1,0 +1,39 @@
+
+--- start print binary thermistor packet ---
+binary content: C 0 0 0 B8 8 7F 9 50 70 60 2 0 0 1 0 0 1 0 0 
+posix_timestamp: 12
+ir_reading: 2232
+ir_ambient_reading: 2431
+ir_reading_range_over_20: 80
+thermistor 0 | ID: 28 | mean * 16.0: 384 | range * 16.0: 2
+thermistor 1 | ID: 0 | mean * 16.0: 0 | range * 16.0: 1
+thermistor 2 | ID: 0 | mean * 16.0: 0 | range * 16.0: 1
+--- done print thermistor packet ---
+content: 0x55 | 0x1 | 0x50 | 0xC | 0x0 | 0x0 | 0x0 | 0xB8 | 0x8 | 0x7F | 0x9 | 0x50 | 0x70 | 0x60 | 0x2 | 0x0 | 0x0 | 0x1 | 0x0 | 0x0 | 0x1 | 0x0 | 0x0 | 0x45 | 
+Rock7 format content: 5501500C000000B8087F0950706002000001000001000045
+
+--- start print binary thermistor packet ---
+binary content: C 0 0 0 7A 8 63 9 10 70 60 C1 0 0 1 0 0 1 0 0 
+posix_timestamp: 12
+ir_reading: 2170
+ir_ambient_reading: 2403
+ir_reading_range_over_20: 16
+thermistor 0 | ID: 28 | mean * 16.0: 387 | range * 16.0: 1
+thermistor 1 | ID: 0 | mean * 16.0: 0 | range * 16.0: 1
+thermistor 2 | ID: 0 | mean * 16.0: 0 | range * 16.0: 1
+--- done print thermistor packet ---
+
+--- start print binary thermistor packet ---
+binary content: C 0 0 0 77 8 57 9 8 70 60 81 0 0 1 0 0 1 0 0 
+posix_timestamp: 12
+ir_reading: 2167
+ir_ambient_reading: 2391
+ir_reading_range_over_20: 8
+thermistor 0 | ID: 28 | mean * 16.0: 386 | range * 16.0: 1
+thermistor 1 | ID: 0 | mean * 16.0: 0 | range * 16.0: 1
+thermistor 2 | ID: 0 | mean * 16.0: 0 | range * 16.0: 1
+--- done print thermistor packet ---
+vector of unsigned char, size 24 max size 340
+content: 0x55 | 0x1 | 0x50 | 0xC | 0x0 | 0x0 | 0x0 | 0x77 | 0x8 | 0x57 | 0x9 | 0x8 | 0x70 | 0x60 | 0x81 | 0x0 | 0x0 | 0x1 | 0x0 | 0x0 | 0x1 | 0x0 | 0x0 | 0x45 | 
+Rock7 format content: 5501500C0000007708570908706081000001000001000045
+
