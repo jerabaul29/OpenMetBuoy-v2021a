@@ -38,7 +38,7 @@ constexpr int i2c_port_number {4};
     // parameters for how often to acquire and if needed send gps data
     // a measurement will always be performed at 00:00:00, and after that each interval_between_gnss_measurements_seconds seconds
     // so put 60UL * 60UL for each hour at 00 minutes, 30UL * 60UL for each hour at 00 and 30 minutes, etc.
-    constexpr long interval_between_gnss_measurements_seconds = 30L * 60L;  // a reasonable value
+    constexpr long interval_between_gnss_measurements_seconds = 60L * 60L;  // a reasonable value
 
     // parameter for how many GNSS fixes data to remember for later at most, if do not manage to send with Iridium
     // this is useful because we expect that iridium transmission is harder to achieve than GNSS fix
@@ -194,7 +194,7 @@ constexpr bool use_thermistor_string {true};
 #endif
 
 // when to perform thermistors measurements; use the same convention as the other methods
-constexpr long interval_between_thermistors_measurements_seconds = interval_between_gnss_measurements_seconds;  // thermistors measurements should be quite power efficient; do each time the GNSS position is taken
+constexpr long interval_between_thermistors_measurements_seconds = 1 * 60 * 60;
 // tolerance in seconds for jitter on when to perform the thermistors measurement; typically 5 minutes should be more than enough
 constexpr long tolerance_seconds_start_thermistors_measurements {5 * 60};
 
