@@ -117,6 +117,8 @@ If you deploy the OMB, feel free to let me know in an issue! These are so far th
 - 20 ice drifters: AWI summer cruise 2022, Barents sea: 20 instruments, on the sea ice
 - 15 ice trackers: Hovercraft 2022 cruise, Yamal plateau / East Greenland sea, August 2022: 15 instruments on the sea ice
 
+There have been many more since that - see https://github.com/jerabaul29/meta_overview_sea_ice_available_data .
+
 ## Openly available data
 
 I also try to keep a separate repository about the openly available waves in ice and sea ice drift data available, with data gathered both by the OMB and other buoys, at:
