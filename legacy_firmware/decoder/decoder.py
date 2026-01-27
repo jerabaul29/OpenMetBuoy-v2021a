@@ -464,7 +464,7 @@ def decode_ywave_packet(bin_packet, print_decoded=False, print_debug_information
             math.pow(crrt_freq, order) * crrt_energy for (crrt_freq, crrt_energy) in zip(list_frequencies, list_elevation_energies)
         ]
 
-        moment = np.trapz(list_to_integrate, list_frequencies)
+        moment = np.trapezoid(list_to_integrate, list_frequencies)
 
         return moment
 
