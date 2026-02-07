@@ -40,9 +40,19 @@ We also describe how to build a standard, upper ocean drifter buoy, which allows
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/buoy_with_instrument.jpg" width="600" />
 
-The OMB when used on the sea ice can be either put directly on sea ice, or on top of a PVC tube that is frozen over some depth in the sea ice, or on top of, for example, a fender buoy drilled a bit into the ice for stability, and equipped with a netting to attach the buoy, and a heavy chain at the bottom to keep it upright (photo and method credits for the fender buoy method: Ruth Mottram, Andrea Gierisch, and colleagues, Danish Meteorological Institute, NCKF/DMI, with help from Greenlandic hunters to develop and build the setup):
+The OMB when used on the sea ice can be either put directly on sea ice (see picture with a polar bear below), or on top of a PVC tube that is frozen over some depth in the sea ice, or on top of, for example, a fender buoy drilled a bit into the ice for stability, and equipped with a netting to attach the buoy, and a heavy chain at the bottom to keep it upright (photo and method credits for the fender buoy method: Ruth Mottram, Andrea Gierisch, and colleagues, Danish Meteorological Institute, NCKF/DMI, with help from Greenlandic hunters to develop and build the setup):
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/on_fender.jpg" width="500" />
+
+In addition, one should take into account wind, icing, and snowfall to ensure optimal lifetime. In heavy snowfall conditions, it can be useful to make the buoy higher for example with a tripod or similar to avoid the buoy being buried - though in our experience, fresh snow does not block GPS and iridium RF signals too much. Icing / snow melting and refreezing / sea spray icing is in our experience more of an issue, and one should try to protect buoys from these. In the arctic, simple tripod solutions may be enough. In Antarctic, due to the very high wind speed conditions, sturdy mounts sould be needed.
+
+- low cost simple elevating tripod for use in the Arctic: (reproduced from preprint https://arxiv.org/pdf/2509.10016)
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/OMB_tripod.png" width="500" />
+
+- heavy duty base mount for use in Antactic: (reproduced from preprint https://arxiv.org/pdf/2309.13714)
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/OMB_Medusa.png" width="500" />
 
 The deployment method used may depend on the expected wind, precipitation (in particular if heavy snowfalls are expected and the OMB should be a bit elevated to avoid being buried and loosing satellite communications), and ice breaking conditions. A note though: polar bears **love** big, flashy colors, chewy stuff, and they will happily chew / play football with such a buoy: consider painting it white to make it less attractive if you are working in an area with a lot of polar bear activity!
 
