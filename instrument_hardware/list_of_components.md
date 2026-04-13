@@ -36,6 +36,8 @@ or if you do not use the PCB, any box with about the same volume should be fine 
 
 or any other box you like (size may be adapted to number of battery cells, additional functionality that requires additional small PCBs, etc).
 
+For example a slightly bigger box: https://no.rs-online.com/web/p/general-purpose-enclosures/2010158 .
+
 ### Non rechargable batteries
 
 I recommend trying to get batteries with solder tags, and drop the battery holders alltogether, but it is not always easy to find batteries with solder tags for a good price; batteries without solder tags will need a battery holder, and these are often of low quality and create problems, so best to use battery solder tags and solder everything yourself:
