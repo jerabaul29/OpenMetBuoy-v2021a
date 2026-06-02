@@ -22,6 +22,10 @@ You can either build the OMB yourself using the resources available on this repo
 
 ![OMB_Labmaker](https://user-images.githubusercontent.com/8382834/191990617-ad533b96-0d03-4e05-a78f-1240b57d4700.png)
 
+As of mid 2026, there is now a "nano" version available (credits Gaute Hope and Roger Storvik) that can be 1-click ordered at JLCPCB with all components soldered from the factory: see https://github.com/gauteh/omb-nano for instructions and tuned OMB firmware. The final result looks like (picture credits omb-nano repository):
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/misc/omb_nano_illustration.png" width="600" />
+
 The fully assembled instrument gets space into a box 12x12x9 cm, including 3 D-size battery holders (at the bottom, empty on the picture, should use typically 3 SAFT LSH20 D-size batteries), all the components, and the 9dof sensor:
 
 <img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/from_side.jpg" width="600" />
