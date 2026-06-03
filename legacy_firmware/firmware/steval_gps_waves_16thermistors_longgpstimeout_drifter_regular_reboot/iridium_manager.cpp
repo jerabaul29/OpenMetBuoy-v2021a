@@ -317,7 +317,7 @@ void IridiumManager::reboot_if_requested_through_iridium(void){
 
             if (iridium_rx_buffer[0] == 'B' && iridium_rx_buffer[1] == 'O' && iridium_rx_buffer[2] == 'O' && iridium_rx_buffer[3] == 'T'){
                 Serial.println(F("BOOT message, reboot!"));
-                while (true) {;}
+                while (true) {NVIC_SystemReset(); delay(100);}
             }
 
         }

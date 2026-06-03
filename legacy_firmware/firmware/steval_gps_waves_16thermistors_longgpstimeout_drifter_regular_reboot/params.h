@@ -50,6 +50,10 @@ constexpr int i2c_port_number {4};
     constexpr size_t min_nbr_of_fix_per_message = 6;  // a reasonable value
     constexpr size_t max_nbr_GPS_fixes_per_message = 20;
 
+    // reboot periodically - somehow this is important for reliability, some buoys hang otherwise
+    // every 2 weeks is: 2 * 7 * 24 * 60 * 60
+    constexpr unsigned long modulo_forced_reboot_s = 1 * 7 * 24 * 60 * 60;
+
 #elif (DEPLOYMENT_MODE == 1)
     #define DEPLOYMENT_INFO "testing"
 
