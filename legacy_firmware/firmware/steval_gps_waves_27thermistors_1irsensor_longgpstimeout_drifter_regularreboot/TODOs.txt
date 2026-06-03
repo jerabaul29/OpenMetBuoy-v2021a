@@ -1,0 +1,6 @@
+
+- for now, take a thermistor measurement each time a GNSS measurement is performed; could be changed if needed: use a "time to thermistor" test function and call then
+
+- abtract the logics of writing messages to the iridium tx buffer
+- abstract the logics of transmitting at least a given number of packets
+
