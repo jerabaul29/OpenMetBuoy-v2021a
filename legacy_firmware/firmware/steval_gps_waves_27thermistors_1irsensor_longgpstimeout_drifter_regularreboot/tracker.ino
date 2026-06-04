@@ -14,6 +14,8 @@
 
 // TODO: board_imu_manger -> board_imu_manager
 
+unsigned long time_last_boot_s;
+
 void setup(){
   // --------------------------------------------------------------------------------
   // startup and configuration...
@@ -46,6 +48,22 @@ void setup(){
   // will test basic functionality of each main component of the instrument
   // we test with some sleep before and after to allow testing for power use
 
+  // quick test
+  if (false) {
+      Serial.println(F("FIRMWARE IS IN FUNCTIONALITY MODE; DO NOT USE FOR DEPLOYMENT!!"));
+
+      sleep_for_seconds(5);
+      board_thermistors_manager.get_and_push_data();
+      sleep_for_seconds(5);
+      gnss_manager.get_and_push_fix(20UL);
+      sleep_for_seconds(5);
+      imu_manager.start_IMU();
+      delay(100);
+      imu_manager.stop_IMU();
+      iridium_manager.attempt_transmit_wave_spectra();
+          
+  }
+  
   if (false){
     // to test the functionalities: sleep, thermistors
     #ifndef DISABLE_ALL_THERMISTOR
@@ -152,6 +170,8 @@ void setup(){
 
   // At this stage, we have got the initial GNSS fix and the RTC is in UTC.
   // After that, will wake up at given UTC times (see the params.h)
+
+  time_last_boot_s = board_time_manager.get_posix_timestamp();
 }
 
 void loop(){
@@ -316,4 +336,20 @@ void loop(){
   //--------------------------------------------------------------------------------
   // the end for this loop
   wdt.restart();
+
+  //--------------------------------------------------------------------------------
+  // periodically reboot: is it time?
+
+  if (board_time_manager.get_posix_timestamp() > time_last_boot_s + modulo_forced_reboot_s){
+    // transmit all outstanding messages
+
+    iridium_manager.attempt_transmit_wave_spectra();
+    iridium_manager.attempt_transmit_thermistors_packets(1);
+    iridium_manager.attempt_transmit_gps_fixes(1);
+    
+    NVIC_SystemReset();
+    while (true) {
+      delay(100);
+    }
+  }
 }

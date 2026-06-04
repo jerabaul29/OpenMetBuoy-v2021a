@@ -44,7 +44,7 @@ bool GNSS_Manager::get_a_fix(unsigned long timeout_seconds, bool set_RTC_time, b
 
     if (!gnss_startup){
       Serial.println(F("failed to start GNSS; reboot"));
-      while (1){;}
+      while (1){NVIC_SystemReset();delay(100);}
     }
 
     // now we know that we can talk to the gnss

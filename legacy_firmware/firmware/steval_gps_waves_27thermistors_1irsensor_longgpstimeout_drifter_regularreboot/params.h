@@ -30,7 +30,7 @@ constexpr int i2c_port_number {4};
     // put 2UL * 60UL for a first fix timeout of 2 minutes
     constexpr unsigned long timeout_first_fix_seconds = 15UL * 60UL;  // a reasonable value
     // put 6UL * 60UL * 60UL for a sleep if no initial fix of 6 hours
-    constexpr long sleep_no_initial_fix_seconds = 2L * 60L * 60L;  // for testing
+    constexpr long sleep_no_initial_fix_seconds = 3L * 60L * 60L;  // for testing
 
     // parameter for timeout of later (i.e. non first) GNSS fixes
     // put 3UL * 60UL for a later fix timeout of 3 minutes
@@ -38,7 +38,7 @@ constexpr int i2c_port_number {4};
     // parameters for how often to acquire and if needed send gps data
     // a measurement will always be performed at 00:00:00, and after that each interval_between_gnss_measurements_seconds seconds
     // so put 60UL * 60UL for each hour at 00 minutes, 30UL * 60UL for each hour at 00 and 30 minutes, etc.
-    constexpr long interval_between_gnss_measurements_seconds = 30L * 60L;  // a reasonable value
+    constexpr long interval_between_gnss_measurements_seconds = 60L * 60L;  // a reasonable value
 
     // parameter for how many GNSS fixes data to remember for later at most, if do not manage to send with Iridium
     // this is useful because we expect that iridium transmission is harder to achieve than GNSS fix
@@ -47,8 +47,12 @@ constexpr int i2c_port_number {4};
     // for saving battery, we can decide to transmit bundled GNSS data only once in a while;
     // setting this to 1 will transmit each time a new GNSS fix is obtained,
     // setting to a higher value will wait for the buffer to fill, for example 6 will bundle at least 6 fixes per message.
-    constexpr size_t min_nbr_of_fix_per_message = 6;  // a reasonable value
+    constexpr size_t min_nbr_of_fix_per_message = 3;  // a reasonable value
     constexpr size_t max_nbr_GPS_fixes_per_message = 15;
+
+    // reboot periodically - somehow this is important for reliability, some buoys hang otherwise
+    // every 2 weeks is: 2 * 7 * 24 * 60 * 60
+    constexpr unsigned long modulo_forced_reboot_s = 1 * 7 * 24 * 60 * 60;
 
 #elif (DEPLOYMENT_MODE == 1)
     #define DEPLOYMENT_INFO "testing"
@@ -151,7 +155,7 @@ constexpr size_t size_wave_packet_buffer {64};
 // for example:
 // - if GPS measurements are performed each 30 minutes, then can take wave measurements each 30 minutes, or each hour, or each 2 hours, etc
 // - to start each 2 hours, the value would be: 2 * 60 * 60
-constexpr long interval_between_wave_spectra_measurements {2 * 60 * 60};
+constexpr long interval_between_wave_spectra_measurements {3 * 60 * 60};
 // tolerance in seconds for jitter; typically 5 minutes should be more than enough
 constexpr long tolerance_seconds_start_wave_measurements {13 * 60};
 
