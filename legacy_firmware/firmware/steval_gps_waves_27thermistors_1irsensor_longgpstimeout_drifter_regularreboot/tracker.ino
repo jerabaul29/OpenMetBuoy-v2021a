@@ -60,7 +60,7 @@ void setup(){
       board_imu_manger.start_IMU();
       delay(100);
       board_imu_manger.stop_IMU();
-      iridium_manager.attempt_transmit_wave_spectra();
+      iridium_manager.attempt_transmit_thermistors_packets(1);
           
   }
   
