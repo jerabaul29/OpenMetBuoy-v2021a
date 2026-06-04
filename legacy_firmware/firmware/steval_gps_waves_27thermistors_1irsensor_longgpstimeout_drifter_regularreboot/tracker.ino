@@ -57,9 +57,9 @@ void setup(){
       sleep_for_seconds(5);
       gnss_manager.get_and_push_fix(20UL);
       sleep_for_seconds(5);
-      imu_manager.start_IMU();
+      board_imu_manager.start_IMU();
       delay(100);
-      imu_manager.stop_IMU();
+      board_imu_manager.stop_IMU();
       iridium_manager.attempt_transmit_wave_spectra();
           
   }
