@@ -75,6 +75,6 @@ When using labmaker buoys, I have noticed over the time several small issues - t
 - qwiic switch or IMU inserted in the wrong direction: the qwiic switch and the IMU should be inserted as shown in the picture below; if they are inserted in the wrong direction, pick them up, rotate them, and insert them again; note the side on which the IMU markings are, the sides IN and OUT of the qwiic switch, and the position of the qwiic cable
 - broken / not well soldered magnetic switch leg: the magnetic switch legs should be well soldered on both ends; if one of them is not well solder, fix this by re-soldering the corresponding leg with a soldering iron
 
-<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/from_side.jpg" width="700" />
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/end_user_manual/assets/labmaker_omb.jpg" width="700" />
 
 If you encounter issues that you cannot solve / other than these, please open an issue here and I will try to help you.
