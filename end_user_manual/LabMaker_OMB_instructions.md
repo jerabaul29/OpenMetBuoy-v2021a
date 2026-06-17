@@ -65,3 +65,16 @@ Take contact at jean.rblt@gmail.com for more information and to have your buoys 
 ## Taking contact
 
 In case of any question, open an issue on the present GH repository to get help: https://github.com/jerabaul29/OpenMetBuoy-v2021a/issues .
+
+## Issues with LabMaker buoys
+
+When using labmaker buoys, I have noticed over the time several small issues - these are usually very easy to fix, but if not fixed, the buoy will not work. See in order of frequency:
+
+- Wrong firmware installed: this has happened several times, just re-flash the right firmware. Remember to do so when batteries are not inserted, to avoid feeding power from 2 sources at the same time.
+- missing qwiic cable: there should be a SF qwiic cable going from the AGT to the qwiic switch (side "IN"); on some buoys, this has been forgotten - just put a qwiic cable, see picture below of the full correctly set up instrument
+- qwiic switch or IMU inserted in the wrong direction: the qwiic switch and the IMU should be inserted as shown in the picture below; if they are inserted in the wrong direction, pick them up, rotate them, and insert them again; note the side on which the IMU markings are, the sides IN and OUT of the qwiic switch, and the position of the qwiic cable
+- broken / not well soldered magnetic switch leg: the magnetic switch legs should be well soldered on both ends; if one of them is not well solder, fix this by re-soldering the corresponding leg with a soldering iron
+
+<img src="https://github.com/jerabaul29/OpenMetBuoy-v2021a/blob/main/instrument_hardware/jpg/from_side.jpg" width="700" />
+
+If you encounter issues that you cannot solve / other than these, please open an issue here and I will try to help you.
